@@ -78,6 +78,16 @@ class SearchViewController: UIViewController {
 	}
 	
 	
+	// MARK: - Methods
+	
+	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
+		mainStackCenterYConstraint.constant = offsetY
+		UIView.animate(withDuration: animationDuration) {
+			self.view.layoutIfNeeded()
+		}
+	}
+	
+	
 	// MARK: - View lifecycle
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -96,47 +106,20 @@ class SearchViewController: UIViewController {
 	
 	// MARK: - Keyboard handling
 	
+	// Check if keyboard overlaps content, and apply y-offset if so.
 	@objc private func handleKeyboardWillShow(notification: NSNotification) {
 		guard let keyboardUserInfo = KeyboardNotificationUserInfo(userInfo: notification.userInfo) else { return }
 		
 		let keyboardContentOverlapHeight = mainStack.frame.maxY - keyboardUserInfo.frame.minY
 		
 		if keyboardContentOverlapHeight > 0 {
-			mainStackCenterYConstraint.constant = -keyboardContentOverlapHeight
-			UIView.animate(withDuration: keyboardUserInfo.animationDuration) {
-				self.view.layoutIfNeeded()
-			}
+			setContentYOffset(-keyboardContentOverlapHeight, with: keyboardUserInfo.animationDuration)
 		}
 	}
 	
 	@objc private func handleKeyboardWillHide(notification: NSNotification) {
 		guard let keyboardUserInfo = KeyboardNotificationUserInfo(userInfo: notification.userInfo) else { return }
 		
-		mainStackCenterYConstraint.constant = 0
-		UIView.animate(withDuration: keyboardUserInfo.animationDuration) {
-			self.view.layoutIfNeeded()
-		}
-	}
-}
-
-struct KeyboardNotificationUserInfo {
-	let animationDuration: TimeInterval
-	let frame: CGRect
-	let height: CGFloat
-	let width: CGFloat
-	
-	init?(userInfo: [AnyHashable : Any]?) {
-		guard
-			let userInfo = userInfo,
-			let animationDuration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval,
-			let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect
-			else {
-				return nil
-		}
-		
-		self.animationDuration = animationDuration
-		self.frame = keyboardFrame
-		self.height = keyboardFrame.size.height
-		self.width = keyboardFrame.size.width
+		setContentYOffset(0, with: keyboardUserInfo.animationDuration)
 	}
 }
