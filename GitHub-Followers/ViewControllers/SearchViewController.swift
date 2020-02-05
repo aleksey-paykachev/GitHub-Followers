@@ -16,6 +16,7 @@ class SearchViewController: UIViewController {
 		setupTabBar()
 		setupView()
 		setupSubviews()
+		setupGestures()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -64,5 +65,11 @@ class SearchViewController: UIViewController {
 		stack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
 		stack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
 		stack.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+	}
+	
+	func setupGestures() {
+		// hide keyboard on tap
+		let tapGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+		view.addGestureRecognizer(tapGestureRecognizer)
 	}
 }
