@@ -24,6 +24,28 @@ class GFTextField: UITextField {
 	}
 	
 	
+	// MARK: - API
+	
+	func showWrongInputError() {
+		// shake textfield
+		transform = transform.translatedBy(x: 8, y: 0)
+		
+		UIView.animate(withDuration: 0.8, delay: 0, usingSpringWithDamping: 0.1, initialSpringVelocity: 0.1, animations: {
+
+			self.transform = .identity
+		})
+		
+		// temporary change border color
+		let borderColorAnimation = CABasicAnimation(keyPath: #keyPath(CALayer.borderColor))
+		borderColorAnimation.duration = 0.3
+		borderColorAnimation.autoreverses = true
+		borderColorAnimation.fromValue = layer.borderColor
+		borderColorAnimation.toValue = UIColor.systemRed.cgColor
+		
+		layer.add(borderColorAnimation, forKey: nil)
+	}
+	
+	
 	// MARK: - Setup
 	
 	private func setupView() {

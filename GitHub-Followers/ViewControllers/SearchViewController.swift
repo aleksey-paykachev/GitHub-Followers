@@ -79,7 +79,10 @@ class SearchViewController: UIViewController {
 	// MARK: - Methods
 	
 	@objc private func findFollowers() {
-		guard let searchTerm = searchTermTextField.text?.trimmed, searchTerm.isNotEmpty else { return }
+		guard let searchTerm = searchTermTextField.text?.trimmed, searchTerm.isNotEmpty else {
+			searchTermTextField.showWrongInputError()
+			return
+		}
 
 		view.endEditing(true)
 		print("Find followers for", searchTerm)
