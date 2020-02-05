@@ -40,8 +40,7 @@ class SearchViewController: UIViewController {
 	
 	private func setupSubviews() {
 		// logo
-		let logoImageView = UIImageView(image: UIImage(named: "gh-logo"))
-		logoImageView.contentMode = .scaleAspectFit
+		let logoImageView = GFImageView(asset: .logo)
 		logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 0.8).isActive = true
 		
 		// text field
