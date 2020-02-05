@@ -41,11 +41,7 @@ class SearchViewController: UIViewController {
 		logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 0.8).isActive = true
 
 		// text field
-		let searchTermTextField = UITextField()
-		searchTermTextField.placeholder = "Enter github username"
-		searchTermTextField.layer.borderWidth = 2
-		searchTermTextField.layer.borderColor = UIColor.tertiarySystemFill.cgColor
-		searchTermTextField.layer.cornerRadius = 8
+		let searchTermTextField = GFTextField(placeholder: "Enter github username")
 		searchTermTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
 		// button

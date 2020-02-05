@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B04F23E87714004B44B7 /* AppDelegate.swift */; };
 		5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B05123E87714004B44B7 /* SceneDelegate.swift */; };
 		5BF9B05423E87714004B44B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B05323E87714004B44B7 /* SearchViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BF9B04C23E87714004B44B7 /* GitHub-Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub-Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF9B04F23E87714004B44B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF9B05123E87714004B44B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -39,6 +41,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B9B3FC923EA47E80011DF36 /* GF Custom UI */ = {
+			isa = PBXGroup;
+			children = (
+				5B9B3FC723EA47930011DF36 /* GFTextField.swift */,
+			);
+			path = "GF Custom UI";
+			sourceTree = "<group>";
+		};
 		5BF9B04323E87714004B44B7 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +71,7 @@
 				5BF9B04F23E87714004B44B7 /* AppDelegate.swift */,
 				5BF9B05123E87714004B44B7 /* SceneDelegate.swift */,
 				5BF9B06523E87DD8004B44B7 /* ViewControllers */,
+				5B9B3FC923EA47E80011DF36 /* GF Custom UI */,
 				5BF9B05823E87717004B44B7 /* Assets.xcassets */,
 				5BF9B05A23E87717004B44B7 /* LaunchScreen.storyboard */,
 				5BF9B05D23E87717004B44B7 /* Info.plist */,
@@ -148,6 +159,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */,
 				5BF9B05423E87714004B44B7 /* SearchViewController.swift in Sources */,
 				5BF9B06423E87CAC004B44B7 /* MainTabBarController.swift in Sources */,
 				5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */,
