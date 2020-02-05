@@ -49,12 +49,7 @@ class SearchViewController: UIViewController {
 		searchTermTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
 		// button
-		let searchButton = UIButton(type: .system)
-		searchButton.backgroundColor = .systemGreen
-		searchButton.tintColor = .systemBackground
-		searchButton.titleLabel?.font = .preferredFont(forTextStyle: .title3)
-		searchButton.setTitle("Find followers", for: .normal)
-		searchButton.layer.cornerRadius = 8
+		let searchButton = GFButton(title: "Find followers")
 		searchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
 		// stack
@@ -71,7 +66,7 @@ class SearchViewController: UIViewController {
 		mainStackCenterYConstraint.isActive = true
 	}
 	
-	func setupGestures() {
+	private func setupGestures() {
 		// hide keyboard on tap
 		let tapGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
 		view.addGestureRecognizer(tapGestureRecognizer)

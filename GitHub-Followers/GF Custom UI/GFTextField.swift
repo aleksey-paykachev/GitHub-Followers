@@ -30,7 +30,7 @@ class GFTextField: UITextField {
 		layer.borderWidth = 2
 		layer.borderColor = UIColor.tertiarySystemFill.cgColor
 		
-		// corner
+		// corners
 		layer.cornerRadius = 8
 	}
 	
