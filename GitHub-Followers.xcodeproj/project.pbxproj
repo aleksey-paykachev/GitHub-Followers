@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1123EB59CF00B6DF31 /* GFButton.swift */; };
 		5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */; };
+		5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B04F23E87714004B44B7 /* AppDelegate.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		5B55CB1123EB59CF00B6DF31 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
+		5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BF9B04C23E87714004B44B7 /* GitHub-Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub-Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B55CB1723EB5E8700B6DF31 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		5B9B3FC923EA47E80011DF36 /* GF Custom UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -60,6 +70,7 @@
 		5BEB164D23EAC49200071DF1 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				5B55CB1723EB5E8700B6DF31 /* UI */,
 				5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */,
 			);
 			path = Helpers;
@@ -185,6 +196,7 @@
 				5BF9B06723E87E85004B44B7 /* FavoritesViewController.swift in Sources */,
 				5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
+				5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

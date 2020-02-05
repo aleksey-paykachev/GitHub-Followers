@@ -52,9 +52,7 @@ class SearchViewController: UIViewController {
 		searchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
 		
 		// stack
-		mainStack = UIStackView(arrangedSubviews: [logoImageView, searchTermTextField, searchButton])
-		mainStack.axis = .vertical
-		mainStack.spacing = 10
+		mainStack = VerticalStackView([logoImageView, searchTermTextField, searchButton], spacing: 10)
 		mainStack.setCustomSpacing(40, after: logoImageView)
 		
 		view.addSubview(mainStack)
