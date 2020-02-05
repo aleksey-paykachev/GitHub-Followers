@@ -9,9 +9,14 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+	// MARK: - Properties
 	
 	private var mainStack: UIStackView!
 	private var mainStackCenterYConstraint: NSLayoutConstraint!
+	private let searchTermTextField = GFTextField(placeholder: "Enter github username")
+	
+	
+	// MARK: - Init
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -44,12 +49,13 @@ class SearchViewController: UIViewController {
 		logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 0.8).isActive = true
 		
 		// text field
-		let searchTermTextField = GFTextField(placeholder: "Enter github username")
 		searchTermTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		searchTermTextField.addTarget(self, action: #selector(findFollowers), for: .primaryActionTriggered)
 		
 		// button
 		let searchButton = GFButton(title: "Find followers")
 		searchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		searchButton.addTarget(self, action: #selector(findFollowers), for: .touchUpInside)
 		
 		// stack
 		mainStack = VerticalStackView([logoImageView, searchTermTextField, searchButton], spacing: 10)
@@ -71,6 +77,13 @@ class SearchViewController: UIViewController {
 	
 	
 	// MARK: - Methods
+	
+	@objc private func findFollowers() {
+		guard let searchTerm = searchTermTextField.text?.trimmed, searchTerm.isNotEmpty else { return }
+
+		view.endEditing(true)
+		print("Find followers for", searchTerm)
+	}
 	
 	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
 		mainStackCenterYConstraint.constant = offsetY
