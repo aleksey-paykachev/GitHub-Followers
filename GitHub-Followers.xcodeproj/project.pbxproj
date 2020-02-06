@@ -12,6 +12,8 @@
 		5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */; };
 		5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1823EB62E800B6DF31 /* Collection + Extensions.swift */; };
 		5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1A23EB635800B6DF31 /* String + Extensions.swift */; };
+		5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */; };
+		5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B04F23E87714004B44B7 /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 		5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		5B55CB1823EB62E800B6DF31 /* Collection + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection + Extensions.swift"; sourceTree = "<group>"; };
 		5B55CB1A23EB635800B6DF31 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
+		5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + Extensions.swift"; sourceTree = "<group>"; };
+		5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BF9B04C23E87714004B44B7 /* GitHub-Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub-Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +65,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		5B55CB2023EB7D4C00B6DF31 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		5B9B3FC923EA47E80011DF36 /* GF Custom UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +90,7 @@
 				5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */,
 				5B55CB1823EB62E800B6DF31 /* Collection + Extensions.swift */,
 				5B55CB1A23EB635800B6DF31 /* String + Extensions.swift */,
+				5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -104,6 +117,7 @@
 				5BF9B04F23E87714004B44B7 /* AppDelegate.swift */,
 				5BF9B05123E87714004B44B7 /* SceneDelegate.swift */,
 				5BF9B06523E87DD8004B44B7 /* ViewControllers */,
+				5B55CB2023EB7D4C00B6DF31 /* Managers */,
 				5B9B3FC923EA47E80011DF36 /* GF Custom UI */,
 				5BEB164D23EAC49200071DF1 /* Helpers */,
 				5BF9B05823E87717004B44B7 /* Assets.xcassets */,
@@ -197,11 +211,13 @@
 				5BF9B05423E87714004B44B7 /* SearchViewController.swift in Sources */,
 				5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */,
 				5BF9B06423E87CAC004B44B7 /* MainTabBarController.swift in Sources */,
+				5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */,
 				5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */,
 				5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */,
 				5BF9B06723E87E85004B44B7 /* FavoritesViewController.swift in Sources */,
 				5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
+				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
 				5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */,
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
