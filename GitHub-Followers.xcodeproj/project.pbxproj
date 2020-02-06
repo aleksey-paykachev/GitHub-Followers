@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2424A523EC520600224099 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubUser.swift */; };
 		5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1123EB59CF00B6DF31 /* GFButton.swift */; };
 		5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */; };
 		5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B2424A423EC520600224099 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
 		5B55CB1123EB59CF00B6DF31 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
 		5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2424A623EC521700224099 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B2424A423EC520600224099 /* GithubUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		5B55CB1723EB5E8700B6DF31 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +126,7 @@
 			children = (
 				5BF9B04F23E87714004B44B7 /* AppDelegate.swift */,
 				5BF9B05123E87714004B44B7 /* SceneDelegate.swift */,
+				5B2424A623EC521700224099 /* Model */,
 				5BF9B06523E87DD8004B44B7 /* ViewControllers */,
 				5B55CB2023EB7D4C00B6DF31 /* Managers */,
 				5B9B3FC923EA47E80011DF36 /* GF Custom UI */,
@@ -220,6 +231,7 @@
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
 				5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */,
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,
+				5B2424A523EC520600224099 /* GithubUser.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

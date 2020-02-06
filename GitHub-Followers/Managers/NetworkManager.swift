@@ -24,7 +24,7 @@ class NetworkManager {
 	
 	// MARK: - API
 	
-	func getFollowers(for username: String, completion: @escaping ((Result<String, NetworkError>) -> Void)) {
+	func getFollowers(for username: String, completion: @escaping ((Result<[GithubUser], NetworkError>) -> Void)) {
 
 		guard let url = usersUrl?.appending([username, "followers"]) else {
 			completion(.failure(.wrongUrl))
@@ -58,13 +58,17 @@ class NetworkManager {
 				completion(.failure(.emptyDataResponse))
 				return
 			}
-
-			guard let result = String(data: data, encoding: .utf8) else {
-				completion(.failure(.wrongDataResponse))
+						
+			let users: [GithubUser]
+			
+			do {
+				users = try JSONDecoder().decode([GithubUser].self, from: data)
+			} catch {
+				completion(.failure(.couldNotParseData(error)))
 				return
 			}
-			
-			completion(.success(result))
+
+			completion(.success(users))
 		}.resume()
 	}
 	
@@ -78,6 +82,6 @@ class NetworkManager {
 		case userNotFound
 		case wrongStatusCode(Int)
 		case emptyDataResponse
-		case wrongDataResponse
+		case couldNotParseData(Error)
 	}
 }
