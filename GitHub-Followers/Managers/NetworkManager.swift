@@ -32,17 +32,15 @@ class NetworkManager {
 		}
 		
 		URLSession.shared.dataTask(with: url) { data, response, error in
-			guard error == nil else {
-				completion(.failure(.requestFailed(error!)))
+			if let error = error {
+				completion(.failure(.requestFailed(error)))
 				return
 			}
 			
-			guard let httpResponse = response as? HTTPURLResponse else {
+			guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
 				completion(.failure(.wrongResponse))
 				return
 			}
-			
-			let statusCode = httpResponse.statusCode
 
 			guard statusCode == 200 else {
 				switch statusCode {
@@ -54,21 +52,16 @@ class NetworkManager {
 				return
 			}
 			
-			guard let data = data else {
-				completion(.failure(.emptyDataResponse))
-				return
-			}
-						
 			let users: [GithubUser]
-			
 			do {
-				users = try JSONDecoder().decode([GithubUser].self, from: data)
+				users = try Parser.parse(data)
 			} catch {
-				completion(.failure(.couldNotParseData(error)))
+				completion(.failure(.parseError(error)))
 				return
 			}
-
+			
 			completion(.success(users))
+			
 		}.resume()
 	}
 	
@@ -81,7 +74,6 @@ class NetworkManager {
 		case wrongResponse
 		case userNotFound
 		case wrongStatusCode(Int)
-		case emptyDataResponse
-		case couldNotParseData(Error)
+		case parseError(Error)
 	}
 }
