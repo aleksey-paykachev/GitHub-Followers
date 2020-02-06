@@ -24,9 +24,23 @@ class NetworkManager {
 	
 	// MARK: - API
 	
-	func getFollowers(for username: String, completion: @escaping ((Result<[GithubUser], NetworkError>) -> Void)) {
-
-		guard let url = usersUrl?.appending([username, "followers"]) else {
+	func getFollowers(for username: String,
+					  completionQueue: DispatchQueue = .main,
+					  completion: @escaping ((Result<[GithubUser], NetworkError>) -> Void)) {
+		
+		let url = usersUrl?.appending([username, "followers"])
+		
+		getParsedData(from: url) { result in
+			completionQueue.async {
+				completion(result)
+			}
+		}
+	}
+	
+	func getParsedData<T: Decodable>(from url: URL?,
+									 completion: @escaping ((Result<T, NetworkError>) -> Void)) {
+		
+		guard let url = url else {
 			completion(.failure(.wrongUrl))
 			return
 		}
@@ -41,26 +55,26 @@ class NetworkManager {
 				completion(.failure(.wrongResponse))
 				return
 			}
-
+			
 			guard statusCode == 200 else {
 				switch statusCode {
 				case 404:
-					completion(.failure(.userNotFound))
+					completion(.failure(.notFound))
 				default:
 					completion(.failure(.wrongStatusCode(statusCode)))
 				}
 				return
 			}
 			
-			let users: [GithubUser]
+			let parsedData: T
 			do {
-				users = try Parser.parse(data)
+				parsedData = try Parser.parse(data)
 			} catch {
 				completion(.failure(.parseError(error)))
 				return
 			}
 			
-			completion(.success(users))
+			completion(.success(parsedData))
 			
 		}.resume()
 	}
@@ -72,7 +86,7 @@ class NetworkManager {
 		case wrongUrl
 		case requestFailed(Error)
 		case wrongResponse
-		case userNotFound
+		case notFound
 		case wrongStatusCode(Int)
 		case parseError(Error)
 	}
