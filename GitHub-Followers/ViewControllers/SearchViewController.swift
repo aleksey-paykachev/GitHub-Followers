@@ -91,7 +91,8 @@ class SearchViewController: UIViewController {
 			case .failure(let error):
 				print("Network error:", error)
 			case .success(let followers):
-				followers.forEach { print($0) }
+				let followersListViewController = FollowersListViewController(followers: followers)
+				self.present(followersListViewController, animated: true)
 			}
 		}
 	}

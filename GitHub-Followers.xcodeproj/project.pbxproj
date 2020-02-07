@@ -18,6 +18,8 @@
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C623EC847C00FA2455 /* Parser.swift */; };
+		5BECD1C923EC856100FA2455 /* FollowersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C823EC856100FA2455 /* FollowersListViewController.swift */; };
+		5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */; };
 		5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B04F23E87714004B44B7 /* AppDelegate.swift */; };
 		5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B05123E87714004B44B7 /* SceneDelegate.swift */; };
 		5BF9B05423E87714004B44B7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BF9B05323E87714004B44B7 /* SearchViewController.swift */; };
@@ -39,6 +41,8 @@
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BECD1C623EC847C00FA2455 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		5BECD1C823EC856100FA2455 /* FollowersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListViewController.swift; sourceTree = "<group>"; };
+		5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		5BF9B04C23E87714004B44B7 /* GitHub-Followers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GitHub-Followers.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BF9B04F23E87714004B44B7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5BF9B05123E87714004B44B7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -108,6 +112,15 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
+		5BECD1CC23EC90CF00FA2455 /* FollowersList */ = {
+			isa = PBXGroup;
+			children = (
+				5BECD1C823EC856100FA2455 /* FollowersListViewController.swift */,
+				5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */,
+			);
+			path = FollowersList;
+			sourceTree = "<group>";
+		};
 		5BF9B04323E87714004B44B7 = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 			children = (
 				5BF9B06323E87CAC004B44B7 /* MainTabBarController.swift */,
 				5BF9B05323E87714004B44B7 /* SearchViewController.swift */,
+				5BECD1CC23EC90CF00FA2455 /* FollowersList */,
 				5BF9B06623E87E85004B44B7 /* FavoritesViewController.swift */,
 			);
 			path = ViewControllers;
@@ -229,8 +243,10 @@
 				5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */,
 				5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */,
 				5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */,
+				5BECD1C923EC856100FA2455 /* FollowersListViewController.swift in Sources */,
 				5BF9B06723E87E85004B44B7 /* FavoritesViewController.swift in Sources */,
 				5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */,
+				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
 				5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */,
