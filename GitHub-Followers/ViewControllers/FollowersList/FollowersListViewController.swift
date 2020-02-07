@@ -11,6 +11,7 @@ import UIKit
 class FollowersListViewController: UICollectionViewController {
 	// MARK: - Properties
 	
+	private let userName: String
 	private var followers: [GithubUser] = []
 	
 	private let flowLayout = UICollectionViewFlowLayout()
@@ -19,11 +20,12 @@ class FollowersListViewController: UICollectionViewController {
 	
 	// MARK: - Init
 	
-	init(followers: [GithubUser]) {
+	init(for userName: String) {
+		self.userName = userName
 		super.init(collectionViewLayout: flowLayout)
 		
-		self.followers = followers
 		setupCollectionView()
+		loadData()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -39,6 +41,23 @@ class FollowersListViewController: UICollectionViewController {
 		collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: reuseCellId)
 		let cellSideSize: CGFloat = 100
 		flowLayout.itemSize = CGSize(width: cellSideSize, height: cellSideSize * 1.3)
+	}
+	
+	
+	// MARK: - Load
+	
+	private func loadData() {
+		NetworkManager.shared.getFollowers(for: userName) { [weak self] result in
+			guard let self = self else { return }
+			
+			switch result {
+			case .failure(let error):
+				print("Network error:", error)
+			case .success(let followers):
+				self.followers = followers
+				self.collectionView.reloadData()
+			}
+		}
 	}
 }
 

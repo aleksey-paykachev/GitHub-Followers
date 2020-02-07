@@ -85,16 +85,8 @@ class SearchViewController: UIViewController {
 		}
 
 		view.endEditing(true)
-
-		NetworkManager.shared.getFollowers(for: searchTerm) { result in
-			switch result {
-			case .failure(let error):
-				print("Network error:", error)
-			case .success(let followers):
-				let followersListViewController = FollowersListViewController(followers: followers)
-				self.present(followersListViewController, animated: true)
-			}
-		}
+		let followersListViewController = FollowersListViewController(for: searchTerm)
+		present(followersListViewController, animated: true)
 	}
 	
 	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
