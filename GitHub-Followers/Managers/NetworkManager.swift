@@ -13,57 +13,32 @@ class NetworkManager {
 	
 	static let shared = NetworkManager()
 	
-	private let baseUrl = URL(string: "https://api.github.com")
-	private lazy var usersUrl = baseUrl?.appendingPathComponent("users")
-
 	
 	// MARK: - Init
 	
 	private init() {}
+	
 
+	// MARK: - API
 	
-	// MARK: - GF API
-	
-	func getFollowers(for username: String,
-					  completionQueue: DispatchQueue = .main,
-					  completion: @escaping ((Result<[GithubUser], NetworkError>) -> Void)) {
-		
-		let url = usersUrl?.appending([username, "followers"])
-		
-		getParsedData(from: url) { result in
-			completionQueue.async {
-				completion(result)
-			}
-		}
-	}
-	
-	func getProfileImage(for githubUser: GithubUser,
-						 completionQueue: DispatchQueue = .main,
-						 completion: @escaping ((Result<UIImage, NetworkError>) -> Void)) {
-		
-		let url = githubUser.avatarUrl
+	func getImage(from url: URL?,
+				  completion: @escaping ((Result<UIImage, NetworkError>) -> Void)) {
 		
 		getData(from: url) { result in
-			completionQueue.async {
-
-				switch result {
-				case .failure(let error):
-					completion(.failure(error))
-
-				case .success(let data):
-					guard let image = UIImage(data: data) else {
-						completion(.failure(.wrongData))
-						return
-					}
-					
-					completion(.success(image))
+			switch result {
+			case .failure(let error):
+				completion(.failure(error))
+				
+			case .success(let data):
+				guard let image = UIImage(data: data) else {
+					completion(.failure(.wrongData))
+					return
 				}
+				
+				completion(.success(image))
 			}
 		}
 	}
-	
-
-	// MARK: - Generic API
 	
 	func getParsedData<T: Decodable>(from url: URL?,
 									 completion: @escaping ((Result<T, NetworkError>) -> Void)) {

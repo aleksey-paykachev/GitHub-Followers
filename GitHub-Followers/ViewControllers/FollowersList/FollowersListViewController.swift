@@ -47,7 +47,7 @@ class FollowersListViewController: UICollectionViewController {
 	// MARK: - Load
 	
 	private func loadData() {
-		NetworkManager.shared.getFollowers(for: userName) { [weak self] result in
+		DataManager.shared.getFollowers(for: userName) { [weak self] result in
 			guard let self = self else { return }
 			
 			switch result {

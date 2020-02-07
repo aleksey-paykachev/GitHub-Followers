@@ -15,6 +15,7 @@
 		5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1A23EB635800B6DF31 /* String + Extensions.swift */; };
 		5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */; };
 		5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */; };
+		5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B13B23EE07CE00252661 /* DataManager.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C623EC847C00FA2455 /* Parser.swift */; };
@@ -38,6 +39,7 @@
 		5B55CB1A23EB635800B6DF31 /* String + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String + Extensions.swift"; sourceTree = "<group>"; };
 		5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + Extensions.swift"; sourceTree = "<group>"; };
 		5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		5B76B13B23EE07CE00252661 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BECD1C623EC847C00FA2455 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 		5B55CB2023EB7D4C00B6DF31 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5B76B13B23EE07CE00252661 /* DataManager.swift */,
 				5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */,
 				5BECD1C623EC847C00FA2455 /* Parser.swift */,
 			);
@@ -249,6 +252,7 @@
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
+				5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */,
 				5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */,
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,
 				5B2424A523EC520600224099 /* GithubUser.swift in Sources */,

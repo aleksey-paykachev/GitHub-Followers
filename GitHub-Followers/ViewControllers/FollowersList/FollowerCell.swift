@@ -64,7 +64,7 @@ class FollowerCell: UICollectionViewCell {
 
 		profileLoginLabel.text = follower.login
 
-		NetworkManager.shared.getProfileImage(for: follower) { result in
+		DataManager.shared.getProfileImage(for: follower) { result in
 			if case Result.success(let image) = result {
 				self.profilePhotoImageView.image = image
 			}
