@@ -60,10 +60,15 @@ class FollowerCell: UICollectionViewCell {
 	// MARK: - Update UI
 	
 	private func updateUI() {
-		let url = follower?.avatarUrl
-		
-		profilePhotoImageView.image = UIImage(data: try! Data(contentsOf: url!))
-		profileLoginLabel.text = follower?.login
+		guard let follower = follower else { return }
+
+		profileLoginLabel.text = follower.login
+
+		NetworkManager.shared.getProfileImage(for: follower) { result in
+			if case Result.success(let image) = result {
+				self.profilePhotoImageView.image = image
+			}
+		}
 	}
 	
 	override func prepareForReuse() {

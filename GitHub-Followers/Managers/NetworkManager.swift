@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksey Paykachev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
 	// MARK: - Properties
@@ -22,7 +22,7 @@ class NetworkManager {
 	private init() {}
 
 	
-	// MARK: - API
+	// MARK: - GF API
 	
 	func getFollowers(for username: String,
 					  completionQueue: DispatchQueue = .main,
@@ -37,8 +37,55 @@ class NetworkManager {
 		}
 	}
 	
+	func getProfileImage(for githubUser: GithubUser,
+						 completionQueue: DispatchQueue = .main,
+						 completion: @escaping ((Result<UIImage, NetworkError>) -> Void)) {
+		
+		let url = githubUser.avatarUrl
+		
+		getData(from: url) { result in
+			completionQueue.async {
+
+				switch result {
+				case .failure(let error):
+					completion(.failure(error))
+
+				case .success(let data):
+					guard let image = UIImage(data: data) else {
+						completion(.failure(.wrongData))
+						return
+					}
+					
+					completion(.success(image))
+				}
+			}
+		}
+	}
+	
+
+	// MARK: - Generic API
+	
 	func getParsedData<T: Decodable>(from url: URL?,
 									 completion: @escaping ((Result<T, NetworkError>) -> Void)) {
+		
+		getData(from: url) { result in
+			switch result {
+			case .failure(let error):
+				completion(.failure(error))
+
+			case .success(let data):
+				do {
+					let parsedData: T = try Parser.parse(data)
+					completion(.success(parsedData))
+				} catch {
+					completion(.failure(.parseError(error)))
+				}
+			}
+		}
+	}
+	
+	func getData(from url: URL?,
+				 completion: @escaping ((Result<Data, NetworkError>) -> Void)) {
 		
 		guard let url = url else {
 			completion(.failure(.wrongUrl))
@@ -66,16 +113,12 @@ class NetworkManager {
 				return
 			}
 			
-			let parsedData: T
-			do {
-				parsedData = try Parser.parse(data)
-			} catch {
-				completion(.failure(.parseError(error)))
+			guard let data = data else {
+				completion(.failure(.emptyData))
 				return
 			}
 			
-			completion(.success(parsedData))
-			
+			completion(.success(data))
 		}.resume()
 	}
 	
@@ -88,6 +131,8 @@ class NetworkManager {
 		case wrongResponse
 		case notFound
 		case wrongStatusCode(Int)
+		case emptyData
+		case wrongData
 		case parseError(Error)
 	}
 }
