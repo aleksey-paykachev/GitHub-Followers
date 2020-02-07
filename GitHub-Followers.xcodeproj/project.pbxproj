@@ -16,6 +16,8 @@
 		5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */; };
 		5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */; };
 		5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B13B23EE07CE00252661 /* DataManager.swift */; };
+		5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */; };
+		5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C623EC847C00FA2455 /* Parser.swift */; };
@@ -40,6 +42,8 @@
 		5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL + Extensions.swift"; sourceTree = "<group>"; };
 		5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5B76B13B23EE07CE00252661 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extensions.swift"; sourceTree = "<group>"; };
+		5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extensions.swift"; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BECD1C623EC847C00FA2455 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */,
+				5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */,
+				5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -256,7 +262,9 @@
 				5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */,
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,
 				5B2424A523EC520600224099 /* GithubUser.swift in Sources */,
+				5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
+				5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

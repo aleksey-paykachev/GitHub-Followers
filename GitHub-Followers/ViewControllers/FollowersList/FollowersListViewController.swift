@@ -15,7 +15,6 @@ class FollowersListViewController: UICollectionViewController {
 	private var followers: [GithubUser] = []
 	
 	private let flowLayout = UICollectionViewFlowLayout()
-	private let reuseCellId = "FollowerCell"
 	
 	
 	// MARK: - Init
@@ -36,9 +35,10 @@ class FollowersListViewController: UICollectionViewController {
 	// MARK: - Setup
 	
 	private func setupCollectionView() {
+		title = userName
 		collectionView.backgroundColor = .systemBackground
 
-		collectionView.register(FollowerCell.self, forCellWithReuseIdentifier: reuseCellId)
+		collectionView.register(FollowerCell.self)
 		let cellSideSize: CGFloat = 100
 		flowLayout.itemSize = CGSize(width: cellSideSize, height: cellSideSize * 1.3)
 	}
@@ -53,6 +53,7 @@ class FollowersListViewController: UICollectionViewController {
 			switch result {
 			case .failure(let error):
 				print("Network error:", error)
+				self.navigationController?.popViewController(animated: true)
 			case .success(let followers):
 				self.followers = followers
 				self.collectionView.reloadData()
@@ -73,7 +74,7 @@ extension FollowersListViewController {
 	
 	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		
-		let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseCellId, for: indexPath) as! FollowerCell
+		let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
 		cell.follower = followers[indexPath.item]
 		
 		return cell
