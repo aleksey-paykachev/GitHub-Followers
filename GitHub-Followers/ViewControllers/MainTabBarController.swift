@@ -9,6 +9,7 @@
 import UIKit
 
 class MainTabBarController: UITabBarController {
+	// MARK: - Init
 	
 	init() {
 		super.init(nibName: nil, bundle: nil)
@@ -27,6 +28,8 @@ class MainTabBarController: UITabBarController {
 		let searchViewController = SearchViewController()
 		let favoritesViewController = FavoritesViewController()
 		
-		viewControllers = [searchViewController, favoritesViewController]
+		let searchNavigationController = UINavigationController(rootViewController: searchViewController)
+		
+		viewControllers = [searchNavigationController, favoritesViewController]
 	}
 }

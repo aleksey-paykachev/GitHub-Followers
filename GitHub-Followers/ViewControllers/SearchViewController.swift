@@ -86,7 +86,7 @@ class SearchViewController: UIViewController {
 
 		view.endEditing(true)
 		let followersListViewController = FollowersListViewController(for: searchTerm)
-		present(followersListViewController, animated: true)
+		navigationController?.pushViewController(followersListViewController, animated: true)
 	}
 	
 	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
@@ -102,6 +102,10 @@ class SearchViewController: UIViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
+		// hide navigation bar
+		navigationController?.setNavigationBarHidden(true, animated: animated)
+		
+		// add notification observers
 		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
@@ -109,6 +113,10 @@ class SearchViewController: UIViewController {
 	override func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
 		
+		// show navigation bar
+		navigationController?.setNavigationBarHidden(false, animated: animated)
+		
+		// remove notification observers
 		NotificationCenter.default.removeObserver(self)
 	}
 	
