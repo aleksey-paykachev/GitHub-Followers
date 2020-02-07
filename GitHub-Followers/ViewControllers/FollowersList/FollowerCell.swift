@@ -62,7 +62,7 @@ class FollowerCell: UICollectionViewCell {
 	private func updateUI() {
 		guard let follower = follower else { return }
 
-		profileLoginLabel.text = follower.login
+		profileLoginLabel.text = follower.name
 
 		DataManager.shared.getProfileImage(for: follower) { result in
 			if case Result.success(let image) = result {

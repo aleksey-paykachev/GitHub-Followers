@@ -43,7 +43,7 @@ class DataManager {
 						 completionQueue: DispatchQueue = .main,
 						 completion: @escaping ((Result<UIImage, NetworkManager.NetworkError>) -> Void)) {
 		
-		let url = githubUser.avatarUrl
+		let url = githubUser.profileImageUrl
 
 		networkManager.getImage(from: url) { result in
 			completionQueue.async {

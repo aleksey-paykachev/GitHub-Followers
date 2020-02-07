@@ -11,12 +11,12 @@ import Foundation
 struct GithubUser: Decodable {
 	
 	enum CodingKeys: String, CodingKey {
-		case login = "login"
-		case avatarUrl = "avatar_url"
-		case profileUrl = "html_url"
+		case name = "login"
+		case profileImageUrl = "avatar_url"
+		case profilePageUrl = "html_url"
 	}
 	
-	let login: String
-	let avatarUrl: URL?
-	let profileUrl: URL?
+	let name: String
+	let profileImageUrl: URL?
+	let profilePageUrl: URL?
 }
