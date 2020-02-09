@@ -49,14 +49,7 @@ class UserDetailsViewController: UIViewController {
 		mainStack.setCustomSpacing(14, after: detailsView)
 
 		view.addSubview(mainStack)
-		mainStack.translatesAutoresizingMaskIntoConstraints = false
-		let padding: CGFloat = 20
-		NSLayoutConstraint.activate([
-			mainStack.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-			mainStack.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: padding),
-			mainStack.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-			mainStack.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
-		])
+		mainStack.constrainToSuperview(padding: 20, respectSafeArea: true)
 	}
 	
 	private func createMainInfoView() -> UIView {
@@ -68,9 +61,9 @@ class UserDetailsViewController: UIViewController {
 		let fullNameLabel = GFLabel(text: "Никифор Ляпис-Трубецкой")
 		let locationLabel = GFLabel(text: "􀎫 Saint-Petersburg")
 		
-		let secondaryInfoStack = VerticalStackView([nicknameLabel, fullNameLabel, locationLabel], spacing: 4)
+		let userInfoStack = VerticalStackView([nicknameLabel, fullNameLabel, locationLabel], spacing: 4)
 		
-		return HorizontalStackView([profileImageView, secondaryInfoStack], spacing: 16, alignment: .top)
+		return HorizontalStackView([profileImageView, userInfoStack], spacing: 16, alignment: .top)
 	}
 	
 	private func createDetailsView() -> UIView {
@@ -100,14 +93,7 @@ class UserDetailsViewController: UIViewController {
 		let detailViewStack = VerticalStackView([infoBlockStack, actionButton], spacing: 18)
 		
 		detailsView.addSubview(detailViewStack)
-		detailViewStack.translatesAutoresizingMaskIntoConstraints = false
-		let padding: CGFloat = 18
-		NSLayoutConstraint.activate([
-			detailViewStack.leadingAnchor.constraint(equalTo: detailsView.leadingAnchor, constant: padding),
-			detailViewStack.topAnchor.constraint(equalTo: detailsView.topAnchor, constant: padding),
-			detailViewStack.trailingAnchor.constraint(equalTo: detailsView.trailingAnchor, constant: -padding),
-			detailViewStack.bottomAnchor.constraint(equalTo: detailsView.bottomAnchor, constant: -padding)
-		])
+		detailViewStack.constrainToSuperview(padding: 18)
 		
 		return detailsView
 	}
