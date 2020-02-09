@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
+		5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985123F0B67A00E37DC1 /* CustomStackView.swift */; };
+		5B22985423F0B69E00E37DC1 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */; };
 		5B2424A523EC520600224099 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubUser.swift */; };
 		5B435C9F23EFB31700C885DE /* GFLoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */; };
 		5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1123EB59CF00B6DF31 /* GFButton.swift */; };
@@ -37,6 +39,8 @@
 
 /* Begin PBXFileReference section */
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		5B22985123F0B67A00E37DC1 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
+		5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		5B2424A423EC520600224099 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
 		5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLoadingOverlayView.swift; sourceTree = "<group>"; };
 		5B55CB1123EB59CF00B6DF31 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
@@ -77,6 +81,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B22985523F0B6BA00E37DC1 /* StackView */ = {
+			isa = PBXGroup;
+			children = (
+				5B22985123F0B67A00E37DC1 /* CustomStackView.swift */,
+				5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */,
+				5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */,
+			);
+			path = StackView;
+			sourceTree = "<group>";
+		};
 		5B2424A623EC521700224099 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -88,7 +102,7 @@
 		5B55CB1723EB5E8700B6DF31 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */,
+				5B22985523F0B6BA00E37DC1 /* StackView */,
 				5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */,
 				5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */,
 			);
@@ -111,6 +125,7 @@
 				5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */,
 				5B9B3FC723EA47930011DF36 /* GFTextField.swift */,
 				5B55CB1123EB59CF00B6DF31 /* GFButton.swift */,
+				5BA9D32823F0B1D30090EE71 /* GFLabel.swift */,
 				5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */,
 			);
 			path = "GF Custom UI";
@@ -178,7 +193,6 @@
 				5BECD1CC23EC90CF00FA2455 /* FollowersList */,
 				5BF9B06623E87E85004B44B7 /* FavoritesViewController.swift */,
 				5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */,
-				5BA9D32823F0B1D30090EE71 /* GFLabel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -268,6 +282,7 @@
 				5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */,
 				5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */,
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
+				5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
 				5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */,
@@ -275,6 +290,7 @@
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,
 				5B2424A523EC520600224099 /* GithubUser.swift in Sources */,
 				5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */,
+				5B22985423F0B69E00E37DC1 /* HorizontalStackView.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
 				5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */,
 			);

@@ -70,12 +70,7 @@ class UserDetailsViewController: UIViewController {
 		
 		let secondaryInfoStack = VerticalStackView([nicknameLabel, fullNameLabel, locationLabel], spacing: 4)
 		
-		let mainInfoStack = UIStackView(arrangedSubviews: [profileImageView, secondaryInfoStack])
-		mainInfoStack.axis = .horizontal
-		mainInfoStack.spacing = 16
-		mainInfoStack.alignment = .top
-		
-		return mainInfoStack
+		return HorizontalStackView([profileImageView, secondaryInfoStack], spacing: 16, alignment: .top)
 	}
 	
 	private func createDetailsView() -> UIView {
@@ -92,10 +87,7 @@ class UserDetailsViewController: UIViewController {
 					allowMultipleLines: true)
 		}
 		
-		let infoBlockStack = UIStackView(arrangedSubviews: infoBlockLabels)
-		infoBlockStack.axis = .horizontal
-		infoBlockStack.distribution = .fillEqually
-		infoBlockStack.alignment = .leading
+		let infoBlockStack = HorizontalStackView(infoBlockLabels, alignment: .leading, distribution: .fillEqually)
 
 		let actionButton = UIButton(type: .system)
 		actionButton.backgroundColor = .systemPurple
