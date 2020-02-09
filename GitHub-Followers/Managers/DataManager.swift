@@ -26,12 +26,25 @@ class DataManager {
 	
 	// MARK: - API
 	
+	func getUser(by username: String,
+				 completionQueue: DispatchQueue = .main,
+				 completion: @escaping (Result<GithubUser, NetworkManager.NetworkError>) -> Void) {
+		
+		let url = usersUrl?.appending(username)
+		
+		networkManager.getParsedData(from: url) { result in
+			completionQueue.async {
+				completion(result)
+			}
+		}
+	}
+	
 	func getFollowers(for username: String,
 					  completionQueue: DispatchQueue = .main,
-					  completion: @escaping ((Result<[GithubFollower], NetworkManager.NetworkError>) -> Void)) {
+					  completion: @escaping (Result<[GithubFollower], NetworkManager.NetworkError>) -> Void) {
 		
-		let url = usersUrl?.appending([username, "followers"])
-		
+		let url = usersUrl?.appending(username, "followers")
+
 		networkManager.getParsedData(from: url) { result in
 			completionQueue.async {
 				completion(result)
@@ -41,7 +54,7 @@ class DataManager {
 	
 	func getProfileImage(for githubProfile: GithubProfile,
 						 completionQueue: DispatchQueue = .main,
-						 completion: @escaping ((Result<UIImage, NetworkManager.NetworkError>) -> Void)) {
+						 completion: @escaping (Result<UIImage, NetworkManager.NetworkError>) -> Void) {
 		
 		let url = githubProfile.profileImageUrl
 

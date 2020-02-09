@@ -9,7 +9,7 @@
 import Foundation
 
 extension URL {
-	func appending(_ pathComponents: [String]) -> URL {
+	func appending(_ pathComponents: String...) -> URL {
 		pathComponents.reduce(into: self) { url, pathComponent in
 			url.appendPathComponent(pathComponent)
 		}
