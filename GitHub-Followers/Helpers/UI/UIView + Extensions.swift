@@ -10,13 +10,13 @@ import UIKit
 
 extension UIView {
 	
-	func constrainToSuperview(padding: CGFloat, respectSafeArea: Bool = false) {
+	func constrainToSuperview(padding: CGFloat = 0, respectSafeArea: Bool = false) {
 		guard let superview = superview else { return }
 		
 		constrain(to: superview, padding: padding, respectSafeArea: respectSafeArea)
 	}
 	
-	func constrain(to secondView: UIView, padding: CGFloat, respectSafeArea: Bool = false) {
+	func constrain(to secondView: UIView, padding: CGFloat = 0, respectSafeArea: Bool = false) {
 		translatesAutoresizingMaskIntoConstraints = false
 
 		if respectSafeArea {

@@ -40,20 +40,13 @@ class GFLoadingOverlayView: UIView {
 	
 	// MARK: - API
 	
-	func show(inside view: UIView) {
+	func show(inside superview: UIView) {
 		guard !activityIndicatorView.isAnimating else { return }
 		
 		activityIndicatorView.startAnimating()
 		
-		view.addSubview(self)
-		translatesAutoresizingMaskIntoConstraints = false
-
-		NSLayoutConstraint.activate([
-			leadingAnchor.constraint(equalTo: view.leadingAnchor),
-			topAnchor.constraint(equalTo: view.topAnchor),
-			trailingAnchor.constraint(equalTo: view.trailingAnchor),
-			bottomAnchor.constraint(equalTo: view.bottomAnchor)
-		])
+		superview.addSubview(self)
+		constrainToSuperview()
 	}
 	
 	func hide() {

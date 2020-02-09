@@ -45,14 +45,7 @@ class FollowerCell: UICollectionViewCell {
 		// stack
 		let stack = VerticalStackView([profilePhotoImageView, profileLoginLabel], alignment: .center)
 		contentView.addSubview(stack)
-
-		stack.translatesAutoresizingMaskIntoConstraints = false
-		NSLayoutConstraint.activate([
-			stack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-			stack.topAnchor.constraint(equalTo: contentView.topAnchor),
-			stack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-			stack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-		])
+		stack.constrainToSuperview()
 	}
 	
 	
