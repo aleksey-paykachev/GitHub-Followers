@@ -12,7 +12,7 @@ class FollowersListViewController: UICollectionViewController {
 	// MARK: - Properties
 	
 	private let userName: String
-	private var followers: [GithubUser] = []
+	private var followers: [GithubFollower] = []
 	private var filterFollowersByNameTerm = ""
 	
 	private let flowLayout = UICollectionViewFlowLayout()

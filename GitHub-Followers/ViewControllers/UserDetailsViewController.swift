@@ -11,13 +11,13 @@ import UIKit
 class UserDetailsViewController: UIViewController {
 	// MARK: - Properties
 	
-	private let user: GithubUser
+	private let username: String
 	
 	
 	// MARK: - Init
 	
-	init(user: GithubUser) {
-		self.user = user
+	init(username: String) {
+		self.username = username
 		super.init(nibName: nil, bundle: nil)
 		
 		setupView()
@@ -57,7 +57,7 @@ class UserDetailsViewController: UIViewController {
 		profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
 		profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor).isActive = true
 		
-		let nicknameLabel = GFLabel(text: user.name, font: .systemFont(ofSize: 28, weight: .medium))
+		let nicknameLabel = GFLabel(text: username, font: .systemFont(ofSize: 28, weight: .medium))
 		let fullNameLabel = GFLabel(text: "Никифор Ляпис-Трубецкой")
 		let locationLabel = GFLabel(text: "􀎫 Saint-Petersburg")
 		

@@ -11,7 +11,7 @@ import UIKit
 class FollowerCell: UICollectionViewCell {
 	// MARK: - Properties
 	
-	var follower: GithubUser? { didSet { updateUI() } }
+	var follower: GithubFollower? { didSet { updateUI() } }
 	
 	private let profilePhotoImageView = UIImageView(image: nil)
 	private let profileLoginLabel = UILabel()

@@ -1,5 +1,5 @@
 //
-//  GithubUser.swift
+//  GithubFollower.swift
 //  GitHub-Followers
 //
 //  Created by Aleksey on 06.02.2020.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GithubUser: Decodable {
+struct GithubFollower: Decodable {
 	
 	enum CodingKeys: String, CodingKey {
 		case name = "login"
