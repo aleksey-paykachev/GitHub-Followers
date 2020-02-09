@@ -13,6 +13,7 @@ class FollowersListViewController: UICollectionViewController {
 	
 	private let userName: String
 	private var followers: [GithubUser] = []
+	private var filterFollowersByNameTerm = ""
 	
 	private let flowLayout = UICollectionViewFlowLayout()
 	let loadingOverlayView = GFLoadingOverlayView()
@@ -24,6 +25,7 @@ class FollowersListViewController: UICollectionViewController {
 		self.userName = userName
 		super.init(collectionViewLayout: flowLayout)
 		
+		setupSearchController()
 		setupCollectionView()
 		loadData()
 	}
@@ -35,9 +37,21 @@ class FollowersListViewController: UICollectionViewController {
 	
 	// MARK: - Setup
 	
+	private func setupSearchController() {
+		let searchController = UISearchController()
+		searchController.searchResultsUpdater = self
+		searchController.hidesNavigationBarDuringPresentation = false
+		searchController.obscuresBackgroundDuringPresentation = false
+		
+		navigationItem.searchController = searchController
+		// show search bar on first appearance, but set it to hide on scrolling in viewDidAppear
+		navigationItem.hidesSearchBarWhenScrolling = false
+	}
+	
 	private func setupCollectionView() {
 		title = userName
 		collectionView.backgroundColor = .systemBackground
+		collectionView.alwaysBounceVertical = true
 
 		collectionView.register(FollowerCell.self)
 		let cellSideSize: CGFloat = 100
@@ -64,6 +78,14 @@ class FollowersListViewController: UICollectionViewController {
 			}
 		}
 	}
+	
+	
+	// MARK: - View lifecycle
+	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		navigationItem.hidesSearchBarWhenScrolling = true
+	}
 }
 
 
@@ -82,5 +104,20 @@ extension FollowersListViewController {
 		cell.follower = followers[indexPath.item]
 		
 		return cell
+	}
+}
+
+
+// MARK: - UISearchResultsUpdating
+
+extension FollowersListViewController: UISearchResultsUpdating {
+	
+	func updateSearchResults(for searchController: UISearchController) {
+		guard let filterTerm = searchController.searchBar.text?.trimmed else { return }
+
+		if filterTerm != filterFollowersByNameTerm {
+			print("Filter followers with:", filterTerm)
+			filterFollowersByNameTerm = filterTerm
+		}
 	}
 }
