@@ -39,11 +39,11 @@ class DataManager {
 		}
 	}
 	
-	func getProfileImage(for githubUser: GithubFollower,
+	func getProfileImage(for githubProfile: GithubProfile,
 						 completionQueue: DispatchQueue = .main,
 						 completion: @escaping ((Result<UIImage, NetworkManager.NetworkError>) -> Void)) {
 		
-		let url = githubUser.profileImageUrl
+		let url = githubProfile.profileImageUrl
 
 		networkManager.getImage(from: url) { result in
 			completionQueue.async {

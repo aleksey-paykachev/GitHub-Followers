@@ -13,8 +13,8 @@ class FollowerCell: UICollectionViewCell {
 	
 	var follower: GithubFollower? { didSet { updateUI() } }
 	
-	private let profilePhotoImageView = UIImageView(image: nil)
-	private let profileLoginLabel = UILabel()
+	private let photoImageView = UIImageView(image: nil)
+	private let usernameLabel = UILabel()
 	
 	
 	// MARK: - Init
@@ -34,16 +34,16 @@ class FollowerCell: UICollectionViewCell {
 
 	private func setupSubviews() {
 		// image view
-		profilePhotoImageView.contentMode = .scaleAspectFill
-		profilePhotoImageView.clipsToBounds = true
-		profilePhotoImageView.layer.cornerRadius = 12
-		profilePhotoImageView.widthAnchor.constraint(equalTo: profilePhotoImageView.heightAnchor).isActive = true
+		photoImageView.contentMode = .scaleAspectFill
+		photoImageView.clipsToBounds = true
+		photoImageView.layer.cornerRadius = 12
+		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
 		
-		profilePhotoImageView.layer.borderColor = UIColor.systemGray3.cgColor
-		profilePhotoImageView.layer.borderWidth = 1
+		photoImageView.layer.borderColor = UIColor.systemGray3.cgColor
+		photoImageView.layer.borderWidth = 1
 		
 		// stack
-		let stack = VerticalStackView([profilePhotoImageView, profileLoginLabel], alignment: .center)
+		let stack = VerticalStackView([photoImageView, usernameLabel], alignment: .center)
 		contentView.addSubview(stack)
 		stack.constrainToSuperview()
 	}
@@ -54,11 +54,11 @@ class FollowerCell: UICollectionViewCell {
 	private func updateUI() {
 		guard let follower = follower else { return }
 
-		profileLoginLabel.text = follower.name
+		usernameLabel.text = follower.username
 
 		DataManager.shared.getProfileImage(for: follower) { result in
 			if case Result.success(let image) = result {
-				self.profilePhotoImageView.image = image
+				self.photoImageView.image = image
 			}
 		}
 	}
@@ -66,8 +66,8 @@ class FollowerCell: UICollectionViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
-		profilePhotoImageView.image = nil
-		profileLoginLabel.text = ""
+		photoImageView.image = nil
+		usernameLabel.text = ""
 	}
 }
 
