@@ -21,6 +21,7 @@
 		5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */; };
 		5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
+		5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9D32823F0B1D30090EE71 /* GFLabel.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C623EC847C00FA2455 /* Parser.swift */; };
 		5BECD1C923EC856100FA2455 /* FollowersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C823EC856100FA2455 /* FollowersListViewController.swift */; };
@@ -49,6 +50,7 @@
 		5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView + Extensions.swift"; sourceTree = "<group>"; };
 		5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extensions.swift"; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
+		5BA9D32823F0B1D30090EE71 /* GFLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLabel.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BECD1C623EC847C00FA2455 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		5BECD1C823EC856100FA2455 /* FollowersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersListViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 				5BECD1CC23EC90CF00FA2455 /* FollowersList */,
 				5BF9B06623E87E85004B44B7 /* FavoritesViewController.swift */,
 				5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */,
+				5BA9D32823F0B1D30090EE71 /* GFLabel.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				5BF9B06723E87E85004B44B7 /* FavoritesViewController.swift in Sources */,
 				5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */,
 				5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */,
+				5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */,
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,

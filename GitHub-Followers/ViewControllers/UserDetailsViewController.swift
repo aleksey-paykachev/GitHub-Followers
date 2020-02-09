@@ -36,22 +36,16 @@ class UserDetailsViewController: UIViewController {
 	}
 	
 	private func setupSubviews() {
-		let mainInfoStack = createMainInfoStack()
+		let mainInfoView = createMainInfoView()
 		
-		let descriptionLabel = UILabel()
-		descriptionLabel.numberOfLines = 0
-		descriptionLabel.text = "Гаврила был примерным мужем: Гаврила женам верен был!"
-
+		let descriptionLabel = GFLabel(text: "Гаврила был примерным мужем: Гаврила женам верен был!", allowMultipleLines: true)
+		
 		let detailsView = createDetailsView()
 		
-		let sinceLabel = UILabel()
-		sinceLabel.textAlignment = .center
-		sinceLabel.textColor = .systemGray2
-		sinceLabel.text = "GitHub since xxxxx"
-		
+		let sinceLabel = GFLabel(text: "GitHub since xxxxx", color: .systemGray2, alignment: .center)
 		let spacerView = UIView()
 
-		let mainStack = VerticalStackView([mainInfoStack, descriptionLabel, detailsView, sinceLabel, spacerView], spacing: 28)
+		let mainStack = VerticalStackView([mainInfoView, descriptionLabel, detailsView, sinceLabel, spacerView], spacing: 28)
 		mainStack.setCustomSpacing(14, after: detailsView)
 
 		view.addSubview(mainStack)
@@ -65,20 +59,14 @@ class UserDetailsViewController: UIViewController {
 		])
 	}
 	
-	private func createMainInfoStack() -> UIStackView {
+	private func createMainInfoView() -> UIView {
 		let profileImageView = GFImageView(asset: .avatarPlaceholder)
 		profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
 		profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor).isActive = true
 		
-		let nicknameLabel = UILabel()
-		nicknameLabel.font = .systemFont(ofSize: 28, weight: .medium)
-		nicknameLabel.text = user.name
-		
-		let fullNameLabel = UILabel()
-		fullNameLabel.text = "Никифор Ляпис-Трубецкой"
-		
-		let locationLabel = UILabel()
-		locationLabel.text = "􀎫 Saint-Petersburg"
+		let nicknameLabel = GFLabel(text: user.name, font: .systemFont(ofSize: 28, weight: .medium))
+		let fullNameLabel = GFLabel(text: "Никифор Ляпис-Трубецкой")
+		let locationLabel = GFLabel(text: "􀎫 Saint-Petersburg")
 		
 		let secondaryInfoStack = VerticalStackView([nicknameLabel, fullNameLabel, locationLabel], spacing: 4)
 		
@@ -95,21 +83,16 @@ class UserDetailsViewController: UIViewController {
 		detailsView.backgroundColor = .darkGray
 		detailsView.layer.cornerRadius = 16
 		
-		let infoBlock1Label = UILabel()
-		infoBlock1Label.textColor = .white
-		infoBlock1Label.font = .systemFont(ofSize: 16, weight: .medium)
-		infoBlock1Label.numberOfLines = 2
-		infoBlock1Label.textAlignment = .center
-		infoBlock1Label.text = "􀈕 Public Repos\n6"
+		let infoBlocksText = ["􀈕 Public Repos\n6", "􀈿 Public Gists\n2"]
+		let infoBlockLabels = infoBlocksText.map { labelText in
+			GFLabel(text: labelText,
+					font: .systemFont(ofSize: 16, weight: .medium),
+					color: .white,
+					alignment: .center,
+					allowMultipleLines: true)
+		}
 		
-		let infoBlock2Label = UILabel()
-		infoBlock2Label.textColor = .white
-		infoBlock2Label.font = .systemFont(ofSize: 16, weight: .medium)
-		infoBlock2Label.numberOfLines = 2
-		infoBlock2Label.textAlignment = .center
-		infoBlock2Label.text = "􀈿 Public Gists\n2"
-		
-		let infoBlockStack = UIStackView(arrangedSubviews: [infoBlock1Label, infoBlock2Label])
+		let infoBlockStack = UIStackView(arrangedSubviews: infoBlockLabels)
 		infoBlockStack.axis = .horizontal
 		infoBlockStack.distribution = .fillEqually
 		infoBlockStack.alignment = .leading
