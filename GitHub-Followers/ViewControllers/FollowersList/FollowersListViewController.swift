@@ -15,6 +15,7 @@ class FollowersListViewController: UICollectionViewController {
 	private var followers: [GithubUser] = []
 	
 	private let flowLayout = UICollectionViewFlowLayout()
+	let loadingOverlayView = GFLoadingOverlayView()
 	
 	
 	// MARK: - Init
@@ -47,8 +48,11 @@ class FollowersListViewController: UICollectionViewController {
 	// MARK: - Load data
 	
 	private func loadData() {
+		loadingOverlayView.show(inside: view)
+		
 		DataManager.shared.getFollowers(for: userName) { [weak self] result in
 			guard let self = self else { return }
+			self.loadingOverlayView.hide()
 			
 			switch result {
 			case .failure(let error):

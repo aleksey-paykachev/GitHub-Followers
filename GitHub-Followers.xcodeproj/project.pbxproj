@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5B2424A523EC520600224099 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubUser.swift */; };
+		5B435C9F23EFB31700C885DE /* GFLoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */; };
 		5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1123EB59CF00B6DF31 /* GFButton.swift */; };
 		5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */; };
 		5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */; };
@@ -34,6 +35,7 @@
 
 /* Begin PBXFileReference section */
 		5B2424A423EC520600224099 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
+		5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLoadingOverlayView.swift; sourceTree = "<group>"; };
 		5B55CB1123EB59CF00B6DF31 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
 		5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */,
 				5B9B3FC723EA47930011DF36 /* GFTextField.swift */,
 				5B55CB1123EB59CF00B6DF31 /* GFButton.swift */,
+				5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */,
 			);
 			path = "GF Custom UI";
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */,
 				5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */,
 				5BF9B05023E87714004B44B7 /* AppDelegate.swift in Sources */,
+				5B435C9F23EFB31700C885DE /* GFLoadingOverlayView.swift in Sources */,
 				5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */,
 				5BECD1C923EC856100FA2455 /* FollowersListViewController.swift in Sources */,
 				5BF9B06723E87E85004B44B7 /* FavoritesViewController.swift in Sources */,
