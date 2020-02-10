@@ -17,7 +17,10 @@ class Parser {
 		}
 		
 		do {
-			return try JSONDecoder().decode(T.self, from: data)
+			let jsonDecoder = JSONDecoder()
+			jsonDecoder.dateDecodingStrategy = .iso8601
+
+			return try jsonDecoder.decode(T.self, from: data)
 		} catch {
 			throw ParseError.couldNotParse(error)
 		}
