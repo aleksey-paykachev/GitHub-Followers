@@ -42,7 +42,7 @@ class FollowersListViewController: UICollectionViewController {
 		let profileImageHeight: CGFloat = 38
 
 		let profileButton = UIButton(type: .system)
-		profileButton.setImage(UIImage(named: "avatar-placeholder"), for: .normal)
+		profileButton.setImage(UIImage(asset: .avatarPlaceholder), for: .normal)
 		profileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
 		
 		profileButton.layer.setBorder(color: .systemGreen, width: 2)

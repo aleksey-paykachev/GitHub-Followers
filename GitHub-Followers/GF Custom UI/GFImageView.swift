@@ -11,8 +11,8 @@ import UIKit
 class GFImageView: UIImageView {
 	// MARK: - Init
 	
-	init(asset: GFImageAsset) {
-		super.init(image: UIImage(named: asset.imageName))
+	init(asset: UIImage.GFImageAsset) {
+		super.init(image: UIImage(asset: asset))
 		
 		setupView()
 	}
@@ -26,18 +26,5 @@ class GFImageView: UIImageView {
 	
 	private func setupView() {
 		contentMode = .scaleAspectFit
-	}
-	
-	
-	// MARK: - Image Assets
-	
-	enum GFImageAsset: String {
-		case logo = "gh-logo"
-		case avatarPlaceholder = "avatar-placeholder"
-		case emptyState = "empty-state-logo"
-		
-		var imageName: String {
-			rawValue
-		}
 	}
 }
