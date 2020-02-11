@@ -39,8 +39,7 @@ class FollowerCell: UICollectionViewCell {
 		photoImageView.layer.cornerRadius = 12
 		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
 		
-		photoImageView.layer.borderColor = UIColor.systemGray3.cgColor
-		photoImageView.layer.borderWidth = 1
+		photoImageView.layer.setBorder(color: .systemGray3)
 		
 		// stack
 		let stack = VStackView([photoImageView, usernameLabel], alignment: .center)

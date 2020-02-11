@@ -49,11 +49,7 @@ class GFTextField: UITextField {
 	// MARK: - Setup
 	
 	private func setupView() {
-		// border
-		layer.borderWidth = 2
-		layer.borderColor = UIColor.tertiarySystemFill.cgColor
-		
-		// corners
+		layer.setBorder(color: .tertiarySystemFill, width: 2)
 		layer.cornerRadius = 8
 	}
 	

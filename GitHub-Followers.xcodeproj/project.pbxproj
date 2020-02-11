@@ -10,6 +10,7 @@
 		5B074EBD23F1D20000582379 /* UserDetailsMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */; };
 		5B074EBF23F1D21A00582379 /* UserDetailsInfoBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */; };
 		5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EC023F1D26A00582379 /* SpacerView.swift */; };
+		5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */; };
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
 		5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985123F0B67A00E37DC1 /* CustomStackView.swift */; };
 		5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HStackView.swift */; };
@@ -48,6 +49,7 @@
 		5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsMainInfoView.swift; sourceTree = "<group>"; };
 		5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsInfoBlocksView.swift; sourceTree = "<group>"; };
 		5B074EC023F1D26A00582379 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
+		5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		5B22985123F0B67A00E37DC1 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		5B22985323F0B69E00E37DC1 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */,
 				5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */,
 				5B074EC023F1D26A00582379 /* SpacerView.swift */,
+				5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
+				5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */,
 				5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */,
 				5B55CB1623EB5E6100B6DF31 /* VStackView.swift in Sources */,
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,

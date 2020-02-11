@@ -45,8 +45,7 @@ class FollowersListViewController: UICollectionViewController {
 		profileButton.setImage(UIImage(named: "avatar-placeholder"), for: .normal)
 		profileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
 		
-		profileButton.layer.borderColor = UIColor.systemGreen.cgColor
-		profileButton.layer.borderWidth = 2
+		profileButton.layer.setBorder(color: .systemGreen, width: 2)
 		profileButton.layer.cornerRadius = profileImageHeight / 2
 		profileButton.layer.masksToBounds = true
 		
