@@ -11,10 +11,17 @@ import UIKit
 class GFButton: UIButton {
 	// MARK: - Init
 	
-	convenience init(title: String) {
+	convenience init(title: String = "",
+					 color: UIColor? = .systemBackground,
+					 backgroundColor: UIColor = .systemGreen) {
+
 		self.init(type: .system)
 		
+		// setup
 		setTitle(title, for: .normal)
+		self.tintColor = color
+		self.backgroundColor = backgroundColor
+
 		setupView()
 	}
 	
@@ -22,14 +29,7 @@ class GFButton: UIButton {
 	// MARK: - Setup
 	
 	private func setupView() {
-		// colors
-		backgroundColor = .systemGreen
-		tintColor = .systemBackground
-		
-		// font
-		titleLabel?.font = .preferredFont(forTextStyle: .title3)
-		
-		// corners
+		titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
 		layer.cornerRadius = 8
 	}
 }

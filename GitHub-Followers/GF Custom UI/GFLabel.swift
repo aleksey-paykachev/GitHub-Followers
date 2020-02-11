@@ -11,7 +11,7 @@ import UIKit
 class GFLabel: UILabel {
 	// MARK: - Init
 	
-	init(text: String,
+	init(text: String? = nil,
 		 font: UIFont? = nil,
 		 color: UIColor? = nil,
 		 alignment: NSTextAlignment = .left,

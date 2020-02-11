@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B074EBD23F1D20000582379 /* UserDetailsMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */; };
+		5B074EBF23F1D21A00582379 /* UserDetailsInfoBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */; };
+		5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EC023F1D26A00582379 /* SpacerView.swift */; };
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
 		5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985123F0B67A00E37DC1 /* CustomStackView.swift */; };
 		5B22985423F0B69E00E37DC1 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */; };
@@ -41,6 +44,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsMainInfoView.swift; sourceTree = "<group>"; };
+		5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsInfoBlocksView.swift; sourceTree = "<group>"; };
+		5B074EC023F1D26A00582379 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		5B22985123F0B67A00E37DC1 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
@@ -87,6 +93,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B074EC223F1D2AE00582379 /* UserDetails */ = {
+			isa = PBXGroup;
+			children = (
+				5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */,
+				5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */,
+				5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */,
+			);
+			path = UserDetails;
+			sourceTree = "<group>";
+		};
 		5B22985523F0B6BA00E37DC1 /* StackView */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +130,7 @@
 				5B76B13F23EE1FB200252661 /* UICollectionView + Extensions.swift */,
 				5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */,
 				5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */,
+				5B074EC023F1D26A00582379 /* SpacerView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -200,8 +217,8 @@
 				5BF9B06323E87CAC004B44B7 /* MainTabBarController.swift */,
 				5BF9B05323E87714004B44B7 /* SearchViewController.swift */,
 				5BECD1CC23EC90CF00FA2455 /* FollowersList */,
+				5B074EC223F1D2AE00582379 /* UserDetails */,
 				5BF9B06623E87E85004B44B7 /* FavoritesViewController.swift */,
-				5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -279,6 +296,8 @@
 				5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */,
 				5BF9B05423E87714004B44B7 /* SearchViewController.swift in Sources */,
 				5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */,
+				5B074EBF23F1D21A00582379 /* UserDetailsInfoBlocksView.swift in Sources */,
+				5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */,
 				5BF9B06423E87CAC004B44B7 /* MainTabBarController.swift in Sources */,
 				5BDA107D23F0C533008738B8 /* GithubProfile.swift in Sources */,
 				5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */,
@@ -303,6 +322,7 @@
 				5B22985423F0B69E00E37DC1 /* HorizontalStackView.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
 				5BDA107B23F0C50F008738B8 /* GithubUser.swift in Sources */,
+				5B074EBD23F1D20000582379 /* UserDetailsMainInfoView.swift in Sources */,
 				5BDA107923F0BB68008738B8 /* UIView + Extensions.swift in Sources */,
 				5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */,
 			);
