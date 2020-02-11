@@ -25,6 +25,7 @@ class FollowersListViewController: UICollectionViewController {
 		self.user = user
 		super.init(collectionViewLayout: flowLayout)
 		
+		setupNavigationItemProfileImage()
 		setupSearchController()
 		setupCollectionView()
 		loadData()
@@ -36,6 +37,31 @@ class FollowersListViewController: UICollectionViewController {
 	
 	
 	// MARK: - Setup
+	
+	private func setupNavigationItemProfileImage() {
+		let profileImageHeight: CGFloat = 38
+
+		let profileButton = UIButton(type: .system)
+		profileButton.setImage(UIImage(named: "avatar-placeholder"), for: .normal)
+		
+		profileButton.layer.borderColor = UIColor.systemGreen.cgColor
+		profileButton.layer.borderWidth = 2
+		profileButton.layer.cornerRadius = profileImageHeight / 2
+		profileButton.layer.masksToBounds = true
+		
+		profileButton.heightAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
+		profileButton.widthAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
+
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
+		
+		// download and set profile image for current user
+		DataManager.shared.getProfileImage(for: user) { result in
+			if case .success(let image) = result {
+				let profileImage = image.withRenderingMode(.alwaysOriginal)
+				profileButton.setImage(profileImage, for: .normal)
+			}
+		}
+	}
 	
 	private func setupSearchController() {
 		let searchController = UISearchController()
