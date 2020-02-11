@@ -46,8 +46,7 @@ class FollowersListViewController: UICollectionViewController {
 		profileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
 		
 		profileButton.layer.setBorder(color: .systemGreen, width: 2)
-		profileButton.layer.cornerRadius = profileImageHeight / 2
-		profileButton.layer.masksToBounds = true
+		profileButton.layer.setCornerRadius(profileImageHeight / 2)
 		
 		profileButton.heightAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
 		profileButton.widthAnchor.constraint(equalToConstant: profileImageHeight).isActive = true

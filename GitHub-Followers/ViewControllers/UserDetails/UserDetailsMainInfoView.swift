@@ -33,8 +33,7 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Setup
 	
 	private func setupSubviews() {
-		profileImageView.layer.cornerRadius = 12
-		profileImageView.clipsToBounds = true
+		profileImageView.layer.setCornerRadius(12)
 		profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
 		profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor).isActive = true
 		

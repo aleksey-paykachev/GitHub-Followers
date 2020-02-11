@@ -35,12 +35,10 @@ class FollowerCell: UICollectionViewCell {
 	private func setupSubviews() {
 		// image view
 		photoImageView.contentMode = .scaleAspectFill
-		photoImageView.clipsToBounds = true
-		photoImageView.layer.cornerRadius = 12
-		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
-		
+		photoImageView.layer.setCornerRadius(12)
 		photoImageView.layer.setBorder(color: .systemGray3)
-		
+		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
+				
 		// stack
 		let stack = VStackView([photoImageView, usernameLabel], alignment: .center)
 		contentView.addSubview(stack)

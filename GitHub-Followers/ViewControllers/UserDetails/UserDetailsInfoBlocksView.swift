@@ -34,7 +34,7 @@ class UserDetailsInfoBlocksView: UIView {
 	
 	private func setupView() {
 		backgroundColor = .systemGray
-		layer.cornerRadius = 16
+		layer.setCornerRadius(16)
 	}
 	
 	private func setupSubviews() {

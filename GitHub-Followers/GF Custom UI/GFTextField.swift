@@ -50,7 +50,7 @@ class GFTextField: UITextField {
 	
 	private func setupView() {
 		layer.setBorder(color: .tertiarySystemFill, width: 2)
-		layer.cornerRadius = 8
+		layer.setCornerRadius(8)
 	}
 	
 	override func textRect(forBounds bounds: CGRect) -> CGRect {

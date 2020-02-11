@@ -9,8 +9,14 @@
 import UIKit
 
 extension CALayer {
+
 	func setBorder(color: UIColor, width: CGFloat = 1) {
 		borderColor = color.cgColor
 		borderWidth = width
+	}
+	
+	func setCornerRadius(_ radius: CGFloat) {
+		cornerRadius = radius
+		masksToBounds = true
 	}
 }

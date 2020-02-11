@@ -30,6 +30,6 @@ class GFButton: UIButton {
 	
 	private func setupView() {
 		titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
-		layer.cornerRadius = 8
+		layer.setCornerRadius(8)
 	}
 }
