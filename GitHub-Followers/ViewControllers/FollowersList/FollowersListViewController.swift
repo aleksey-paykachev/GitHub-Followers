@@ -43,6 +43,7 @@ class FollowersListViewController: UICollectionViewController {
 
 		let profileButton = UIButton(type: .system)
 		profileButton.setImage(UIImage(named: "avatar-placeholder"), for: .normal)
+		profileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
 		
 		profileButton.layer.borderColor = UIColor.systemGreen.cgColor
 		profileButton.layer.borderWidth = 2
@@ -107,6 +108,18 @@ class FollowersListViewController: UICollectionViewController {
 	}
 	
 	
+	// MARK: - Methods
+	
+	@objc private func showUserDetailsViewControllerForCurrentUser() {
+		showUserDetailsViewController(for: user)
+	}
+	
+	private func showUserDetailsViewController(for profile: GithubProfile) {
+		let userDetailsViewController = UserDetailsViewController(username: profile.username)
+		present(userDetailsViewController, animated: true)
+	}
+	
+	
 	// MARK: - View lifecycle
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -131,6 +144,17 @@ extension FollowersListViewController {
 		cell.follower = followers[indexPath.item]
 		
 		return cell
+	}
+}
+
+
+// MARK: - UICollectionViewDelegate
+
+extension FollowersListViewController {
+	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		
+		let follower = followers[indexPath.item]
+		showUserDetailsViewController(for: follower)
 	}
 }
 
