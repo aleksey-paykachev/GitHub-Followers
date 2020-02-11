@@ -71,6 +71,8 @@ class UserDetailsInfoBlocksView: UIView {
 	enum InfoBlock {
 		case repos(count: Int)
 		case gists(count: Int)
+		case following(count: Int)
+		case followers(count: Int)
 		
 		var text: String {
 			switch self {
@@ -78,6 +80,10 @@ class UserDetailsInfoBlocksView: UIView {
 				return "􀈕 Public Repos\n\(count)"
 			case .gists(let count):
 				return "􀈿 Public Gists\n\(count)"
+			case .following(let count):
+				return "􀉫 Following\n\(count)"
+			case .followers(let count):
+				return "􀝊 Followers\n\(count)"
 			}
 		}
 	}

@@ -68,7 +68,7 @@ class UserDetailsViewController: UIViewController {
 			action: .primary(title: "GitHub Profile", completion: githubProfileButtonDidPressed))
 		
 		let userSocialActivityDetailsView = UserDetailsInfoBlocksView(
-			infoBlocks: [.repos(count: 3)],
+			infoBlocks: [.following(count: user.followingCount), .followers(count: user.followersCount)],
 			action: .secondary(title: "View Followers", completion: viewFollowersButtonDidPressed))
 
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
