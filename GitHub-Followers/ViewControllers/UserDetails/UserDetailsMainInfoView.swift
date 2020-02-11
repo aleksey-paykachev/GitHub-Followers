@@ -43,9 +43,9 @@ class UserDetailsMainInfoView: UIView {
 		let fullNameLabel = GFLabel(text: user.fullName)
 		let locationLabel = GFLabel(text: user.location.map { "􀎫 \($0)" })
 		
-		let userInfoStack = VerticalStackView([usernameLabel, fullNameLabel, locationLabel], spacing: 4)
+		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel],spacing: 4)
 		
-		let mainStack = HorizontalStackView([profileImageView, userInfoStack], spacing: 16, alignment: .top)
+		let mainStack = HStackView([profileImageView, userInfoStack], spacing: 16, alignment: .top)
 		addSubview(mainStack)
 		mainStack.constrainToSuperview()
 	}

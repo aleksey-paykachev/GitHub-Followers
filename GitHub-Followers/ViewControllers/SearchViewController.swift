@@ -58,7 +58,7 @@ class SearchViewController: UIViewController {
 		searchButton.addTarget(self, action: #selector(findFollowers), for: .touchUpInside)
 		
 		// stack
-		mainStack = VerticalStackView([logoImageView, searchTermTextField, searchButton], spacing: 10)
+		mainStack = VStackView([logoImageView, searchTermTextField, searchButton], spacing: 10)
 		mainStack.setCustomSpacing(40, after: logoImageView)
 		
 		view.addSubview(mainStack)

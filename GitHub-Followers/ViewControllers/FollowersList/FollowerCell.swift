@@ -43,7 +43,7 @@ class FollowerCell: UICollectionViewCell {
 		photoImageView.layer.borderWidth = 1
 		
 		// stack
-		let stack = VerticalStackView([photoImageView, usernameLabel], alignment: .center)
+		let stack = VStackView([photoImageView, usernameLabel], alignment: .center)
 		contentView.addSubview(stack)
 		stack.constrainToSuperview()
 	}

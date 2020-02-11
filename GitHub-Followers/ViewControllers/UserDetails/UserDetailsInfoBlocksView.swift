@@ -46,13 +46,13 @@ class UserDetailsInfoBlocksView: UIView {
 					allowMultipleLines: true)
 		}
 		
-		let infoBlockStack = HorizontalStackView(infoBlockLabels, alignment: .leading, distribution: .fillEqually)
+		let infoBlockStack = HStackView(infoBlockLabels, alignment: .leading, distribution: .fillEqually)
 
 		let actionButton = GFButton(title: action.title, backgroundColor: action.buttonColor)
 		actionButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
 		actionButton.addTarget(self, action: #selector(buttonDidPressed), for: .touchUpInside)
 		
-		let detailsViewStack = VerticalStackView([infoBlockStack, actionButton], spacing: 18)
+		let detailsViewStack = VStackView([infoBlockStack, actionButton], spacing: 18)
 
 		addSubview(detailsViewStack)
 		detailsViewStack.constrainToSuperview(padding: 18)

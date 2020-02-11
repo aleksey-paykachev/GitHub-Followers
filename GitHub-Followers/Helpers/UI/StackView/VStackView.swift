@@ -1,14 +1,14 @@
 //
-//  HorizontalStackView.swift
+//  VStackView.swift
 //  GitHub-Followers
 //
-//  Created by Aleksey on 10.02.2020.
+//  Created by Aleksey on 05.02.2020.
 //  Copyright © 2020 Aleksey Paykachev. All rights reserved.
 //
 
 import UIKit
 
-class HorizontalStackView: CustomStackView {
+class VStackView: CustomStackView {
 	// MARK: - Init
 	
 	override init(_ arrangedSubviews: [UIView],
@@ -17,7 +17,7 @@ class HorizontalStackView: CustomStackView {
 				  distribution: UIStackView.Distribution = .fill) {
 
 		super.init(arrangedSubviews, spacing: spacing, alignment: alignment, distribution: distribution)
-		axis = .horizontal
+		axis = .vertical
 	}
 	
 	required init(coder: NSCoder) {

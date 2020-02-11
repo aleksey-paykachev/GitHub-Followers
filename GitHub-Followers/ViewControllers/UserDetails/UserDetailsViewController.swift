@@ -74,7 +74,7 @@ class UserDetailsViewController: UIViewController {
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .systemGray2, alignment: .center)
 
-		let mainStack = VerticalStackView([mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)
+		let mainStack = VStackView([mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)
 		mainStack.setCustomSpacing(14, after: userSocialActivityDetailsView)
 
 		view.addSubview(mainStack)
