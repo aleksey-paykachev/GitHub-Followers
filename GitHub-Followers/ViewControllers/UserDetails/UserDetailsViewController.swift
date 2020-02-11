@@ -71,9 +71,7 @@ class UserDetailsViewController: UIViewController {
 			infoBlocks: [.repos(count: 3)],
 			action: .secondary(title: "View Followers", completion: viewFollowersButtonDidPressed))
 
-		let relativeDateFormatter = RelativeDateTimeFormatter()
-		let relativeToNowText = relativeDateFormatter.localizedString(for: user.accountCreationDate, relativeTo: Date())
-		let registeredText = "Registered \(relativeToNowText)"
+		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .systemGray2, alignment: .center)
 
 		let mainStack = VerticalStackView([mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)

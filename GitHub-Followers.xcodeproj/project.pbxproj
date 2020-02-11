@@ -15,6 +15,7 @@
 		5B22985423F0B69E00E37DC1 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */; };
 		5B2424A523EC520600224099 /* GithubFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubFollower.swift */; };
 		5B435C9F23EFB31700C885DE /* GFLoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */; };
+		5B495BE623F2F55500ECDB1F /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */; };
 		5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1123EB59CF00B6DF31 /* GFButton.swift */; };
 		5B55CB1423EB5C4800B6DF31 /* GFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */; };
 		5B55CB1623EB5E6100B6DF31 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */; };
@@ -52,6 +53,7 @@
 		5B22985323F0B69E00E37DC1 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		5B2424A423EC520600224099 /* GithubFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFollower.swift; sourceTree = "<group>"; };
 		5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLoadingOverlayView.swift; sourceTree = "<group>"; };
+		5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		5B55CB1123EB59CF00B6DF31 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
 		5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFImageView.swift; sourceTree = "<group>"; };
 		5B55CB1523EB5E6100B6DF31 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 				5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */,
 				5B55CB1823EB62E800B6DF31 /* Collection + Extensions.swift */,
 				5B55CB1A23EB635800B6DF31 /* String + Extensions.swift */,
+				5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */,
 				5B55CB1C23EB7D2800B6DF31 /* URL + Extensions.swift */,
 			);
 			path = Helpers;
@@ -321,6 +324,7 @@
 				5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */,
 				5B22985423F0B69E00E37DC1 /* HorizontalStackView.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
+				5B495BE623F2F55500ECDB1F /* Date + Extensions.swift in Sources */,
 				5BDA107B23F0C50F008738B8 /* GithubUser.swift in Sources */,
 				5B074EBD23F1D20000582379 /* UserDetailsMainInfoView.swift in Sources */,
 				5BDA107923F0BB68008738B8 /* UIView + Extensions.swift in Sources */,

@@ -19,7 +19,7 @@ struct GithubUser: GithubProfile {
 	let gistsCount: Int
 	let followingCount: Int
 	let followersCount: Int
-	let accountCreationDate: Date
+	let accountRegistrationDate: Date
 }
 
 
@@ -38,6 +38,6 @@ extension GithubUser: Decodable {
 		case gistsCount = "public_gists"
 		case followingCount = "following"
 		case followersCount = "followers"
-		case accountCreationDate = "created_at"
+		case accountRegistrationDate = "created_at"
 	}
 }
