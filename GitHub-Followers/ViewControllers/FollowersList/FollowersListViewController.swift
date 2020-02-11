@@ -11,7 +11,7 @@ import UIKit
 class FollowersListViewController: UICollectionViewController {
 	// MARK: - Properties
 	
-	private let userName: String
+	private let user: GithubUser
 	private var followers: [GithubFollower] = []
 	private var filterFollowersByNameTerm = ""
 	
@@ -21,8 +21,8 @@ class FollowersListViewController: UICollectionViewController {
 	
 	// MARK: - Init
 	
-	init(for userName: String) {
-		self.userName = userName
+	init(user: GithubUser) {
+		self.user = user
 		super.init(collectionViewLayout: flowLayout)
 		
 		setupSearchController()
@@ -44,12 +44,12 @@ class FollowersListViewController: UICollectionViewController {
 		searchController.obscuresBackgroundDuringPresentation = false
 		
 		navigationItem.searchController = searchController
-		// show search bar on first appearance, but set it to hide on scrolling in viewDidAppear
+		// show search bar on first appearance, but set it to "hideWhenScrolling" in viewDidAppear
 		navigationItem.hidesSearchBarWhenScrolling = false
 	}
 	
 	private func setupCollectionView() {
-		title = userName
+		title = user.username
 		collectionView.backgroundColor = .systemBackground
 		collectionView.alwaysBounceVertical = true
 
@@ -64,7 +64,7 @@ class FollowersListViewController: UICollectionViewController {
 	private func loadData() {
 		loadingOverlayView.show(inside: view)
 		
-		DataManager.shared.getFollowers(for: userName) { [weak self] result in
+		DataManager.shared.getFollowers(for: user.username) { [weak self] result in
 			guard let self = self else { return }
 			self.loadingOverlayView.hide()
 			
@@ -72,6 +72,7 @@ class FollowersListViewController: UICollectionViewController {
 			case .failure(let error):
 				print("Network error:", error)
 				self.navigationController?.popViewController(animated: true)
+
 			case .success(let followers):
 				self.followers = followers
 				self.collectionView.reloadData()

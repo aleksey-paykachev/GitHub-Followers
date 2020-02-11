@@ -14,7 +14,8 @@ class SearchViewController: UIViewController {
 	private var mainStack: UIStackView!
 	private var mainStackCenterYConstraint: NSLayoutConstraint!
 	private let searchTermTextField = GFTextField(placeholder: "Enter github username")
-	
+	let loadingOverlayView = GFLoadingOverlayView()
+
 	
 	// MARK: - Init
 	
@@ -85,8 +86,21 @@ class SearchViewController: UIViewController {
 		}
 
 		view.endEditing(true)
-		let followersListViewController = FollowersListViewController(for: searchTerm)
-		navigationController?.pushViewController(followersListViewController, animated: true)
+		loadingOverlayView.show(inside: view)
+
+		DataManager.shared.getUser(by: searchTerm) { [weak self] result in
+			guard let self = self else { return }
+			self.loadingOverlayView.hide()
+			
+			switch result {
+			case .failure(let error):
+				print("Network error:", error)
+				
+			case .success(let user):
+				let followersListVC = FollowersListViewController(user: user)
+				self.navigationController?.pushViewController(followersListVC, animated: true)
+			}
+		}
 	}
 	
 	private func setContentYOffset(_ offsetY: CGFloat, with animationDuration: TimeInterval) {
