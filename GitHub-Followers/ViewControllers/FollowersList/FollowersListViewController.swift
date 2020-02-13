@@ -9,6 +9,13 @@
 import UIKit
 
 class FollowersListViewController: UICollectionViewController {
+	// MARK: - Sections
+	
+	enum Section {
+		case followers
+	}
+	
+	
 	// MARK: - Properties
 	
 	private let user: GithubUser
@@ -16,7 +23,8 @@ class FollowersListViewController: UICollectionViewController {
 	private var filterFollowersByNameTerm = ""
 	
 	private let flowLayout = UICollectionViewFlowLayout()
-	let loadingOverlayView = GFLoadingOverlayView()
+	private var dataSource: UICollectionViewDiffableDataSource<Section, GithubFollower>!
+	private let loadingOverlayView = GFLoadingOverlayView()
 	
 	
 	// MARK: - Init
@@ -28,6 +36,7 @@ class FollowersListViewController: UICollectionViewController {
 		setupNavigationItemProfileImage()
 		setupSearchController()
 		setupCollectionView()
+		setupDataSource()
 		loadData()
 	}
 	
@@ -83,6 +92,19 @@ class FollowersListViewController: UICollectionViewController {
 		flowLayout.itemSize = CGSize(width: cellSideSize, height: cellSideSize * 1.3)
 	}
 	
+	private func setupDataSource() {
+		dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in
+
+			let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
+			cell.follower = follower
+			return cell
+		})
+		
+		var snapshot = dataSource.snapshot()
+		snapshot.appendSections([.followers])
+		dataSource.apply(snapshot)
+	}
+	
 	
 	// MARK: - Load data
 	
@@ -99,14 +121,20 @@ class FollowersListViewController: UICollectionViewController {
 				self.navigationController?.popViewController(animated: true)
 
 			case .success(let followers):
-				self.followers = followers
-				self.collectionView.reloadData()
+				self.followers.append(contentsOf: followers)
+				self.appendCollectionView(with: followers)
 			}
 		}
 	}
 	
 	
 	// MARK: - Methods
+	
+	private func appendCollectionView(with followers: [GithubFollower]) {
+		var snapshot = dataSource.snapshot()
+		snapshot.appendItems(followers)
+		dataSource.apply(snapshot)
+	}
 	
 	@objc private func showUserDetailsViewControllerForCurrentUser() {
 		showUserDetailsViewController(for: user)
@@ -123,25 +151,6 @@ class FollowersListViewController: UICollectionViewController {
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		navigationItem.hidesSearchBarWhenScrolling = true
-	}
-}
-
-
-// MARK: - UICollectionViewDataSource
-
-extension FollowersListViewController {
-	
-	override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		
-		followers.count
-	}
-	
-	override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		
-		let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
-		cell.follower = followers[indexPath.item]
-		
-		return cell
 	}
 }
 

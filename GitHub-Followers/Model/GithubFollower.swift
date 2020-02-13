@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct GithubFollower: GithubProfile {
+struct GithubFollower: GithubProfile, Hashable {
 	let username: String
 	let profileImageUrl: URL?
 }
