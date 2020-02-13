@@ -59,6 +59,10 @@ class UserDetailsViewController: UIViewController {
 	// MARK: - Create UI
 	
 	private func createUI(for user: GithubUser) {
+		let closeButton = UIButton(type: .close)
+		closeButton.addTarget(self, action: #selector(closeButtonDidPressed), for: .touchUpInside)
+		let actionButtonsStack = HStackView([SpacerView(), closeButton])
+
 		let mainInfoView = UserDetailsMainInfoView(user: user)
 		
 		let descriptionLabel = GFLabel(text: user.description, allowMultipleLines: true)
@@ -74,7 +78,8 @@ class UserDetailsViewController: UIViewController {
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .systemGray2, alignment: .center)
 
-		let mainStack = VStackView([mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)
+		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)
+		mainStack.setCustomSpacing(0, after: actionButtonsStack)
 		mainStack.setCustomSpacing(14, after: userSocialActivityDetailsView)
 
 		view.addSubview(mainStack)
@@ -83,7 +88,11 @@ class UserDetailsViewController: UIViewController {
 	
 	
 	// MARK: - Actions
-	
+
+	@objc private func closeButtonDidPressed() {
+		dismiss(animated: true)
+	}
+
 	private func githubProfileButtonDidPressed() {
 		print(#function)
 	}
