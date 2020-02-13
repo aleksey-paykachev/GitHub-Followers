@@ -22,6 +22,7 @@ class UserDetailsMainInfoView: UIView {
 		super.init(frame: .zero)
 		
 		setupSubviews()
+		setupFavoriteButton()
 		loadProfileImage()
 	}
 	
@@ -44,9 +45,25 @@ class UserDetailsMainInfoView: UIView {
 		
 		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel],spacing: 4)
 		
-		let mainStack = HStackView([profileImageView, userInfoStack], spacing: 16, alignment: .top)
+		let mainStack = HStackView([profileImageView, userInfoStack], spacing: 24, alignment: .top)
 		addSubview(mainStack)
 		mainStack.constrainToSuperview()
+	}
+	
+	private func setupFavoriteButton() {
+		let favoriteButton = UIButton(type: .custom)
+		let buttonImage = UIImage(systemName: "star")
+		favoriteButton.setBackgroundImage(buttonImage, for: .normal)
+		favoriteButton.addTarget(self, action: #selector(favoriteButtonDidPressed), for: .touchUpInside)
+
+		addSubview(favoriteButton)
+		favoriteButton.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			favoriteButton.centerXAnchor.constraint(equalTo: profileImageView.trailingAnchor),
+			favoriteButton.centerYAnchor.constraint(equalTo: profileImageView.topAnchor),
+			favoriteButton.widthAnchor.constraint(equalToConstant: 30),
+			favoriteButton.heightAnchor.constraint(equalToConstant: 30),
+		])
 	}
 	
 	
@@ -62,5 +79,12 @@ class UserDetailsMainInfoView: UIView {
 				self.profileImageView.image = image
 			}
 		}
+	}
+	
+	
+	// MARK: - Actions
+	
+	@objc private func favoriteButtonDidPressed() {
+		print(#function)
 	}
 }

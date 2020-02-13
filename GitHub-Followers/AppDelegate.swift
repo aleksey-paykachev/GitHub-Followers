@@ -36,5 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		
 		// navigation bar
 		UINavigationBar.appearance().tintColor = .systemGreen
+		
+		// button
+		UIButton.appearance().tintColor = .systemGreen
 	}
 }
