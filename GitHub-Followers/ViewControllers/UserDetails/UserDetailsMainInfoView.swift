@@ -62,7 +62,7 @@ class UserDetailsMainInfoView: UIView {
 			favoriteButton.centerXAnchor.constraint(equalTo: profileImageView.trailingAnchor),
 			favoriteButton.centerYAnchor.constraint(equalTo: profileImageView.topAnchor),
 			favoriteButton.widthAnchor.constraint(equalToConstant: 30),
-			favoriteButton.heightAnchor.constraint(equalToConstant: 30),
+			favoriteButton.heightAnchor.constraint(equalToConstant: 30)
 		])
 	}
 	
@@ -85,6 +85,17 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Actions
 	
 	@objc private func favoriteButtonDidPressed() {
-		print(#function)
+		#warning("Delegate to parent VC")
+		
+		// read
+		var favorites = UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
+
+		// write
+		if favorites.contains(user.username) {
+			favorites.removeAll { $0 == user.username }
+		} else {
+			favorites.append(user.username)
+		}
+		UserDefaults.standard.set(favorites, forKey: "favorites")
 	}
 }
