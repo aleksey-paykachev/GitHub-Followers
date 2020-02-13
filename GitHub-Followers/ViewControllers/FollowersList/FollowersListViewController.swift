@@ -22,7 +22,6 @@ class FollowersListViewController: UICollectionViewController {
 	private var followers: [GithubFollower] = []
 	private var filterFollowersByNameTerm = ""
 	
-	private let flowLayout = UICollectionViewFlowLayout()
 	private var dataSource: UICollectionViewDiffableDataSource<Section, GithubFollower>!
 	private let loadingOverlayView = GFLoadingOverlayView()
 	
@@ -31,11 +30,12 @@ class FollowersListViewController: UICollectionViewController {
 	
 	init(user: GithubUser) {
 		self.user = user
-		super.init(collectionViewLayout: flowLayout)
+		super.init(collectionViewLayout: UICollectionViewLayout())
 		
 		setupNavigationItemProfileImage()
 		setupSearchController()
 		setupCollectionView()
+		setupLayout()
 		setupDataSource()
 		loadData()
 	}
@@ -88,8 +88,25 @@ class FollowersListViewController: UICollectionViewController {
 		collectionView.alwaysBounceVertical = true
 
 		collectionView.register(FollowerCell.self)
-		let cellSideSize: CGFloat = 100
-		flowLayout.itemSize = CGSize(width: cellSideSize, height: cellSideSize * 1.3)
+	}
+	
+	private func setupLayout() {
+		// item
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(1/3 * 1.3))
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 6, trailing: 6)
+		
+		// group
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+		
+		// section
+		let section = NSCollectionLayoutSection(group: group)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 10, bottom: 0, trailing: 10)
+		
+		// layout
+		let layout = UICollectionViewCompositionalLayout(section: section)
+		collectionView.collectionViewLayout = layout
 	}
 	
 	private func setupDataSource() {
@@ -100,6 +117,7 @@ class FollowersListViewController: UICollectionViewController {
 			return cell
 		})
 		
+		// initial snapshot
 		var snapshot = dataSource.snapshot()
 		snapshot.appendSections([.followers])
 		dataSource.apply(snapshot)
@@ -133,7 +151,7 @@ class FollowersListViewController: UICollectionViewController {
 	private func appendCollectionView(with followers: [GithubFollower]) {
 		var snapshot = dataSource.snapshot()
 		snapshot.appendItems(followers)
-		dataSource.apply(snapshot)
+		dataSource.apply(snapshot, animatingDifferences: false)
 	}
 	
 	@objc private func showUserDetailsViewControllerForCurrentUser() {
