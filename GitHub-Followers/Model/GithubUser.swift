@@ -43,6 +43,15 @@ extension GithubUser: Codable {
 }
 
 
+// MARK: - Hashable
+
+extension GithubUser: Hashable {
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(username)
+	}
+}
+
+
 // MARK: - Equatable
 
 extension GithubUser: Equatable {
