@@ -23,9 +23,9 @@ struct GithubUser: GithubProfile {
 }
 
 
-// MARK: - Decodable
+// MARK: - Codable
 
-extension GithubUser: Decodable {
+extension GithubUser: Codable {
 
 	enum CodingKeys: String, CodingKey {
 		case username = "login"
@@ -39,5 +39,14 @@ extension GithubUser: Decodable {
 		case followingCount = "following"
 		case followersCount = "followers"
 		case accountRegistrationDate = "created_at"
+	}
+}
+
+
+// MARK: - Equatable
+
+extension GithubUser: Equatable {
+	static func ==(lhs: GithubUser, rhs: GithubUser) -> Bool {
+		lhs.username == rhs.username
 	}
 }

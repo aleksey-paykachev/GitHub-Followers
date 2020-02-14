@@ -64,4 +64,43 @@ class DataManager {
 			}
 		}
 	}
+	
+	
+	// MARK: - Favorites
+	
+	var allFavorites: [GithubUser] {
+		guard let data = UserDefaults.standard.data(forKey: "favorites") else { return [] }
+		
+		do {
+			return try PropertyListDecoder().decode([GithubUser].self, from: data)
+		} catch {
+			print("Error:", error.localizedDescription)
+			return []
+		}
+	}
+	
+	func checkIfFavorite(user: GithubUser) -> Bool {
+		allFavorites.contains(user)
+	}
+	
+	func toggleFavorite(user: GithubUser) -> Bool {
+		// read
+		var favorites = allFavorites
+
+		// update
+		let isFavorite: Bool
+
+		if favorites.contains(user) {
+			favorites.removeAll { $0 == user }
+			isFavorite = false
+		} else {
+			favorites.append(user)
+			isFavorite = true
+		}
+		
+		let data = try? PropertyListEncoder().encode(favorites)
+		UserDefaults.standard.set(data, forKey: "favorites")
+		
+		return isFavorite
+	}
 }

@@ -13,6 +13,7 @@ class UserDetailsMainInfoView: UIView {
 	
 	private let user: GithubUser
 	private let profileImageView = GFImageView(asset: .avatarPlaceholder)
+	private let favoriteButton = UIButton(type: .custom)
 
 	
 	// MARK: - Init
@@ -51,9 +52,9 @@ class UserDetailsMainInfoView: UIView {
 	}
 	
 	private func setupFavoriteButton() {
-		let favoriteButton = UIButton(type: .custom)
-		let buttonImage = UIImage(systemName: "star")
-		favoriteButton.setBackgroundImage(buttonImage, for: .normal)
+		let isFavorite = DataManager.shared.checkIfFavorite(user: user)
+		setFavoriteButtonState(isFavorite: isFavorite)
+
 		favoriteButton.addTarget(self, action: #selector(favoriteButtonDidPressed), for: .touchUpInside)
 
 		addSubview(favoriteButton)
@@ -84,18 +85,15 @@ class UserDetailsMainInfoView: UIView {
 	
 	// MARK: - Actions
 	
+	private func setFavoriteButtonState(isFavorite: Bool) {
+		let buttonImage = UIImage(systemName: isFavorite ? "star.fill" : "star")
+		favoriteButton.setBackgroundImage(buttonImage, for: .normal)
+	}
+	
 	@objc private func favoriteButtonDidPressed() {
 		#warning("Delegate to parent VC")
-		
-		// read
-		var favorites = UserDefaults.standard.object(forKey: "favorites") as? [String] ?? []
 
-		// write
-		if favorites.contains(user.username) {
-			favorites.removeAll { $0 == user.username }
-		} else {
-			favorites.append(user.username)
-		}
-		UserDefaults.standard.set(favorites, forKey: "favorites")
+		let isFavorite = DataManager.shared.toggleFavorite(user: user)
+		setFavoriteButtonState(isFavorite: isFavorite)
 	}
 }
