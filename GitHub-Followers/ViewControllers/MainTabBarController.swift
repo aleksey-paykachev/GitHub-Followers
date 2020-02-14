@@ -25,11 +25,9 @@ class MainTabBarController: UITabBarController {
 	// MARK: - Setup
 	
 	private func setupTabBar() {
-		let searchViewController = SearchViewController()
-		let favoritesViewController = FavoritesViewController()
-		
-		let searchNavigationController = UINavigationController(rootViewController: searchViewController)
-		
-		viewControllers = [searchNavigationController, favoritesViewController]
+		let searchNC = UINavigationController(rootViewController: SearchViewController())
+		let favoritesNC = UINavigationController(rootViewController: FavoritesViewController())
+
+		viewControllers = [searchNC, favoritesNC]
 	}
 }

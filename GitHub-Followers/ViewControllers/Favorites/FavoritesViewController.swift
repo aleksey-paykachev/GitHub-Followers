@@ -9,16 +9,9 @@
 import UIKit
 
 class FavoritesViewController: UITableViewController {
-	// MARK: - Sections
-	
-	private enum Section {
-		case favorites
-	}
-
-	
 	// MARK: - Properties
 	
-	private var dataSource: UITableViewDiffableDataSource<Section, GithubUser>!
+	private var dataSource: FavoritesDataSource!
 
 	
 	// MARK: - Init
@@ -27,9 +20,10 @@ class FavoritesViewController: UITableViewController {
 		super.init(nibName: nil, bundle: nil)
 		
 		title = "Favorites"
-		tabBarItem.image = UIImage(systemName: "star.fill")
-		
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FavoriteCell")
+
+		setupTabBar()
+		setupNavigationBar()
+		setupTableView()
 		setupDataSource()
 	}
 	
@@ -40,35 +34,34 @@ class FavoritesViewController: UITableViewController {
 	
 	// MARK: - Setup
 	
+	private func setupTabBar() {
+		tabBarItem.image = UIImage(systemName: "star.fill")
+	}
+	
+	private func setupNavigationBar() {
+		navigationItem.rightBarButtonItem = editButtonItem
+	}
+	
+	private func setupTableView() {
+		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FavoriteCell")
+	}
+	
 	private func setupDataSource() {
-		dataSource = UITableViewDiffableDataSource<Section, GithubUser>(tableView: tableView, cellProvider: { tableView, indexPath, user -> UITableViewCell? in
+		dataSource = FavoritesDataSource(tableView: tableView, cellProvider: { tableView, indexPath, user -> UITableViewCell? in
 			
 			let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath)
 			cell.textLabel?.text = user.username
 			return cell
 		})
 	}
-
 	
-	// MARK: - Methods
-	
-	private func reloadData() {
-		var snapshot = dataSource.snapshot()
-		snapshot.deleteAllItems()
-
-		snapshot.appendSections([.favorites])
-		let favorites = DataManager.shared.allFavorites
-		snapshot.appendItems(favorites)
-
-		dataSource.apply(snapshot, animatingDifferences: false)
-	}
-
 	
 	// MARK: - View lifecycle
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
-		reloadData()
+		navigationController?.navigationBar.prefersLargeTitles = true
+		dataSource.reloadData()
 	}
 }
