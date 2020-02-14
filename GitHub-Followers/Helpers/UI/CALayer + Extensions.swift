@@ -19,4 +19,12 @@ extension CALayer {
 		cornerRadius = radius
 		masksToBounds = true
 	}
+	
+	func setShadow(radius: CGFloat, color: UIColor = .black, opacity: CGFloat = 1, offsetX: CGFloat = 0, offsetY: CGFloat = 0) {
+
+		shadowRadius = radius
+		shadowColor = color.cgColor
+		shadowOpacity = Float(opacity)
+		shadowOffset = CGSize(width: offsetX, height: offsetY)
+	}
 }

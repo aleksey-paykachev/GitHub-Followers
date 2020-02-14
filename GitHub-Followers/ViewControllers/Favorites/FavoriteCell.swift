@@ -37,13 +37,9 @@ class FavoriteCell: UITableViewCell {
 		
 		let containerView = UIView()
 		containerView.backgroundColor = .systemBackground
+		containerView.layer.setShadow(radius: 3, opacity: 0.1, offsetX: 2, offsetY: 2)
 		contentView.addSubview(containerView)
 		containerView.constrainToSuperview(padding: 9)
-
-		containerView.layer.shadowRadius = 3
-		containerView.layer.shadowColor = UIColor.black.cgColor
-		containerView.layer.shadowOpacity = 0.1
-		containerView.layer.shadowOffset = CGSize(width: 2, height: 2)
 
 		let stack = HStackView([photoImageView, usernameLabel, SpacerView()], spacing: 16, alignment: .leading)
 		
