@@ -31,6 +31,7 @@
 		5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9D32823F0B1D30090EE71 /* GFLabel.swift */; };
+		5BC3A08A23F763EE00302CC8 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3A08923F763EE00302CC8 /* FavoriteCell.swift */; };
 		5BDA107923F0BB68008738B8 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */; };
 		5BDA107B23F0C50F008738B8 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107A23F0C50F008738B8 /* GithubUser.swift */; };
 		5BDA107D23F0C533008738B8 /* GithubProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107C23F0C533008738B8 /* GithubProfile.swift */; };
@@ -72,6 +73,7 @@
 		5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extensions.swift"; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BA9D32823F0B1D30090EE71 /* GFLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLabel.swift; sourceTree = "<group>"; };
+		5BC3A08923F763EE00302CC8 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5BDA107A23F0C50F008738B8 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
 		5BDA107C23F0C533008738B8 /* GithubProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfile.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 			isa = PBXGroup;
 			children = (
 				5BF9B06623E87E85004B44B7 /* FavoritesViewController.swift */,
+				5BC3A08923F763EE00302CC8 /* FavoriteCell.swift */,
 				5B6777C323F72250002C7877 /* FavoritesDataSource.swift */,
 			);
 			path = Favorites;
@@ -344,6 +347,7 @@
 				5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */,
 				5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
+				5BC3A08A23F763EE00302CC8 /* FavoriteCell.swift in Sources */,
 				5B495BE623F2F55500ECDB1F /* Date + Extensions.swift in Sources */,
 				5BDA107B23F0C50F008738B8 /* GithubUser.swift in Sources */,
 				5B074EBD23F1D20000582379 /* UserDetailsMainInfoView.swift in Sources */,

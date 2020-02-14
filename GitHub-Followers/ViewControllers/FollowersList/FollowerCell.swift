@@ -53,6 +53,7 @@ class FollowerCell: UICollectionViewCell {
 
 		usernameLabel.text = follower.username
 
+		#warning("Move network logic to View Controller.")
 		DataManager.shared.getProfileImage(for: follower) { result in
 			if case Result.success(let image) = result {
 				self.photoImageView.image = image

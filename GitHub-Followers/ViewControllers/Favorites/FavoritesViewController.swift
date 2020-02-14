@@ -43,14 +43,16 @@ class FavoritesViewController: UITableViewController {
 	}
 	
 	private func setupTableView() {
-		tableView.register(UITableViewCell.self, forCellReuseIdentifier: "FavoriteCell")
+		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseId)
+//		tableView.tableFooterView = UIView(frame: .zero) // hide empty cells
+		tableView.separatorStyle = .none
 	}
 	
 	private func setupDataSource() {
 		dataSource = FavoritesDataSource(tableView: tableView, cellProvider: { tableView, indexPath, user -> UITableViewCell? in
 			
-			let cell = tableView.dequeueReusableCell(withIdentifier: "FavoriteCell", for: indexPath)
-			cell.textLabel?.text = user.username
+			let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseId, for: indexPath) as? FavoriteCell
+			cell?.set(user: user)
 			return cell
 		})
 	}
