@@ -31,6 +31,7 @@
 		5B76B14223EE1FCA00252661 /* UICollectionViewCell + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */; };
 		5B9B3FC823EA47930011DF36 /* GFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B9B3FC723EA47930011DF36 /* GFTextField.swift */; };
 		5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BA9D32823F0B1D30090EE71 /* GFLabel.swift */; };
+		5BBE14AE23F7981400332189 /* PersistentManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BBE14AD23F7981400332189 /* PersistentManager.swift */; };
 		5BC3A08A23F763EE00302CC8 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3A08923F763EE00302CC8 /* FavoriteCell.swift */; };
 		5BDA107923F0BB68008738B8 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */; };
 		5BDA107B23F0C50F008738B8 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107A23F0C50F008738B8 /* GithubUser.swift */; };
@@ -73,6 +74,7 @@
 		5B76B14123EE1FCA00252661 /* UICollectionViewCell + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell + Extensions.swift"; sourceTree = "<group>"; };
 		5B9B3FC723EA47930011DF36 /* GFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFTextField.swift; sourceTree = "<group>"; };
 		5BA9D32823F0B1D30090EE71 /* GFLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLabel.swift; sourceTree = "<group>"; };
+		5BBE14AD23F7981400332189 /* PersistentManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentManager.swift; sourceTree = "<group>"; };
 		5BC3A08923F763EE00302CC8 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5BDA107A23F0C50F008738B8 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				5B76B13B23EE07CE00252661 /* DataManager.swift */,
+				5BBE14AD23F7981400332189 /* PersistentManager.swift */,
 				5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */,
 				5BECD1C623EC847C00FA2455 /* Parser.swift */,
 			);
@@ -332,6 +335,7 @@
 				5BECD1C923EC856100FA2455 /* FollowersListViewController.swift in Sources */,
 				5BF9B06723E87E85004B44B7 /* FavoritesViewController.swift in Sources */,
 				5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */,
+				5BBE14AE23F7981400332189 /* PersistentManager.swift in Sources */,
 				5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */,
 				5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */,
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,

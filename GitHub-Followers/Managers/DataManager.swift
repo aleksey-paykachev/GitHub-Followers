@@ -13,6 +13,7 @@ class DataManager {
 	
 	static let shared = DataManager()
 	
+	private let persistentManager = PersistentManager()
 	private let networkManager = NetworkManager.shared
 	
 	private let baseUrl = URL(string: "https://api.github.com")
@@ -24,7 +25,7 @@ class DataManager {
 	private init() {}
 
 	
-	// MARK: - API
+	// MARK: - API Users
 	
 	func getUser(by username: String,
 				 completionQueue: DispatchQueue = .main,
@@ -66,17 +67,10 @@ class DataManager {
 	}
 	
 	
-	// MARK: - Favorites
+	// MARK: - API Favorites
 	
 	var allFavorites: [GithubUser] {
-		guard let data = UserDefaults.standard.data(forKey: "favorites") else { return [] }
-		
-		do {
-			return try PropertyListDecoder().decode([GithubUser].self, from: data)
-		} catch {
-			print("Error:", error.localizedDescription)
-			return []
-		}
+		persistentManager.get(type: [GithubUser].self, from: .favorites) ?? []
 	}
 	
 	func checkIfFavorite(user: GithubUser) -> Bool {
@@ -98,8 +92,7 @@ class DataManager {
 			isFavorite = true
 		}
 		
-		let data = try? PropertyListEncoder().encode(favorites)
-		UserDefaults.standard.set(data, forKey: "favorites")
+		persistentManager.set(value: favorites, to: .favorites)
 		
 		return isFavorite
 	}
