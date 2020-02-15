@@ -16,6 +16,7 @@
 		5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985123F0B67A00E37DC1 /* CustomStackView.swift */; };
 		5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HStackView.swift */; };
 		5B2424A523EC520600224099 /* GithubFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubFollower.swift */; };
+		5B29FCCE23F85F8A006E6B1C /* GFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FCCD23F85F8A006E6B1C /* GFViewController.swift */; };
 		5B435C9F23EFB31700C885DE /* GFLoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */; };
 		5B495BE623F2F55500ECDB1F /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */; };
 		5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B55CB1123EB59CF00B6DF31 /* GFButton.swift */; };
@@ -59,6 +60,7 @@
 		5B22985123F0B67A00E37DC1 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		5B22985323F0B69E00E37DC1 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5B2424A423EC520600224099 /* GithubFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFollower.swift; sourceTree = "<group>"; };
+		5B29FCCD23F85F8A006E6B1C /* GFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFViewController.swift; sourceTree = "<group>"; };
 		5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLoadingOverlayView.swift; sourceTree = "<group>"; };
 		5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
 		5B55CB1123EB59CF00B6DF31 /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 		5B9B3FC923EA47E80011DF36 /* GF Custom UI */ = {
 			isa = PBXGroup;
 			children = (
+				5B29FCCD23F85F8A006E6B1C /* GFViewController.swift */,
 				5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */,
 				5B9B3FC723EA47930011DF36 /* GFTextField.swift */,
 				5B55CB1123EB59CF00B6DF31 /* GFButton.swift */,
@@ -342,6 +345,7 @@
 				5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
+				5B29FCCE23F85F8A006E6B1C /* GFViewController.swift in Sources */,
 				5B6777C423F72250002C7877 /* FavoritesDataSource.swift in Sources */,
 				5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */,
 				5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */,

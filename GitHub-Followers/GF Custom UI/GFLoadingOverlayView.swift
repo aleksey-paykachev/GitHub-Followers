@@ -27,6 +27,7 @@ class GFLoadingOverlayView: UIView {
 	
 	private func setupView() {
 		backgroundColor = .systemBackground
+		isOpaque = false
 		alpha = 0
 	}
 	
@@ -49,7 +50,7 @@ class GFLoadingOverlayView: UIView {
 		constrainToSuperview()
 		
 		UIView.animate(withDuration: 0.3) {
-			self.alpha = 0.75
+			self.alpha = 0.5
 		}
 	}
 	
