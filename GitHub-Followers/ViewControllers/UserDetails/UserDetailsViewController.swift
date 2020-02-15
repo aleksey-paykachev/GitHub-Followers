@@ -64,6 +64,7 @@ class UserDetailsViewController: UIViewController {
 		let actionButtonsStack = HStackView([SpacerView(), closeButton])
 
 		let mainInfoView = UserDetailsMainInfoView(user: user)
+		mainInfoView.delegate = self
 		
 		let descriptionLabel = GFLabel(text: user.description, allowMultipleLines: true)
 
@@ -99,5 +100,19 @@ class UserDetailsViewController: UIViewController {
 	
 	private func viewFollowersButtonDidPressed() {
 		print(#function)
+	}
+}
+
+
+// MARK: - UserDetailsMainInfoViewDelegate
+
+extension UserDetailsViewController: UserDetailsMainInfoViewDelegate {
+
+	func didChangeFavoriteStatus(for user: GithubUser, to isFavorite: Bool) {
+		if isFavorite {
+			DataManager.shared.addUserToFavorites(user)
+		} else {
+			DataManager.shared.removeUserFromFavorites(user)
+		}
 	}
 }

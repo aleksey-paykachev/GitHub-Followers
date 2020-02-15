@@ -8,12 +8,19 @@
 
 import UIKit
 
+protocol UserDetailsMainInfoViewDelegate: class {
+	func didChangeFavoriteStatus(for user: GithubUser, to value: Bool)
+}
+
 class UserDetailsMainInfoView: UIView {
 	// MARK: - Properties
 	
 	private let user: GithubUser
 	private let profileImageView = GFImageView(asset: .avatarPlaceholder)
 	private let favoriteButton = UIButton(type: .custom)
+	private var isFavorite = false { didSet { setFavoriteButtonState(to: isFavorite) } }
+	
+	weak var delegate: UserDetailsMainInfoViewDelegate?
 
 	
 	// MARK: - Init
@@ -24,6 +31,8 @@ class UserDetailsMainInfoView: UIView {
 		
 		setupSubviews()
 		setupFavoriteButton()
+
+		loadFavoriteState()
 		loadProfileImage()
 	}
 	
@@ -52,9 +61,6 @@ class UserDetailsMainInfoView: UIView {
 	}
 	
 	private func setupFavoriteButton() {
-		let isFavorite = DataManager.shared.checkIfFavorite(user: user)
-		setFavoriteButtonState(isFavorite: isFavorite)
-
 		favoriteButton.addTarget(self, action: #selector(favoriteButtonDidPressed), for: .touchUpInside)
 
 		addSubview(favoriteButton)
@@ -69,6 +75,10 @@ class UserDetailsMainInfoView: UIView {
 	
 	
 	// MARK: - Load data
+	
+	private func loadFavoriteState() {
+		isFavorite = DataManager.shared.checkIfFavorite(user: user)
+	}
 	
 	private func loadProfileImage() {
 		// almost 100% of the time profile image will be loaded from cache
@@ -85,15 +95,13 @@ class UserDetailsMainInfoView: UIView {
 	
 	// MARK: - Actions
 	
-	private func setFavoriteButtonState(isFavorite: Bool) {
+	private func setFavoriteButtonState(to isFavorite: Bool) {
 		let buttonImage = UIImage(systemName: isFavorite ? "star.fill" : "star")
 		favoriteButton.setBackgroundImage(buttonImage, for: .normal)
 	}
 	
 	@objc private func favoriteButtonDidPressed() {
-		#warning("Delegate to parent VC")
-
-		let isFavorite = DataManager.shared.toggleFavorite(user: user)
-		setFavoriteButtonState(isFavorite: isFavorite)
+		isFavorite.toggle()
+		delegate?.didChangeFavoriteStatus(for: user, to: isFavorite)
 	}
 }

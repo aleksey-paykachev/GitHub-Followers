@@ -77,23 +77,21 @@ class DataManager {
 		allFavorites.contains(user)
 	}
 	
-	func toggleFavorite(user: GithubUser) -> Bool {
-		// read
+	func addUserToFavorites(_ user: GithubUser) {
 		var favorites = allFavorites
-
-		// update
-		let isFavorite: Bool
-
+		
 		if favorites.contains(user) {
-			favorites.removeAll { $0 == user }
-			isFavorite = false
-		} else {
-			favorites.append(user)
-			isFavorite = true
+			return
 		}
 		
+		favorites.append(user)
 		persistentManager.set(value: favorites, to: .favorites)
+	}
+	
+	func removeUserFromFavorites(_ user: GithubUser) {
+		var favorites = allFavorites
 		
-		return isFavorite
+		favorites.removeAll { $0 == user }
+		persistentManager.set(value: favorites, to: .favorites)
 	}
 }
