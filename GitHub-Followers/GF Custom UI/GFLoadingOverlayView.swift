@@ -13,6 +13,8 @@ class GFLoadingOverlayView: UIView {
 	
 	init() {
 		super.init(frame: .zero)
+		
+		setupView()
 		setupActivityIndicatorView()
 	}
 	
@@ -22,6 +24,11 @@ class GFLoadingOverlayView: UIView {
 	
 	
 	// MARK: - Setup
+	
+	private func setupView() {
+		backgroundColor = .systemBackground
+		alpha = 0
+	}
 	
 	private func setupActivityIndicatorView() {
 		let activityIndicatorView = UIActivityIndicatorView(style: .large)
@@ -41,13 +48,18 @@ class GFLoadingOverlayView: UIView {
 		superview.addSubview(self)
 		constrainToSuperview()
 		
-		backgroundColor = .clear
-		UIView.animate(withDuration: 0.25) {
-			self.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+		UIView.animate(withDuration: 0.3) {
+			self.alpha = 0.75
 		}
 	}
 	
 	func hide() {
-		removeFromSuperview()
+		// add little delay before hiding to reduce "flashing" effect
+
+		UIView.animate(withDuration: 0.3, animations: {
+			self.alpha = 0
+		}, completion: { _ in
+			self.removeFromSuperview()
+		})
 	}
 }
