@@ -11,11 +11,12 @@ import UIKit
 class GFTextField: UITextField {
 	// MARK: - Init
 	
-	init(placeholder: String? = nil, useAutoCorrection: Bool = false) {
+	init(placeholder: String? = nil, useAutoCorrection: Bool = false, showClearButton: Bool = true) {
 		super.init(frame: .zero)
 		
 		self.placeholder = placeholder
-		autocorrectionType = useAutoCorrection ? UITextAutocorrectionType.yes : .no
+		autocorrectionType = useAutoCorrection ? .yes : .no
+		clearButtonMode = showClearButton ? .always : .never
 		setupView()
 	}
 	

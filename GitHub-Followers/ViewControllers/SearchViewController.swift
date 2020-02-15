@@ -97,6 +97,7 @@ class SearchViewController: UIViewController {
 				print("Network error:", error)
 				
 			case .success(let user):
+				self.searchTermTextField.text = ""
 				let followersListVC = FollowersListViewController(user: user)
 				self.navigationController?.pushViewController(followersListVC, animated: true)
 			}
