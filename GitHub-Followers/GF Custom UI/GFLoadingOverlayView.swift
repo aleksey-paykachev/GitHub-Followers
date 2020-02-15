@@ -9,27 +9,24 @@
 import UIKit
 
 class GFLoadingOverlayView: UIView {
-	// MARK: - Properties
-	
-	private let activityIndicatorView = UIActivityIndicatorView(style: .large)
-
-	
 	// MARK: - Init
 	
 	init() {
 		super.init(frame: .zero)
-		setupView()
+		setupActivityIndicatorView()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	
 	// MARK: - Setup
 	
-	private func setupView() {
-		backgroundColor = UIColor.black.withAlphaComponent(0.2)
-		activityIndicatorView.color = .white
+	private func setupActivityIndicatorView() {
+		let activityIndicatorView = UIActivityIndicatorView(style: .large)
+		activityIndicatorView.color = .systemGreen
+		activityIndicatorView.startAnimating()
 		
 		addSubview(activityIndicatorView)
 		activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
@@ -41,16 +38,16 @@ class GFLoadingOverlayView: UIView {
 	// MARK: - API
 	
 	func show(inside superview: UIView) {
-		guard !activityIndicatorView.isAnimating else { return }
-		
-		activityIndicatorView.startAnimating()
-		
 		superview.addSubview(self)
 		constrainToSuperview()
+		
+		backgroundColor = .clear
+		UIView.animate(withDuration: 0.25) {
+			self.backgroundColor = UIColor.white.withAlphaComponent(0.75)
+		}
 	}
 	
 	func hide() {
-		activityIndicatorView.stopAnimating()
 		removeFromSuperview()
 	}
 }
