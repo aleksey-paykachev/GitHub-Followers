@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowersListViewController: UICollectionViewController {
+class FollowersListViewController: GFViewController {
 	// MARK: - Sections
 	
 	enum Section {
@@ -22,26 +22,65 @@ class FollowersListViewController: UICollectionViewController {
 	private var followers: [GithubFollower] = []
 	private var filterFollowersByNameTerm = ""
 	
-	private var dataSource: UICollectionViewDiffableDataSource<Section, GithubFollower>!
-	private let loadingOverlayView = GFLoadingOverlayView()
+	private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
+	private lazy var dataSource = createDataSource()
 	
 	
 	// MARK: - Init
 	
 	init(user: GithubUser) {
 		self.user = user
-		super.init(collectionViewLayout: UICollectionViewLayout())
+		super.init(nibName: nil, bundle: nil)
 		
 		setupNavigationItemProfileImage()
 		setupSearchController()
 		setupCollectionView()
-		setupLayout()
-		setupDataSource()
 		loadData()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	
+	// MARK: - Create
+	
+	private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
+		// item
+		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(1/3 * 1.3))
+		let item = NSCollectionLayoutItem(layoutSize: itemSize)
+		item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 6, trailing: 6)
+		
+		// group
+		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
+		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+		
+		// section
+		let section = NSCollectionLayoutSection(group: group)
+		section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 10, bottom: 0, trailing: 10)
+		
+		// layout
+		return UICollectionViewCompositionalLayout(section: section)
+	}
+	
+	private func createDataSource() -> UICollectionViewDiffableDataSource<Section, GithubFollower> {
+		let dataSource = UICollectionViewDiffableDataSource<Section, GithubFollower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in
+
+			let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
+			cell.follower = follower
+			return cell
+		})
+		
+		// initial snapshot
+		var snapshot = dataSource.snapshot()
+		snapshot.appendSections([.followers])
+		dataSource.apply(snapshot)
+		
+		return dataSource
+	}
+	
+	override func loadView() {
+		view = collectionView
 	}
 	
 	
@@ -87,51 +126,19 @@ class FollowersListViewController: UICollectionViewController {
 		collectionView.backgroundColor = .systemBackground
 		collectionView.alwaysBounceVertical = true
 
+		collectionView.delegate = self
 		collectionView.register(FollowerCell.self)
-	}
-	
-	private func setupLayout() {
-		// item
-		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(1/3 * 1.3))
-		let item = NSCollectionLayoutItem(layoutSize: itemSize)
-		item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 6, trailing: 6)
-		
-		// group
-		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
-		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-		
-		// section
-		let section = NSCollectionLayoutSection(group: group)
-		section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 10, bottom: 0, trailing: 10)
-		
-		// layout
-		let layout = UICollectionViewCompositionalLayout(section: section)
-		collectionView.collectionViewLayout = layout
-	}
-	
-	private func setupDataSource() {
-		dataSource = UICollectionViewDiffableDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in
-
-			let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
-			cell.follower = follower
-			return cell
-		})
-		
-		// initial snapshot
-		var snapshot = dataSource.snapshot()
-		snapshot.appendSections([.followers])
-		dataSource.apply(snapshot)
 	}
 	
 	
 	// MARK: - Load data
 	
 	private func loadData() {
-		loadingOverlayView.show(inside: view)
+		showLoadingIndicator()
 		
 		DataManager.shared.getFollowers(for: user.username) { [weak self] result in
 			guard let self = self else { return }
-			self.loadingOverlayView.hide()
+			self.hideLoadingIndicator()
 			
 			switch result {
 			case .failure(let error):
@@ -175,8 +182,8 @@ class FollowersListViewController: UICollectionViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension FollowersListViewController {
-	override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+extension FollowersListViewController: UICollectionViewDelegate {
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
 		let follower = followers[indexPath.item]
 		showUserDetailsViewController(for: follower)
