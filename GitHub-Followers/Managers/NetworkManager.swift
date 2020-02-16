@@ -12,6 +12,7 @@ class NetworkManager {
 	// MARK: - Properties
 	
 	static let shared = NetworkManager()
+	private let cache = NSCache<NSURL, NSData>()
 	
 	
 	// MARK: - Init
@@ -67,6 +68,13 @@ class NetworkManager {
 			return
 		}
 		
+		// try to load data from cache
+		if let cachedData = cache.object(forKey: url as NSURL) as Data? {
+			completion(.success(cachedData))
+			return
+		}
+		
+		// if there is no cached data, load it from network
 		URLSession.shared.dataTask(with: url) { data, response, error in
 			if let error = error {
 				completion(.failure(.requestFailed(error)))
@@ -93,7 +101,9 @@ class NetworkManager {
 				return
 			}
 			
+			self.cache.setObject(data as NSData, forKey: url as NSURL)
 			completion(.success(data))
+			
 		}.resume()
 	}
 	

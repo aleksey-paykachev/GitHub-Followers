@@ -79,10 +79,6 @@ class FollowersViewController: GFViewController {
 		return dataSource
 	}
 	
-	override func loadView() {
-		view = collectionView
-	}
-	
 	
 	// MARK: - Setup
 	
@@ -122,6 +118,9 @@ class FollowersViewController: GFViewController {
 	}
 	
 	private func setupCollectionView() {
+		view.addSubview(collectionView)
+		collectionView.constrainToSuperview()
+		
 		title = user.username
 		collectionView.backgroundColor = .systemBackground
 		collectionView.alwaysBounceVertical = true
