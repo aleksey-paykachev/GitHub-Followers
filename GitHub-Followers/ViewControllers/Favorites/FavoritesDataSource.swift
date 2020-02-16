@@ -16,17 +16,27 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	}
 	
 	
-	// MARK: - Methods
+	// MARK: - API
 	
 	func reloadData() {
+		let favorites = DataManager.shared.allFavorites
+
 		var newSnapshot = snapshot()
 		newSnapshot.deleteAllItems()
 
 		newSnapshot.appendSections([.favorites])
-		let favorites = DataManager.shared.allFavorites
 		newSnapshot.appendItems(favorites)
 
 		apply(newSnapshot, animatingDifferences: false)
+	}
+	
+	func delete(_ user: GithubUser) {
+		DataManager.shared.removeUserFromFavorites(user)
+
+		var newSnapshot = snapshot()
+		newSnapshot.deleteItems([user])
+		
+		apply(newSnapshot)
 	}
 	
 	
@@ -34,5 +44,17 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 
 	override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
 		true
+	}
+	
+	override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+
+		switch editingStyle {
+		case .delete:
+			guard let user = itemIdentifier(for: indexPath) else { return }
+			delete(user)
+
+		default:
+			break
+		}
 	}
 }

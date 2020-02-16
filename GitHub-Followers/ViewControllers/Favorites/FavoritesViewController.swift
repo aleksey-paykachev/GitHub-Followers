@@ -44,7 +44,6 @@ class FavoritesViewController: UITableViewController {
 	
 	private func setupTableView() {
 		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseId)
-//		tableView.tableFooterView = UIView(frame: .zero) // hide empty cells
 		tableView.separatorStyle = .none
 	}
 	
