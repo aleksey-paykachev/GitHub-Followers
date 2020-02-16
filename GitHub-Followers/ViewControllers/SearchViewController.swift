@@ -8,13 +8,12 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: GFViewController {
 	// MARK: - Properties
 	
 	private var mainStack: UIStackView!
 	private var mainStackCenterYConstraint: NSLayoutConstraint!
 	private let searchTermTextField = GFTextField(placeholder: "Enter github username")
-	let loadingOverlayView = GFLoadingOverlayView()
 
 	
 	// MARK: - Init
@@ -86,11 +85,11 @@ class SearchViewController: UIViewController {
 		}
 
 		view.endEditing(true)
-		loadingOverlayView.show(inside: view)
+		showLoadingIndicator()
 
 		DataManager.shared.getUser(by: searchTerm) { [weak self] result in
 			guard let self = self else { return }
-			self.loadingOverlayView.hide()
+			self.hideLoadingIndicator()
 			
 			switch result {
 			case .failure(let error):

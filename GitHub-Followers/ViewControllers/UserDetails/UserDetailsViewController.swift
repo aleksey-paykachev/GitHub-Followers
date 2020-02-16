@@ -8,12 +8,7 @@
 
 import UIKit
 
-class UserDetailsViewController: UIViewController {
-	// MARK: - Properties
-		
-	private let loadingOverlayView = GFLoadingOverlayView()
-
-	
+class UserDetailsViewController: GFViewController {
 	// MARK: - Init
 	
 	init(username: String) {
@@ -38,11 +33,11 @@ class UserDetailsViewController: UIViewController {
 	// MARK: - Load data
 	
 	private func loadUserData(for username: String) {
-		loadingOverlayView.show(inside: view)
+		showLoadingIndicator()
 
 		DataManager.shared.getUser(by: username) { [weak self] result in
 			guard let self = self else { return }
-			self.loadingOverlayView.hide()
+			self.hideLoadingIndicator()
 
 			switch result {
 			case .success(let user):
@@ -83,7 +78,7 @@ class UserDetailsViewController: UIViewController {
 		mainStack.setCustomSpacing(0, after: actionButtonsStack)
 		mainStack.setCustomSpacing(14, after: userSocialActivityDetailsView)
 
-		view.addSubview(mainStack)
+		view.insertSubview(mainStack, at: 0)
 		mainStack.constrainToSuperview(padding: 20, respectSafeArea: true)
 	}
 	
