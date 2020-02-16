@@ -9,10 +9,13 @@
 import UIKit
 
 class FavoriteCell: UITableViewCell {
+	// MARK: - Properties
+	
 	static let reuseId = String(describing: FavoriteCell.self)
 	
-	let photoImageView = GFImageView(asset: .avatarPlaceholder)
-	let usernameLabel = GFLabel(font: .systemFont(ofSize: 24))
+	private let containerView = UIView()
+	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
+	private let usernameLabel = GFLabel(font: .systemFont(ofSize: 24))
 
 	
 	// MARK: - Init
@@ -20,6 +23,7 @@ class FavoriteCell: UITableViewCell {
 	override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
+		setupView()
 		setupSubviews()
 	}
 	
@@ -30,13 +34,15 @@ class FavoriteCell: UITableViewCell {
 	
 	// MARK: - Setup
 	
+	private func setupView() {
+		selectionStyle = .none
+	}
+	
 	private func setupSubviews() {
 		photoImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
 		photoImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
 		photoImageView.layer.setCornerRadius(10)
 		
-		let containerView = UIView()
-		containerView.backgroundColor = .systemBackground
 		containerView.layer.setShadow(radius: 3, opacity: 0.1, offsetX: 2, offsetY: 2)
 		contentView.addSubview(containerView)
 		containerView.constrainToSuperview(padding: 9)
@@ -61,6 +67,12 @@ class FavoriteCell: UITableViewCell {
 				self.photoImageView.image = image
 			}
 		}
+	}
+	
+	override func setSelected(_ selected: Bool, animated: Bool) {
+		super.setSelected(selected, animated: animated)
+		
+		containerView.backgroundColor = isSelected ? .secondarySystemBackground : .tertiarySystemBackground
 	}
 	
 	override func prepareForReuse() {
