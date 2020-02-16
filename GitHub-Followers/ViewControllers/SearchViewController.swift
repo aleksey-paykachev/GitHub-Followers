@@ -98,8 +98,8 @@ class SearchViewController: UIViewController {
 				
 			case .success(let user):
 				self.searchTermTextField.text = ""
-				let followersListVC = FollowersListViewController(user: user)
-				self.navigationController?.pushViewController(followersListVC, animated: true)
+				let followersVC = FollowersViewController(for: user)
+				self.navigationController?.pushViewController(followersVC, animated: true)
 			}
 		}
 	}

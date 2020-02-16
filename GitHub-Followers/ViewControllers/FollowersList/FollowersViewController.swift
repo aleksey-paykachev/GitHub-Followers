@@ -1,5 +1,5 @@
 //
-//  FollowersListViewController.swift
+//  FollowersViewController.swift
 //  GitHub-Followers
 //
 //  Created by Aleksey on 06.02.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowersListViewController: GFViewController {
+class FollowersViewController: GFViewController {
 	// MARK: - Sections
 	
 	enum Section {
@@ -28,7 +28,7 @@ class FollowersListViewController: GFViewController {
 	
 	// MARK: - Init
 	
-	init(user: GithubUser) {
+	init(for user: GithubUser) {
 		self.user = user
 		super.init(nibName: nil, bundle: nil)
 		
@@ -182,7 +182,7 @@ class FollowersListViewController: GFViewController {
 
 // MARK: - UICollectionViewDelegate
 
-extension FollowersListViewController: UICollectionViewDelegate {
+extension FollowersViewController: UICollectionViewDelegate {
 	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		
 		let follower = followers[indexPath.item]
@@ -193,7 +193,7 @@ extension FollowersListViewController: UICollectionViewDelegate {
 
 // MARK: - UISearchResultsUpdating
 
-extension FollowersListViewController: UISearchResultsUpdating {
+extension FollowersViewController: UISearchResultsUpdating {
 	
 	func updateSearchResults(for searchController: UISearchController) {
 		guard let filterTerm = searchController.searchBar.text?.trimmed else { return }
