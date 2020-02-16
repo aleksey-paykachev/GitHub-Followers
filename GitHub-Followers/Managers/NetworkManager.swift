@@ -11,13 +11,7 @@ import UIKit
 class NetworkManager {
 	// MARK: - Properties
 	
-	static let shared = NetworkManager()
 	private let cache = NSCache<NSURL, NSData>()
-	
-	
-	// MARK: - Init
-	
-	private init() {}
 	
 
 	// MARK: - API

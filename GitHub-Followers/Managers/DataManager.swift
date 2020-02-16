@@ -14,7 +14,7 @@ class DataManager {
 	static let shared = DataManager()
 	
 	private let persistentManager = PersistentManager()
-	private let networkManager = NetworkManager.shared
+	private let networkManager = NetworkManager()
 	
 	private let baseUrl = URL(string: "https://api.github.com")
 	private lazy var usersUrl = baseUrl?.appendingPathComponent("users")
