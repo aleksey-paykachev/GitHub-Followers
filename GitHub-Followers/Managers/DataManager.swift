@@ -42,11 +42,11 @@ class DataManager {
 	
 	func getFollowers(for username: String,
 					  completionQueue: DispatchQueue = .main,
-					  completion: @escaping (Result<NetworkParsedResult<[GithubFollower]>, NetworkManager.NetworkError>) -> Void) {
+					  completion: @escaping (Result<NetworkManager.NetworkParsedResult<[GithubFollower]>, NetworkManager.NetworkError>) -> Void) {
 		
 		let url = usersUrl?.appending(username, "followers")
 
-		networkManager.getParsedDataWithNetworkHeaders(from: url) { result in
+		networkManager.getNetworkParsedResult(from: url) { result in
 			completionQueue.async {
 				completion(result)
 			}

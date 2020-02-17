@@ -8,25 +8,6 @@
 
 import UIKit
 
-class NetworkResponse {
-	let data: Data
-	let headers: [Header]?
-	
-	init(data: Data, headers: [Header]?) {
-		self.data = data
-		self.headers = headers
-	}
-}
-
-enum Header {
-	case nextLink(URL)
-}
-
-struct NetworkParsedResult<T: Decodable> {
-	let data: T
-	let headers: [Header]?
-}
-
 class NetworkManager {
 	// MARK: - Properties
 	
@@ -36,9 +17,9 @@ class NetworkManager {
 	// MARK: - API
 	
 	func getImage(from url: URL?,
-				  completion: @escaping ((Result<UIImage, NetworkError>) -> Void)) {
+				  completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
 		
-		getData(from: url) { result in
+		getNetworkResponse(from: url) { result in
 			switch result {
 			case .failure(let error):
 				completion(.failure(error))
@@ -55,9 +36,9 @@ class NetworkManager {
 	}
 	
 	func getParsedData<T: Decodable>(from url: URL?,
-									 completion: @escaping ((Result<T, NetworkError>) -> Void)) {
+									 completion: @escaping (Result<T, NetworkError>) -> Void) {
 		
-		getData(from: url) { result in
+		getNetworkResponse(from: url) { result in
 			switch result {
 			case .failure(let error):
 				completion(.failure(error))
@@ -72,10 +53,10 @@ class NetworkManager {
 		}
 	}
 	
-	func getParsedDataWithNetworkHeaders<T>(from url: URL?,
-											completion: @escaping ((Result<NetworkParsedResult<T>, NetworkError>) -> Void)) {
+	func getNetworkParsedResult<T>(from url: URL?,
+								   completion: @escaping (Result<NetworkParsedResult<T>, NetworkError>) -> Void) {
 		
-		getData(from: url) { result in
+		getNetworkResponse(from: url) { result in
 			switch result {
 			case .failure(let error):
 				completion(.failure(error))
@@ -93,8 +74,8 @@ class NetworkManager {
 		}
 	}
 	
-	func getData(from url: URL?,
-				 completion: @escaping ((Result<NetworkResponse, NetworkError>) -> Void)) {
+	func getNetworkResponse(from url: URL?,
+							completion: @escaping (Result<NetworkResponse, NetworkError>) -> Void) {
 		
 		guard let url = url else {
 			completion(.failure(.wrongUrl))
@@ -141,6 +122,32 @@ class NetworkManager {
 			completion(.success(networkResponse))
 			
 		}.resume()
+	}
+	
+	
+	// MARK: - NetworkResponse
+	
+	// Declared as a class to be able to cache network response using NSCache.
+	class NetworkResponse {
+		let data: Data
+		let headers: [Header]?
+		
+		init(data: Data, headers: [Header]?) {
+			self.data = data
+			self.headers = headers
+		}
+		
+		enum Header {
+			case nextLink(URL)
+		}
+	}
+
+	
+	// MARK: - NetworkParsedResult
+	
+	struct NetworkParsedResult<T: Decodable> {
+		let data: T
+		let headers: [NetworkResponse.Header]?
 	}
 	
 	
