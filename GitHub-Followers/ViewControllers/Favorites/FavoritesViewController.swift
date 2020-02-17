@@ -11,7 +11,7 @@ import UIKit
 class FavoritesViewController: UITableViewController {
 	// MARK: - Properties
 	
-	private var dataSource: FavoritesDataSource!
+	private lazy var dataSource = createDataSource()
 
 	
 	// MARK: - Init
@@ -24,11 +24,22 @@ class FavoritesViewController: UITableViewController {
 		setupTabBar()
 		setupNavigationBar()
 		setupTableView()
-		setupDataSource()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	
+	// MARK: - Create
+	
+	private func createDataSource() -> FavoritesDataSource {
+		FavoritesDataSource(tableView: tableView, cellProvider: { tableView, indexPath, user -> UITableViewCell? in
+			
+			let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseId, for: indexPath) as? FavoriteCell
+			cell?.set(user: user)
+			return cell
+		})
 	}
 	
 	
@@ -47,15 +58,6 @@ class FavoritesViewController: UITableViewController {
 		tableView.separatorStyle = .none
 	}
 	
-	private func setupDataSource() {
-		dataSource = FavoritesDataSource(tableView: tableView, cellProvider: { tableView, indexPath, user -> UITableViewCell? in
-			
-			let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseId, for: indexPath) as? FavoriteCell
-			cell?.set(user: user)
-			return cell
-		})
-	}
-	
 	
 	// MARK: - View lifecycle
 	
@@ -64,5 +66,17 @@ class FavoritesViewController: UITableViewController {
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
 		dataSource.reloadData()
+	}
+}
+
+
+// MARK: - UITableViewDelegate
+
+extension FavoritesViewController {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+		guard let user = dataSource.itemIdentifier(for: indexPath) else { return }
+		
+		let followersVC = FollowersViewController(for: user)
+		navigationController?.pushViewController(followersVC, animated: true)
 	}
 }

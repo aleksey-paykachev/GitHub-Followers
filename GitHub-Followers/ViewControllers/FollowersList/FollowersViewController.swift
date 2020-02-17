@@ -32,7 +32,7 @@ class FollowersViewController: GFViewController {
 		self.user = user
 		super.init(nibName: nil, bundle: nil)
 		
-		setupNavigationItemProfileImage()
+		setupNavigationItem()
 		setupSearchController()
 		setupCollectionView()
 		loadData()
@@ -82,7 +82,9 @@ class FollowersViewController: GFViewController {
 	
 	// MARK: - Setup
 	
-	private func setupNavigationItemProfileImage() {
+	private func setupNavigationItem() {
+		navigationItem.largeTitleDisplayMode = .never
+		
 		let profileImageHeight: CGFloat = 38
 
 		let profileButton = UIButton(type: .system)
