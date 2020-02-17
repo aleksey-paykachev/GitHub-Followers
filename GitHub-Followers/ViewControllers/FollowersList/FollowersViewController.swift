@@ -146,9 +146,11 @@ class FollowersViewController: GFViewController {
 				print("Network error:", error)
 				self.navigationController?.popViewController(animated: true)
 
-			case .success(let followers):
-				self.followers.append(contentsOf: followers)
-				self.appendCollectionView(with: followers)
+			case .success(let followersNetworkResult):
+				let newFollowers = followersNetworkResult.data
+
+				self.followers.append(contentsOf: newFollowers)
+				self.appendCollectionView(with: newFollowers)
 			}
 		}
 	}

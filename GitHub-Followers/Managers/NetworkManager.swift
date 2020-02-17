@@ -8,10 +8,29 @@
 
 import UIKit
 
+class NetworkResponse {
+	let data: Data
+	let headers: [Header]?
+	
+	init(data: Data, headers: [Header]?) {
+		self.data = data
+		self.headers = headers
+	}
+}
+
+enum Header {
+	case nextLink(URL)
+}
+
+struct NetworkParsedResult<T: Decodable> {
+	let data: T
+	let headers: [Header]?
+}
+
 class NetworkManager {
 	// MARK: - Properties
 	
-	private let cache = NSCache<NSURL, NSData>()
+	private let cache = NSCache<NSURL, NetworkResponse>()
 	
 
 	// MARK: - API
@@ -24,8 +43,8 @@ class NetworkManager {
 			case .failure(let error):
 				completion(.failure(error))
 				
-			case .success(let data):
-				guard let image = UIImage(data: data) else {
+			case .success(let response):
+				guard let image = UIImage(data: response.data) else {
 					completion(.failure(.wrongData))
 					return
 				}
@@ -42,10 +61,9 @@ class NetworkManager {
 			switch result {
 			case .failure(let error):
 				completion(.failure(error))
-
-			case .success(let data):
+			case .success(let response):
 				do {
-					let parsedData: T = try Parser.parse(data)
+					let parsedData: T = try Parser.parse(response.data)
 					completion(.success(parsedData))
 				} catch {
 					completion(.failure(.parseError(error)))
@@ -54,8 +72,29 @@ class NetworkManager {
 		}
 	}
 	
+	func getParsedDataWithNetworkHeaders<T>(from url: URL?,
+											completion: @escaping ((Result<NetworkParsedResult<T>, NetworkError>) -> Void)) {
+		
+		getData(from: url) { result in
+			switch result {
+			case .failure(let error):
+				completion(.failure(error))
+
+			case .success(let response):
+				do {
+					let parsedData: T = try Parser.parse(response.data)
+					let networkResult = NetworkParsedResult(data: parsedData, headers: response.headers)
+					completion(.success(networkResult))
+
+				} catch {
+					completion(.failure(.parseError(error)))
+				}
+			}
+		}
+	}
+	
 	func getData(from url: URL?,
-				 completion: @escaping ((Result<Data, NetworkError>) -> Void)) {
+				 completion: @escaping ((Result<NetworkResponse, NetworkError>) -> Void)) {
 		
 		guard let url = url else {
 			completion(.failure(.wrongUrl))
@@ -63,8 +102,8 @@ class NetworkManager {
 		}
 		
 		// try to load data from cache
-		if let cachedData = cache.object(forKey: url as NSURL) as Data? {
-			completion(.success(cachedData))
+		if let cachedResponse = cache.object(forKey: url as NSURL) {
+			completion(.success(cachedResponse))
 			return
 		}
 		
@@ -95,8 +134,11 @@ class NetworkManager {
 				return
 			}
 			
-			self.cache.setObject(data as NSData, forKey: url as NSURL)
-			completion(.success(data))
+			#warning("Parse and add headers to response")
+			let networkResponse = NetworkResponse(data: data, headers: nil)
+			
+			self.cache.setObject(networkResponse, forKey: url as NSURL)
+			completion(.success(networkResponse))
 			
 		}.resume()
 	}
