@@ -85,11 +85,11 @@ class SearchViewController: GFViewController {
 		}
 
 		view.endEditing(true)
-		showLoadingIndicator()
+		isLoading = true
 
 		DataManager.shared.getUser(by: searchTerm) { [weak self] result in
 			guard let self = self else { return }
-			self.hideLoadingIndicator()
+			self.isLoading = false
 			
 			switch result {
 			case .failure(let error):

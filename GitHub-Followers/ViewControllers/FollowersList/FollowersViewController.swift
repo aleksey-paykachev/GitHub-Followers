@@ -20,6 +20,7 @@ class FollowersViewController: GFViewController {
 	
 	private let user: GithubUser
 	private var followers: [GithubFollower] = []
+	private var nextUrl: URL?
 	private var filterFollowersByNameTerm = ""
 	
 	private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
@@ -134,11 +135,11 @@ class FollowersViewController: GFViewController {
 	// MARK: - Load data
 	
 	private func loadData() {
-		showLoadingIndicator()
+		isLoading = true
 		
-		DataManager.shared.getFollowers(for: user.username) { [weak self] result in
+		DataManager.shared.getFollowers(for: user.username, url: nextUrl) { [weak self] result in
 			guard let self = self else { return }
-			self.hideLoadingIndicator()
+			self.isLoading = false
 			
 			switch result {
 			case .failure(let error):
@@ -173,13 +174,14 @@ class FollowersViewController: GFViewController {
 	}
 	
 	private func checkIfScrolledToBottom() {
-		guard nextUrl != nil else { return }
+		guard nextUrl != nil, !isLoading else { return }
 		
 		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
 		print("Height to bottom:", heightToBottom)
 		
 		if heightToBottom <= 50 {
 			print("Load more followers")
+			loadData()
 		}
 	}
 }

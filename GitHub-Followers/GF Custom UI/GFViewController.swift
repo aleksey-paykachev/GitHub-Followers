@@ -13,14 +13,22 @@ class GFViewController: UIViewController {
 
 	private let loadingOverlayView = GFLoadingOverlayView()
 	
+	var isLoading = false {
+		didSet {
+			if isLoading != oldValue {
+				isLoading ? showLoadingIndicator() : hideLoadingIndicator()
+			}
+		}
+	}
 	
-	// MARK: - API
 	
-	func showLoadingIndicator() {
+	// MARK: - Methods
+	
+	private func showLoadingIndicator() {
 		loadingOverlayView.show(inside: view)
 	}
 	
-	func hideLoadingIndicator() {
+	private func hideLoadingIndicator() {
 		// add little delay before hiding loading indicator to reduce its "flashing" on screen
 
 		DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
