@@ -115,7 +115,6 @@ class FollowersViewController: GFViewController {
 		searchController.obscuresBackgroundDuringPresentation = false
 		
 		navigationItem.searchController = searchController
-		// show search bar on first appearance, but set it to "hideWhenScrolling" in viewDidAppear
 		navigationItem.hidesSearchBarWhenScrolling = false
 	}
 	
@@ -173,12 +172,15 @@ class FollowersViewController: GFViewController {
 		present(userDetailsViewController, animated: true)
 	}
 	
-	
-	// MARK: - View lifecycle
-	
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-		navigationItem.hidesSearchBarWhenScrolling = true
+	private func checkIfScrolledToBottom() {
+		guard nextUrl != nil else { return }
+		
+		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
+		print("Height to bottom:", heightToBottom)
+		
+		if heightToBottom <= 50 {
+			print("Load more followers")
+		}
 	}
 }
 
@@ -205,5 +207,18 @@ extension FollowersViewController: UISearchResultsUpdating {
 			print("Filter followers with:", filterTerm)
 			filterFollowersByNameTerm = filterTerm
 		}
+	}
+}
+
+
+// MARK: - UIScrollViewDelegate
+
+extension FollowersViewController {
+	func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+		checkIfScrolledToBottom()
+	}
+
+	func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+		checkIfScrolledToBottom()
 	}
 }
