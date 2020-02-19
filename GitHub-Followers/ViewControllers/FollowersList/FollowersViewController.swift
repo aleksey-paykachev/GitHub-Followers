@@ -144,13 +144,14 @@ class FollowersViewController: GFViewController {
 			switch result {
 			case .failure(let error):
 				print("Network error:", error)
-				self.navigationController?.popViewController(animated: true)
 
 			case .success(let followersNetworkResult):
 				let newFollowers = followersNetworkResult.data
 
 				self.followers.append(contentsOf: newFollowers)
 				self.appendCollectionView(with: newFollowers)
+				
+				self.nextUrl = followersNetworkResult.headers.nextUrl
 			}
 		}
 	}
@@ -173,14 +174,12 @@ class FollowersViewController: GFViewController {
 		present(userDetailsViewController, animated: true)
 	}
 	
-	private func checkIfScrolledToBottom() {
+	private func loadMoreDataIfScrolledToBottom() {
 		guard nextUrl != nil, !isLoading else { return }
 		
 		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
-		print("Height to bottom:", heightToBottom)
 		
 		if heightToBottom <= 50 {
-			print("Load more followers")
 			loadData()
 		}
 	}
@@ -217,10 +216,10 @@ extension FollowersViewController: UISearchResultsUpdating {
 
 extension FollowersViewController {
 	func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-		checkIfScrolledToBottom()
+		loadMoreDataIfScrolledToBottom()
 	}
 
 	func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-		checkIfScrolledToBottom()
+		loadMoreDataIfScrolledToBottom()
 	}
 }
