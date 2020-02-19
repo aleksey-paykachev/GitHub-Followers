@@ -142,22 +142,17 @@ class NetworkManager {
 
 			<baseUrl/user/48685/followers?page=1>; rel="prev", <baseUrl/user/48685/followers?page=3>; rel="next", <baseUrl/user/48685/followers?page=29>; rel="last", <baseUrl/user/48685/followers?page=1>; rel="first"
 
-			We only interested in "next" url, so we parse it using regular expression */
+			We only interested in "next" url, and will parse it using regular expression */
 
-			var headers: [Header] = []
-			if let linksHeaderString = httpResponse.allHeaderFields["Link"] as? String {
-				
-				let pattern = #"(?<=<)(\S+)(?=>;\s*rel="next")"#
-				let matchRange = linksHeaderString.range(of: pattern, options: .regularExpression)
-				if let matchRange = matchRange {
-					let match = linksHeaderString[matchRange]
-					if let nextUrl = URL(string: "\(match)") {
-						headers.append(.nextLink(nextUrl))
-					}
-				}
+			let pattern = #"(?<=<)(\S+)(?=>;\s*rel="next")"#
+
+			guard let linkHeader = httpResponse.allHeaderFields["Link"] as? String,
+				let nextUrlString = linkHeader.regExpFirstMatch(of: pattern),
+				let nextUrl = URL(string: nextUrlString) else {
+					return []
 			}
 
-			return headers
+			return [.nextLink(nextUrl)]
 		}
 		
 		enum Header {
