@@ -95,11 +95,12 @@ class NetworkManager {
 				return
 			}
 			
-			guard let statusCode = (response as? HTTPURLResponse)?.statusCode else {
+			guard let httpResponse = response as? HTTPURLResponse else {
 				completion(.failure(.wrongResponse))
 				return
 			}
 			
+			let statusCode = httpResponse.statusCode
 			guard statusCode == 200 else {
 				switch statusCode {
 				case 404:
@@ -115,8 +116,7 @@ class NetworkManager {
 				return
 			}
 			
-			#warning("Parse and add headers to response")
-			let networkResponse = NetworkResponse(data: data, headers: nil)
+			let networkResponse = NetworkResponse(data: data, httpResponse: httpResponse)
 			
 			self.cache.setObject(networkResponse, forKey: url as NSURL)
 			completion(.success(networkResponse))
@@ -132,9 +132,32 @@ class NetworkManager {
 		let data: Data
 		let headers: [Header]?
 		
-		init(data: Data, headers: [Header]?) {
+		init(data: Data, httpResponse: HTTPURLResponse) {
 			self.data = data
-			self.headers = headers
+			self.headers = NetworkResponse.parseHeaders(httpResponse: httpResponse)
+		}
+		
+		private static func parseHeaders(httpResponse: HTTPURLResponse) -> [Header] {
+			/* Response from server may contain following "Link" field header:
+
+			<baseUrl/user/48685/followers?page=1>; rel="prev", <baseUrl/user/48685/followers?page=3>; rel="next", <baseUrl/user/48685/followers?page=29>; rel="last", <baseUrl/user/48685/followers?page=1>; rel="first"
+
+			We only interested in "next" url, so we parse it using regular expression */
+
+			var headers: [Header] = []
+			if let linksHeaderString = httpResponse.allHeaderFields["Link"] as? String {
+				
+				let pattern = #"(?<=<)(\S+)(?=>;\s*rel="next")"#
+				let matchRange = linksHeaderString.range(of: pattern, options: .regularExpression)
+				if let matchRange = matchRange {
+					let match = linksHeaderString[matchRange]
+					if let nextUrl = URL(string: "\(match)") {
+						headers.append(.nextLink(nextUrl))
+					}
+				}
+			}
+
+			return headers
 		}
 		
 		enum Header {
