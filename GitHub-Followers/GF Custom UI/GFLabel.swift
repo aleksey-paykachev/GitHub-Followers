@@ -12,6 +12,7 @@ class GFLabel: UILabel {
 	// MARK: - Init
 	
 	init(text: String? = nil,
+		 attributedText: NSAttributedString? = nil,
 		 font: UIFont? = nil,
 		 color: UIColor? = nil,
 		 alignment: NSTextAlignment = .left,
@@ -20,7 +21,9 @@ class GFLabel: UILabel {
 		super.init(frame: .zero)
 		
 		// setup
-		self.text = text
+		text.map { self.text = $0 } // apply text and attributedText only if they aren't nil
+		attributedText.map { self.attributedText = $0 }
+
 		self.font = font
 		self.textColor = color
 		self.textAlignment = alignment
