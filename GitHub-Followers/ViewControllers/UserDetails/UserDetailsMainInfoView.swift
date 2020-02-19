@@ -50,8 +50,8 @@ class UserDetailsMainInfoView: UIView {
 		
 		let usernameLabel = GFLabel(text: user.username,
 									font: .systemFont(ofSize: 28, weight: .medium))
-		let fullNameLabel = GFLabel(text: user.fullName)
-		let locationLabel = GFLabel(text: user.location.map { "􀎫 \($0)" })
+		let fullNameLabel = GFLabel(text: user.fullName, image: UIImage(systemName: "person"))
+		let locationLabel = GFLabel(text: user.location, image: UIImage(systemName: "mappin.and.ellipse"))
 		
 		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel],spacing: 4)
 		

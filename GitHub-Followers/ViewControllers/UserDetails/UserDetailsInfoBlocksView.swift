@@ -40,7 +40,8 @@ class UserDetailsInfoBlocksView: UIView {
 	private func setupSubviews() {
 		let infoBlockLabels = infoBlocks.map { infoBlock in
 			GFLabel(text: infoBlock.text,
-					font: .systemFont(ofSize: 16, weight: .medium),
+					image: infoBlock.logoImage,
+					font: .systemFont(ofSize: 18, weight: .medium),
 					color: .white,
 					alignment: .center,
 					allowMultipleLines: true)
@@ -74,16 +75,29 @@ class UserDetailsInfoBlocksView: UIView {
 		case following(count: Int)
 		case followers(count: Int)
 		
+		var logoImage: UIImage? {
+			switch self {
+			case .repos:
+				return UIImage(systemName: "folder")
+			case .gists:
+				return UIImage(systemName: "doc.text")
+			case .following:
+				return UIImage(systemName: "person.2")
+			case .followers:
+				return UIImage(systemName: "person.3")
+			}
+		}
+		
 		var text: String {
 			switch self {
 			case .repos(let count):
-				return "􀈕 Public Repos\n\(count)"
+				return "Public Repos\n\(count)"
 			case .gists(let count):
-				return "􀈿 Public Gists\n\(count)"
+				return "Public Gists\n\(count)"
 			case .following(let count):
-				return "􀉫 Following\n\(count)"
+				return "Following\n\(count)"
 			case .followers(let count):
-				return "􀝊 Followers\n\(count)"
+				return "Followers\n\(count)"
 			}
 		}
 	}
