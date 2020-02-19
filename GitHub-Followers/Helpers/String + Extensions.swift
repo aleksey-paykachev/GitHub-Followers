@@ -14,7 +14,7 @@ extension String {
 		trimmingCharacters(in: .whitespacesAndNewlines)
 	}
 	
-	func regExpFirstMatch(of pattern: String) -> String? {
+	func firstRegExpMatch(of pattern: String) -> String? {
 		guard let matchedRange = range(of: pattern, options: .regularExpression) else {
 			return nil
 		}

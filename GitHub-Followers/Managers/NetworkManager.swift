@@ -130,14 +130,15 @@ class NetworkManager {
 	// Declared as a class to be able to cache network response using NSCache.
 	class NetworkResponse {
 		let data: Data
-		let headers: [Header]?
+		private(set) var headers: Headers = .empty
 		
 		init(data: Data, httpResponse: HTTPURLResponse) {
 			self.data = data
-			self.headers = NetworkResponse.parseHeaders(httpResponse: httpResponse)
+
+			parseHeaders(httpResponse: httpResponse)
 		}
 		
-		private static func parseHeaders(httpResponse: HTTPURLResponse) -> [Header] {
+		private func parseHeaders(httpResponse: HTTPURLResponse) {
 			/* Response from server may contain following "Link" field header:
 
 			<baseUrl/user/48685/followers?page=1>; rel="prev", <baseUrl/user/48685/followers?page=3>; rel="next", <baseUrl/user/48685/followers?page=29>; rel="last", <baseUrl/user/48685/followers?page=1>; rel="first"
@@ -145,18 +146,20 @@ class NetworkManager {
 			We only interested in "next" url, and will parse it using regular expression */
 
 			let pattern = #"(?<=<)(\S+)(?=>;\s*rel="next")"#
-
-			guard let linkHeader = httpResponse.allHeaderFields["Link"] as? String,
-				let nextUrlString = linkHeader.regExpFirstMatch(of: pattern),
-				let nextUrl = URL(string: nextUrlString) else {
-					return []
-			}
-
-			return [.nextLink(nextUrl)]
+			
+			headers.nextUrl = httpResponse.getHeader("Link")?
+								.firstRegExpMatch(of: pattern)
+								.flatMap { URL(string: $0) }
 		}
 		
-		enum Header {
-			case nextLink(URL)
+		struct Headers {
+			static let empty = Headers()
+
+			// Multiple pages response URLs
+			var firstUrl: URL?
+			var previousUrl: URL?
+			var nextUrl: URL?
+			var lastUrl: URL?
 		}
 	}
 
@@ -165,7 +168,7 @@ class NetworkManager {
 	
 	struct NetworkParsedResult<T: Decodable> {
 		let data: T
-		let headers: [NetworkResponse.Header]?
+		let headers: NetworkResponse.Headers
 	}
 	
 	
