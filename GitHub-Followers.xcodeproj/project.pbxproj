@@ -17,6 +17,7 @@
 		5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HStackView.swift */; };
 		5B2424A523EC520600224099 /* GithubFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubFollower.swift */; };
 		5B24666C23FDB981002BE590 /* HTTPURLResponse + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24666B23FDB981002BE590 /* HTTPURLResponse + Extensions.swift */; };
+		5B24666E23FDC04E002BE590 /* NetworkResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24666D23FDC04E002BE590 /* NetworkResponse.swift */; };
 		5B29FCCE23F85F8A006E6B1C /* GFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B29FCCD23F85F8A006E6B1C /* GFViewController.swift */; };
 		5B435C9F23EFB31700C885DE /* GFLoadingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */; };
 		5B495BE623F2F55500ECDB1F /* Date + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */; };
@@ -63,6 +64,7 @@
 		5B22985323F0B69E00E37DC1 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5B2424A423EC520600224099 /* GithubFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFollower.swift; sourceTree = "<group>"; };
 		5B24666B23FDB981002BE590 /* HTTPURLResponse + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HTTPURLResponse + Extensions.swift"; sourceTree = "<group>"; };
+		5B24666D23FDC04E002BE590 /* NetworkResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkResponse.swift; sourceTree = "<group>"; };
 		5B29FCCD23F85F8A006E6B1C /* GFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFViewController.swift; sourceTree = "<group>"; };
 		5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFLoadingOverlayView.swift; sourceTree = "<group>"; };
 		5B495BE523F2F55500ECDB1F /* Date + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extensions.swift"; sourceTree = "<group>"; };
@@ -141,6 +143,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		5B24666F23FDC053002BE590 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */,
+				5B24666D23FDC04E002BE590 /* NetworkResponse.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		5B55CB1723EB5E8700B6DF31 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,9 +169,9 @@
 		5B55CB2023EB7D4C00B6DF31 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				5B24666F23FDC053002BE590 /* Network */,
 				5B76B13B23EE07CE00252661 /* DataManager.swift */,
 				5BBE14AD23F7981400332189 /* PersistentManager.swift */,
-				5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */,
 				5BECD1C623EC847C00FA2455 /* Parser.swift */,
 			);
 			path = Managers;
@@ -351,6 +362,7 @@
 				5B24666C23FDB981002BE590 /* HTTPURLResponse + Extensions.swift in Sources */,
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
 				5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */,
+				5B24666E23FDC04E002BE590 /* NetworkResponse.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
 				5B29FCCE23F85F8A006E6B1C /* GFViewController.swift in Sources */,

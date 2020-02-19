@@ -125,45 +125,6 @@ class NetworkManager {
 	}
 	
 	
-	// MARK: - NetworkResponse
-	
-	// Declared as a class to be able to cache network response using NSCache.
-	class NetworkResponse {
-		let data: Data
-		private(set) var headers: Headers = .empty
-		
-		init(data: Data, httpResponse: HTTPURLResponse) {
-			self.data = data
-
-			parseHeaders(httpResponse: httpResponse)
-		}
-		
-		private func parseHeaders(httpResponse: HTTPURLResponse) {
-			/* Response from server may contain following "Link" field header:
-
-			<baseUrl/user/48685/followers?page=1>; rel="prev", <baseUrl/user/48685/followers?page=3>; rel="next", <baseUrl/user/48685/followers?page=29>; rel="last", <baseUrl/user/48685/followers?page=1>; rel="first"
-
-			We only interested in "next" url, and will parse it using regular expression */
-
-			let pattern = #"(?<=<)(\S+)(?=>;\s*rel="next")"#
-			
-			headers.nextUrl = httpResponse.getHeader("Link")?
-								.firstRegExpMatch(of: pattern)
-								.flatMap { URL(string: $0) }
-		}
-		
-		struct Headers {
-			static let empty = Headers()
-
-			// Multiple pages response URLs
-			var firstUrl: URL?
-			var previousUrl: URL?
-			var nextUrl: URL?
-			var lastUrl: URL?
-		}
-	}
-
-	
 	// MARK: - NetworkParsedResult
 	
 	struct NetworkParsedResult<T: Decodable> {
