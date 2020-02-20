@@ -50,8 +50,8 @@ class UserDetailsMainInfoView: UIView {
 		
 		let usernameLabel = GFLabel(text: user.username,
 									font: .systemFont(ofSize: 28, weight: .medium))
-		let fullNameLabel = GFLabel(text: user.fullName, image: UIImage(systemName: "person"))
-		let locationLabel = GFLabel(text: user.location, image: UIImage(systemName: "mappin.and.ellipse"))
+		let fullNameLabel = GFLabel(text: user.fullName, image: UIImage(sfSymbol: .person))
+		let locationLabel = GFLabel(text: user.location, image: UIImage(sfSymbol: .mappinAndEllipse))
 		
 		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel],spacing: 4)
 		
@@ -96,7 +96,7 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Actions
 	
 	private func setFavoriteButtonState(to isFavorite: Bool) {
-		let buttonImage = UIImage(systemName: isFavorite ? "star.fill" : "star")
+		let buttonImage = UIImage(sfSymbol: isFavorite ? .starFill : .star)
 		favoriteButton.setBackgroundImage(buttonImage, for: .normal)
 	}
 	

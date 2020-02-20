@@ -46,7 +46,7 @@ class FavoritesViewController: UITableViewController {
 	// MARK: - Setup
 	
 	private func setupTabBar() {
-		tabBarItem.image = UIImage(systemName: "star.fill")
+		tabBarItem.image = UIImage(sfSymbol: .starFill)
 	}
 	
 	private func setupNavigationBar() {
