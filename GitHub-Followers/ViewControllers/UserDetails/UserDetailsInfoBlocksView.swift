@@ -33,7 +33,7 @@ class UserDetailsInfoBlocksView: UIView {
 	// MARK: - Setup
 	
 	private func setupView() {
-		backgroundColor = .systemGray
+		backgroundColor = .gfDetailsInfoBlockBackground
 		layer.setCornerRadius(16)
 	}
 	
@@ -42,7 +42,7 @@ class UserDetailsInfoBlocksView: UIView {
 			GFLabel(text: infoBlock.text,
 					image: infoBlock.logoImage,
 					font: .systemFont(ofSize: 18, weight: .medium),
-					color: .white,
+					color: .gfTextInverted,
 					alignment: .center,
 					allowMultipleLines: true)
 		}
@@ -115,8 +115,8 @@ class UserDetailsInfoBlocksView: UIView {
 		
 		var buttonColor: UIColor {
 			switch self {
-			case .primary: return .systemGreen
-			case .secondary: return .systemPurple
+			case .primary: return .gfPrimary
+			case .secondary: return .gfSecondary
 			}
 		}
 		

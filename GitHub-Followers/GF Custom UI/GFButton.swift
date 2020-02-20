@@ -12,8 +12,8 @@ class GFButton: UIButton {
 	// MARK: - Init
 	
 	convenience init(title: String = "",
-					 color: UIColor? = .systemBackground,
-					 backgroundColor: UIColor = .systemGreen) {
+					 color: UIColor? = .gfTextInverted,
+					 backgroundColor: UIColor = .gfPrimary) {
 
 		self.init(type: .system)
 		

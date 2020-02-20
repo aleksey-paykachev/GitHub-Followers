@@ -72,7 +72,7 @@ class FavoriteCell: UITableViewCell {
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
-		containerView.backgroundColor = isSelected ? .secondarySystemBackground : .tertiarySystemBackground
+		containerView.backgroundColor = isSelected ? .gfFavoriteCellSelected : .gfFavoriteCell
 	}
 	
 	override func prepareForReuse() {

@@ -1,0 +1,34 @@
+//
+//  GFColors.swift
+//  GitHub-Followers
+//
+//  Created by Aleksey on 20.02.2020.
+//  Copyright © 2020 Aleksey Paykachev. All rights reserved.
+//
+
+import UIKit
+
+extension UIColor {
+	// Main
+	static let gfPrimary = UIColor.systemGreen
+	static let gfSecondary = UIColor.systemPurple
+	static let gfBackground = UIColor.systemBackground
+
+	// Text
+	static let gfTextInverted = UIColor.white
+	static let gfTextSecondary = UIColor.systemGray2
+
+	// Borders
+	static let gfImageBorder = UIColor.systemGray3
+	static let gfTextFieldBorder = UIColor.tertiarySystemFill
+	
+	// Cells
+	static let gfFavoriteCell = UIColor.tertiarySystemBackground
+	static let gfFavoriteCellSelected = UIColor.secondarySystemBackground
+
+	// Other
+	static let gfShadow = UIColor.black
+	static let gfError = UIColor.systemRed
+	
+	static let gfDetailsInfoBlockBackground = UIColor.systemGray
+}

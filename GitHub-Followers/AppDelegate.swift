@@ -32,12 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 	
 	private func setupApplicationAppearance() {
 		// tab bar
-		UITabBar.appearance().tintColor = .systemGreen
+		UITabBar.appearance().tintColor = .gfPrimary
 		
 		// navigation bar
-		UINavigationBar.appearance().tintColor = .systemGreen
+		UINavigationBar.appearance().tintColor = .gfPrimary
 		
 		// button
-		UIButton.appearance().tintColor = .systemGreen
+		UIButton.appearance().tintColor = .gfPrimary
 	}
 }

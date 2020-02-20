@@ -14,7 +14,7 @@ class FollowerCell: UICollectionViewCell {
 	var follower: GithubFollower? { didSet { updateUI() } }
 	
 	private let photoImageView = UIImageView(image: nil)
-	private let usernameLabel = UILabel()
+	private let usernameLabel = GFLabel()
 	
 	
 	// MARK: - Init
@@ -36,7 +36,7 @@ class FollowerCell: UICollectionViewCell {
 		// image view
 		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.layer.setCornerRadius(12)
-		photoImageView.layer.setBorder(color: .systemGray3)
+		photoImageView.layer.setBorder(color: .gfImageBorder)
 		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
 				
 		// stack

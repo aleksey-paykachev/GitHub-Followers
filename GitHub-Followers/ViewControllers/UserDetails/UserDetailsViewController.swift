@@ -26,7 +26,7 @@ class UserDetailsViewController: GFViewController {
 	// MARK: - Setup
 	
 	private func setupView() {
-		view.backgroundColor = .systemBackground
+		view.backgroundColor = .gfBackground
 	}
 	
 	
@@ -72,7 +72,7 @@ class UserDetailsViewController: GFViewController {
 			action: .secondary(title: "View Followers", completion: viewFollowersButtonDidPressed))
 
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
-		let sinceLabel = GFLabel(text: registeredText, color: .systemGray2, alignment: .center)
+		let sinceLabel = GFLabel(text: registeredText, color: .gfTextSecondary, alignment: .center)
 
 		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)
 		mainStack.setCustomSpacing(0, after: actionButtonsStack)

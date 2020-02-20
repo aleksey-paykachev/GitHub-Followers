@@ -74,7 +74,7 @@ class FollowersViewController: GFViewController {
 		profileButton.setImage(UIImage(asset: .avatarPlaceholder), for: .normal)
 		profileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
 		
-		profileButton.layer.setBorder(color: .systemGreen, width: 2)
+		profileButton.layer.setBorder(color: .gfPrimary, width: 2)
 		profileButton.layer.setCornerRadius(profileImageHeight / 2)
 		
 		profileButton.heightAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
@@ -106,7 +106,7 @@ class FollowersViewController: GFViewController {
 		collectionView.constrainToSuperview()
 		
 		title = user.username
-		collectionView.backgroundColor = .systemBackground
+		collectionView.backgroundColor = .gfBackground
 		collectionView.alwaysBounceVertical = true
 
 		collectionView.delegate = self

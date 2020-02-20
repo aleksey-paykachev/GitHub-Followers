@@ -40,7 +40,7 @@ class SearchViewController: GFViewController {
 	}
 	
 	private func setupView() {
-		view.backgroundColor = .systemBackground
+		view.backgroundColor = .gfBackground
 	}
 	
 	private func setupSubviews() {

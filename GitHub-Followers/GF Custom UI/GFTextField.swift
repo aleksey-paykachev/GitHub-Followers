@@ -41,7 +41,7 @@ class GFTextField: UITextField {
 		borderColorAnimation.duration = 0.3
 		borderColorAnimation.autoreverses = true
 		borderColorAnimation.fromValue = layer.borderColor
-		borderColorAnimation.toValue = UIColor.systemRed.cgColor
+		borderColorAnimation.toValue = UIColor.gfError.cgColor
 		
 		layer.add(borderColorAnimation, forKey: nil)
 	}
@@ -50,7 +50,7 @@ class GFTextField: UITextField {
 	// MARK: - Setup
 	
 	private func setupView() {
-		layer.setBorder(color: .tertiarySystemFill, width: 2)
+		layer.setBorder(color: .gfTextFieldBorder, width: 2)
 		layer.setCornerRadius(8)
 	}
 	

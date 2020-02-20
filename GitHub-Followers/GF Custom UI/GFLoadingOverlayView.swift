@@ -26,14 +26,14 @@ class GFLoadingOverlayView: UIView {
 	// MARK: - Setup
 	
 	private func setupView() {
-		backgroundColor = .systemBackground
+		backgroundColor = .gfBackground
 		isOpaque = false
 		alpha = 0
 	}
 	
 	private func setupActivityIndicatorView() {
 		let activityIndicatorView = UIActivityIndicatorView(style: .large)
-		activityIndicatorView.color = .systemGreen
+		activityIndicatorView.color = .gfPrimary
 		activityIndicatorView.startAnimating()
 		
 		addSubview(activityIndicatorView)
