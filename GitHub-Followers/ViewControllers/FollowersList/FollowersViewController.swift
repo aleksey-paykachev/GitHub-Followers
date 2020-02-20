@@ -23,7 +23,7 @@ class FollowersViewController: GFViewController {
 	private var nextUrl: URL?
 	private var filterFollowersByNameTerm = ""
 	
-	private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: createCompositionalLayout())
+	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: FollowersCompositionalLayout(itemsPerRow: 3))
 	private lazy var dataSource = createDataSource()
 	
 	
@@ -45,24 +45,6 @@ class FollowersViewController: GFViewController {
 	
 	
 	// MARK: - Create
-	
-	private func createCompositionalLayout() -> UICollectionViewCompositionalLayout {
-		// item
-		let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1/3), heightDimension: .fractionalWidth(1/3 * 1.3))
-		let item = NSCollectionLayoutItem(layoutSize: itemSize)
-		item.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 6, bottom: 6, trailing: 6)
-		
-		// group
-		let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .estimated(100))
-		let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-		
-		// section
-		let section = NSCollectionLayoutSection(group: group)
-		section.contentInsets = NSDirectionalEdgeInsets(top: 15, leading: 10, bottom: 0, trailing: 10)
-		
-		// layout
-		return UICollectionViewCompositionalLayout(section: section)
-	}
 	
 	private func createDataSource() -> UICollectionViewDiffableDataSource<Section, GithubFollower> {
 		let dataSource = UICollectionViewDiffableDataSource<Section, GithubFollower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in

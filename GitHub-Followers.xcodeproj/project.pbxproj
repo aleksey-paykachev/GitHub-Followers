@@ -39,6 +39,7 @@
 		5BDA107923F0BB68008738B8 /* UIView + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */; };
 		5BDA107B23F0C50F008738B8 /* GithubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107A23F0C50F008738B8 /* GithubUser.swift */; };
 		5BDA107D23F0C533008738B8 /* GithubProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BDA107C23F0C533008738B8 /* GithubProfile.swift */; };
+		5BEB157123FE210B00B1D8BE /* FollowersCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB157023FE210B00B1D8BE /* FollowersCompositionalLayout.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C623EC847C00FA2455 /* Parser.swift */; };
 		5BECD1C923EC856100FA2455 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C823EC856100FA2455 /* FollowersViewController.swift */; };
@@ -86,6 +87,7 @@
 		5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extensions.swift"; sourceTree = "<group>"; };
 		5BDA107A23F0C50F008738B8 /* GithubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubUser.swift; sourceTree = "<group>"; };
 		5BDA107C23F0C533008738B8 /* GithubProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubProfile.swift; sourceTree = "<group>"; };
+		5BEB157023FE210B00B1D8BE /* FollowersCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersCompositionalLayout.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BECD1C623EC847C00FA2455 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		5BECD1C823EC856100FA2455 /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 			isa = PBXGroup;
 			children = (
 				5BECD1C823EC856100FA2455 /* FollowersViewController.swift */,
+				5BEB157023FE210B00B1D8BE /* FollowersCompositionalLayout.swift */,
 				5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */,
 			);
 			path = FollowersList;
@@ -344,6 +347,7 @@
 				5B55CB1223EB59CF00B6DF31 /* GFButton.swift in Sources */,
 				5B074EBF23F1D21A00582379 /* UserDetailsInfoBlocksView.swift in Sources */,
 				5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */,
+				5BEB157123FE210B00B1D8BE /* FollowersCompositionalLayout.swift in Sources */,
 				5BF9B06423E87CAC004B44B7 /* MainTabBarController.swift in Sources */,
 				5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */,
 				5BDA107D23F0C533008738B8 /* GithubProfile.swift in Sources */,
