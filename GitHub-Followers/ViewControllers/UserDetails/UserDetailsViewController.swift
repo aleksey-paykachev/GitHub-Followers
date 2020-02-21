@@ -8,7 +8,17 @@
 
 import UIKit
 
+protocol UserDetailsViewControllerDelegate: class {
+	func viewFollowersButtonDidPressed(for user: GithubUser)
+}
+
 class UserDetailsViewController: GFViewController {
+	// MARK: - Properties
+	
+	private var user: GithubUser?
+	weak var delegate: UserDetailsViewControllerDelegate?
+	
+	
 	// MARK: - Init
 	
 	init(username: String) {
@@ -41,6 +51,7 @@ class UserDetailsViewController: GFViewController {
 
 			switch result {
 			case .success(let user):
+				self.user = user
 				self.createUI(for: user)
 
 			case .failure(let error):
@@ -94,7 +105,10 @@ class UserDetailsViewController: GFViewController {
 	}
 	
 	private func viewFollowersButtonDidPressed() {
-		print(#function)
+		guard let user = user else { return }
+
+		delegate?.viewFollowersButtonDidPressed(for: user)
+		dismiss(animated: true)
 	}
 }
 
