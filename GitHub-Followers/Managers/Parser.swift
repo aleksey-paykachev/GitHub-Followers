@@ -29,8 +29,17 @@ class Parser {
 	
 	// MARK: - Errors
 	
-	enum ParseError: Error {
+	enum ParseError: LocalizedError {
 		case noDataToParse
 		case couldNotParse(Error)
+		
+		var errorDescription: String? {
+			switch self {
+			case .noDataToParse:
+				return "No data to parse."
+			case .couldNotParse:
+				return "Could not parse data."
+			}
+		}
 	}
 }
