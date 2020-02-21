@@ -29,7 +29,7 @@ class DataManager {
 	
 	func getUser(by username: String,
 				 completionQueue: DispatchQueue = .main,
-				 completion: @escaping (Result<GithubUser, NetworkManager.NetworkError>) -> Void) {
+				 completion: @escaping (Result<GithubUser, NetworkError>) -> Void) {
 		
 		let url = usersUrl?.appending(username)
 		
@@ -43,7 +43,7 @@ class DataManager {
 	func getFollowers(for username: String,
 					  url: URL? = nil,
 					  completionQueue: DispatchQueue = .main,
-					  completion: @escaping (Result<NetworkManager.NetworkParsedResult<[GithubFollower]>, NetworkManager.NetworkError>) -> Void) {
+					  completion: @escaping (Result<NetworkParsedResult<[GithubFollower]>, NetworkError>) -> Void) {
 		
 		let requestUrl = url ?? usersUrl?.appending(username, "followers")
 
@@ -56,7 +56,7 @@ class DataManager {
 	
 	func getProfileImage(for githubProfile: GithubProfile,
 						 completionQueue: DispatchQueue = .main,
-						 completion: @escaping (Result<UIImage, NetworkManager.NetworkError>) -> Void) {
+						 completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
 		
 		let url = githubProfile.profileImageUrl
 

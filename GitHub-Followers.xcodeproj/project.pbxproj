@@ -14,6 +14,8 @@
 		5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */; };
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
 		5B20965223FF7DE000CBC6A1 /* GFErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */; };
+		5B20965423FF8FC100CBC6A1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20965323FF8FC100CBC6A1 /* NetworkError.swift */; };
+		5B20965623FF904D00CBC6A1 /* NetworkParsedResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20965523FF904D00CBC6A1 /* NetworkParsedResult.swift */; };
 		5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985123F0B67A00E37DC1 /* CustomStackView.swift */; };
 		5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HStackView.swift */; };
 		5B2424A523EC520600224099 /* GithubFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubFollower.swift */; };
@@ -64,6 +66,8 @@
 		5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFErrorMessageView.swift; sourceTree = "<group>"; };
+		5B20965323FF8FC100CBC6A1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		5B20965523FF904D00CBC6A1 /* NetworkParsedResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkParsedResult.swift; sourceTree = "<group>"; };
 		5B22985123F0B67A00E37DC1 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		5B22985323F0B69E00E37DC1 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5B2424A423EC520600224099 /* GithubFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFollower.swift; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 			children = (
 				5B55CB1E23EB7D4600B6DF31 /* NetworkManager.swift */,
 				5B24666D23FDC04E002BE590 /* NetworkResponse.swift */,
+				5B20965523FF904D00CBC6A1 /* NetworkParsedResult.swift */,
+				5B20965323FF8FC100CBC6A1 /* NetworkError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -373,9 +379,11 @@
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
 				5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */,
 				5B24666E23FDC04E002BE590 /* NetworkResponse.swift in Sources */,
+				5B20965423FF8FC100CBC6A1 /* NetworkError.swift in Sources */,
 				5B8DC49B23FE420300D94515 /* GFColors.swift in Sources */,
 				5BF9B05223E87714004B44B7 /* SceneDelegate.swift in Sources */,
 				5B55CB1F23EB7D4600B6DF31 /* NetworkManager.swift in Sources */,
+				5B20965623FF904D00CBC6A1 /* NetworkParsedResult.swift in Sources */,
 				5B29FCCE23F85F8A006E6B1C /* GFViewController.swift in Sources */,
 				5B6777C423F72250002C7877 /* FavoritesDataSource.swift in Sources */,
 				5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */,
