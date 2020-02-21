@@ -27,6 +27,8 @@ class FollowersViewController: GFViewController {
 	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: FollowersCompositionalLayout(itemsPerRow: 3))
 	private lazy var dataSource = createDataSource()
 	
+	typealias FollowersDataSource = UICollectionViewDiffableDataSource<Section, GithubFollower>
+	
 	
 	// MARK: - Init
 	
@@ -48,20 +50,13 @@ class FollowersViewController: GFViewController {
 	
 	// MARK: - Create
 	
-	private func createDataSource() -> UICollectionViewDiffableDataSource<Section, GithubFollower> {
-		let dataSource = UICollectionViewDiffableDataSource<Section, GithubFollower>(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in
+	private func createDataSource() -> FollowersDataSource {
+		FollowersDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in
 
 			let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
 			cell.follower = follower
 			return cell
 		})
-		
-		// initial snapshot
-		var snapshot = dataSource.snapshot()
-		snapshot.appendSections([.followers])
-		dataSource.apply(snapshot)
-		
-		return dataSource
 	}
 	
 	
@@ -123,7 +118,7 @@ class FollowersViewController: GFViewController {
 				let newFollowers = followersNetworkResult.data
 
 				self.followers.append(contentsOf: newFollowers)
-				self.appendCollectionView(with: newFollowers)
+				self.updateCollectionViewData()
 				
 				self.nextUrl = followersNetworkResult.headers.nextUrl
 			}
@@ -149,8 +144,9 @@ class FollowersViewController: GFViewController {
 		loadNavigationItemProfileImage()
 	}
 	
-	private func appendCollectionView(with followers: [GithubFollower]) {
-		var snapshot = dataSource.snapshot()
+	private func updateCollectionViewData() {
+		var snapshot = NSDiffableDataSourceSnapshot<Section, GithubFollower>()
+		snapshot.appendSections([.followers])
 		snapshot.appendItems(followers)
 		dataSource.apply(snapshot, animatingDifferences: false)
 	}
@@ -161,6 +157,7 @@ class FollowersViewController: GFViewController {
 	
 	private func showUserDetailsViewController(for profile: GithubProfile) {
 		let userDetailsViewController = UserDetailsViewController(username: profile.username)
+		userDetailsViewController.delegate = self
 		present(userDetailsViewController, animated: true)
 	}
 	
@@ -211,5 +208,26 @@ extension FollowersViewController {
 
 	func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
 		loadMoreDataIfScrolledToBottom()
+	}
+}
+
+
+// MARK: - UserDetailsViewControllerDelegate
+
+extension FollowersViewController: UserDetailsViewControllerDelegate {
+
+	func viewFollowersButtonDidPressed(for user: GithubUser) {
+		guard user != self.user else { return }
+
+		// reset
+		followers.removeAll()
+		nextUrl = nil
+		
+		// update
+		self.user = user
+		updateUI()
+		
+		// scroll to top
+		collectionView.contentOffset.y = -collectionView.adjustedContentInset.top
 	}
 }
