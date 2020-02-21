@@ -18,11 +18,12 @@ class FollowersViewController: GFViewController {
 	
 	// MARK: - Properties
 	
-	private let user: GithubUser
+	private var user: GithubUser
 	private var followers: [GithubFollower] = []
 	private var nextUrl: URL?
 	private var filterFollowersByNameTerm = ""
-	
+
+	private let navigationItemProfileButton = UIButton(type: .system)
 	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: FollowersCompositionalLayout(itemsPerRow: 3))
 	private lazy var dataSource = createDataSource()
 	
@@ -36,7 +37,8 @@ class FollowersViewController: GFViewController {
 		setupNavigationItem()
 		setupSearchController()
 		setupCollectionView()
-		loadData()
+				
+		updateUI()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -69,26 +71,17 @@ class FollowersViewController: GFViewController {
 		navigationItem.largeTitleDisplayMode = .never
 		
 		let profileImageHeight: CGFloat = 38
+		
+		navigationItemProfileButton.setImage(UIImage(asset: .avatarPlaceholder), for: .normal)
+		navigationItemProfileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
+		
+		navigationItemProfileButton.layer.setBorder(color: .gfPrimary, width: 2)
+		navigationItemProfileButton.layer.setCornerRadius(profileImageHeight / 2)
+		
+		navigationItemProfileButton.heightAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
+		navigationItemProfileButton.widthAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
 
-		let profileButton = UIButton(type: .system)
-		profileButton.setImage(UIImage(asset: .avatarPlaceholder), for: .normal)
-		profileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
-		
-		profileButton.layer.setBorder(color: .gfPrimary, width: 2)
-		profileButton.layer.setCornerRadius(profileImageHeight / 2)
-		
-		profileButton.heightAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
-		profileButton.widthAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
-
-		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: profileButton)
-		
-		// download and set profile image for current user
-		DataManager.shared.getProfileImage(for: user) { result in
-			if case .success(let image) = result {
-				let profileImage = image.withRenderingMode(.alwaysOriginal)
-				profileButton.setImage(profileImage, for: .normal)
-			}
-		}
+		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navigationItemProfileButton)
 	}
 	
 	private func setupSearchController() {
@@ -105,7 +98,6 @@ class FollowersViewController: GFViewController {
 		view.addSubview(collectionView)
 		collectionView.constrainToSuperview()
 		
-		title = user.username
 		collectionView.backgroundColor = .gfBackground
 		collectionView.alwaysBounceVertical = true
 
@@ -116,7 +108,7 @@ class FollowersViewController: GFViewController {
 	
 	// MARK: - Load data
 	
-	private func loadData() {
+	private func loadFollowers() {
 		isLoading = true
 		
 		DataManager.shared.getFollowers(for: user.username, url: nextUrl) { [weak self] result in
@@ -138,8 +130,24 @@ class FollowersViewController: GFViewController {
 		}
 	}
 	
+	private func loadNavigationItemProfileImage() {
+		DataManager.shared.getProfileImage(for: user) { result in
+			if case .success(let image) = result {
+				let profileImage = image.withRenderingMode(.alwaysOriginal)
+				self.navigationItemProfileButton.setImage(profileImage, for: .normal)
+			}
+		}
+	}
+	
 	
 	// MARK: - Methods
+	
+	private func updateUI() {
+		title = user.username
+
+		loadFollowers()
+		loadNavigationItemProfileImage()
+	}
 	
 	private func appendCollectionView(with followers: [GithubFollower]) {
 		var snapshot = dataSource.snapshot()
@@ -162,7 +170,7 @@ class FollowersViewController: GFViewController {
 		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
 		
 		if heightToBottom <= 50 {
-			loadData()
+			loadFollowers()
 		}
 	}
 }
