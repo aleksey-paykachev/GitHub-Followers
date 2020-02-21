@@ -13,6 +13,7 @@
 		5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */; };
 		5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */; };
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
+		5B20965223FF7DE000CBC6A1 /* GFErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */; };
 		5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985123F0B67A00E37DC1 /* CustomStackView.swift */; };
 		5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B22985323F0B69E00E37DC1 /* HStackView.swift */; };
 		5B2424A523EC520600224099 /* GithubFollower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B2424A423EC520600224099 /* GithubFollower.swift */; };
@@ -62,6 +63,7 @@
 		5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
+		5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFErrorMessageView.swift; sourceTree = "<group>"; };
 		5B22985123F0B67A00E37DC1 /* CustomStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomStackView.swift; sourceTree = "<group>"; };
 		5B22985323F0B69E00E37DC1 /* HStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HStackView.swift; sourceTree = "<group>"; };
 		5B2424A423EC520600224099 /* GithubFollower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubFollower.swift; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				5B8DC49A23FE420300D94515 /* GFColors.swift */,
 				5B29FCCD23F85F8A006E6B1C /* GFViewController.swift */,
+				5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */,
 				5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */,
 				5B9B3FC723EA47930011DF36 /* GFTextField.swift */,
 				5B55CB1123EB59CF00B6DF31 /* GFButton.swift */,
@@ -382,6 +385,7 @@
 				5B2424A523EC520600224099 /* GithubFollower.swift in Sources */,
 				5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */,
 				5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */,
+				5B20965223FF7DE000CBC6A1 /* GFErrorMessageView.swift in Sources */,
 				5B55CB1923EB62E800B6DF31 /* Collection + Extensions.swift in Sources */,
 				5BC3A08A23F763EE00302CC8 /* FavoriteCell.swift in Sources */,
 				5B495BE623F2F55500ECDB1F /* Date + Extensions.swift in Sources */,
