@@ -19,24 +19,29 @@ enum NetworkError: LocalizedError {
 	case parseError(Error)
 	
 	var errorDescription: String? {
+		let errorHeader = "Couldn't load data from server. Please try again later."
+		let error: String
+
 		switch self {
 			
 		case .wrongUrl:
-			return "Wrong URL."
+			error = "Wrong URL."
 		case .requestFailed:
-			return "Request to sever did failed."
+			error = "Request to sever did failed."
 		case .wrongResponse:
-			return "Wrong response from server."
+			error = "Wrong response from server."
 		case .notFound:
-			return "Requested data not found on server."
+			error = "Requested data not found on server."
 		case .wrongStatusCode(let statusCode):
-			return "Wrong network response status code: \(statusCode)"
+			error = "Wrong network response status code: \(statusCode)"
 		case .emptyData:
-			return "Server response with empty data."
+			error = "Server response with empty data."
 		case .wrongData:
-			return "Server response with wrong data."
+			error = "Server response with wrong data."
 		case .parseError(let parserError):
-			return "Parser error: \(parserError.localizedDescription)"
+			error = "Parser error: \(parserError.localizedDescription)"
 		}
+
+		return errorHeader + "\n\n" + error
 	}
 }

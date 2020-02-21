@@ -24,7 +24,7 @@ class GFViewController: UIViewController {
 	
 	// MARK: - API
 
-	func showError(_ message: String, hideAfter interval: TimeInterval = 3) {
+	func showError(_ message: String, hideAfter interval: TimeInterval = 4) {
 		let errorMessageView = GFErrorMessageView(message: message)
 		view.addSubview(errorMessageView)
 

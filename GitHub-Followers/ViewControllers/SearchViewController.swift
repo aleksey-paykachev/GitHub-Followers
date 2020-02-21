@@ -93,7 +93,7 @@ class SearchViewController: GFViewController {
 			
 			switch result {
 			case .failure(let error):
-				print("Network error:", error)
+				self.showError(error.localizedDescription)
 				
 			case .success(let user):
 				self.searchTermTextField.text = ""

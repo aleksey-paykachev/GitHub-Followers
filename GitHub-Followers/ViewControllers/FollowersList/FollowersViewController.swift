@@ -112,7 +112,7 @@ class FollowersViewController: GFViewController {
 			
 			switch result {
 			case .failure(let error):
-				print("Network error:", error)
+				self.showError(error.localizedDescription)
 
 			case .success(let followersNetworkResult):
 				let newFollowers = followersNetworkResult.data
