@@ -20,11 +20,10 @@ class FollowersViewController: GFViewController {
 	
 	private var user: GithubUser
 	private var followers: [GithubFollower] = []
-	private var nextUrl: URL?
 	private var filterFollowersByNameTerm = ""
 
 	private let navigationItemProfileButton = UIButton(type: .system)
-	private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: FollowersCompositionalLayout(itemsPerRow: 3))
+	private let collectionView = GFCollectionView(layout: FollowersLayout(itemsPerRow: 3))
 	private lazy var dataSource = createDataSource()
 	
 	typealias FollowersDataSource = UICollectionViewDiffableDataSource<Section, GithubFollower>
@@ -39,12 +38,19 @@ class FollowersViewController: GFViewController {
 		setupNavigationItem()
 		setupSearchController()
 		setupCollectionView()
-				
-		updateUI()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	
+	// MARK: - View lifecycle
+
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(true)
+		
+		updateUI()
 	}
 	
 	
@@ -104,11 +110,12 @@ class FollowersViewController: GFViewController {
 	// MARK: - Load data
 	
 	private func loadFollowers() {
-		isLoading = true
+		collectionView.isLoading = true
 		
-		DataManager.shared.getFollowers(for: user.username, url: nextUrl) { [weak self] result in
+		DataManager.shared.getFollowers(for: user.username, url: collectionView.nextPageUrl) { [weak self] result in
+
 			guard let self = self else { return }
-			self.isLoading = false
+			self.collectionView.isLoading = false
 			
 			switch result {
 			case .failure(let error):
@@ -116,11 +123,11 @@ class FollowersViewController: GFViewController {
 
 			case .success(let followersNetworkResult):
 				let newFollowers = followersNetworkResult.data
-
 				self.followers.append(contentsOf: newFollowers)
+
 				self.updateCollectionViewData()
 				
-				self.nextUrl = followersNetworkResult.headers.nextUrl
+				self.collectionView.nextPageUrl = followersNetworkResult.headers.nextUrl
 			}
 		}
 	}
@@ -162,7 +169,7 @@ class FollowersViewController: GFViewController {
 	}
 	
 	private func loadMoreDataIfScrolledToBottom() {
-		guard nextUrl != nil, !isLoading else { return }
+		guard collectionView.nextPageUrl != nil, !collectionView.isLoading else { return }
 		
 		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
 		
@@ -221,13 +228,12 @@ extension FollowersViewController: UserDetailsViewControllerDelegate {
 
 		// reset
 		followers.removeAll()
-		nextUrl = nil
+		collectionView.nextPageUrl = nil
 		
 		// update
 		self.user = user
 		updateUI()
 		
-		// scroll to top
-		collectionView.contentOffset.y = -collectionView.adjustedContentInset.top
+		collectionView.scrollToTop()
 	}
 }

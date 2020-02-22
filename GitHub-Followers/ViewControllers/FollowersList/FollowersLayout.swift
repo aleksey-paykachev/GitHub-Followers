@@ -1,5 +1,5 @@
 //
-//  FollowersCompositionalLayout.swift
+//  FollowersLayout.swift
 //  GitHub-Followers
 //
 //  Created by Aleksey on 20.02.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FollowersCompositionalLayout: UICollectionViewCompositionalLayout {
+class FollowersLayout: UICollectionViewCompositionalLayout {
 	// MARK: - Init
 	
 	init(itemsPerRow: Int) {
