@@ -55,7 +55,16 @@ extension GithubUser: Hashable {
 // MARK: - Equatable
 
 extension GithubUser: Equatable {
-	static func ==(lhs: GithubUser, rhs: GithubUser) -> Bool {
+	static func == (lhs: GithubUser, rhs: GithubUser) -> Bool {
 		lhs.username == rhs.username
+	}
+}
+
+
+// MARK: - Comparable
+
+extension GithubUser: Comparable {
+	static func < (lhs: GithubUser, rhs: GithubUser) -> Bool {
+		lhs.username.lowercased() < rhs.username.lowercased()
 	}
 }
