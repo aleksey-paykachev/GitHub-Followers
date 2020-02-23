@@ -95,4 +95,13 @@ class DataManager {
 		favorites.removeAll { $0 == user }
 		persistentManager.set(value: favorites, to: .favorites)
 	}
+	
+	func moveFavorite(from sourceIndex: Int, to destinationIndex: Int) {
+		var favorites = allFavorites
+		
+		let movedUser = favorites.remove(at: sourceIndex)
+		favorites.insert(movedUser, at: destinationIndex)
+		
+		persistentManager.set(value: favorites, to: .favorites)
+	}
 }
