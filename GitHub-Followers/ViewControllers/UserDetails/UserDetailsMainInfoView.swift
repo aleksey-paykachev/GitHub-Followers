@@ -77,12 +77,14 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Load data
 	
 	private func loadFavoriteState() {
+		#warning("Move data manager logic to View Controller.")
 		isFavorite = DataManager.shared.checkIfFavorite(user: user)
 	}
 	
 	private func loadProfileImage() {
 		// almost 100% of the time profile image will be loaded from cache
 
+		#warning("Move network logic to View Controller.")
 		DataManager.shared.getProfileImage(for: user) { [weak self] result in
 			guard let self = self else { return }
 

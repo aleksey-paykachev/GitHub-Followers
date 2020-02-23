@@ -10,6 +10,7 @@ import UIKit
 
 protocol UserDetailsViewControllerDelegate: class {
 	func viewFollowersButtonDidPressed(for user: GithubUser)
+	func didFailToLoadData(with error: NetworkError)
 }
 
 class UserDetailsViewController: GFViewController {
@@ -55,8 +56,9 @@ class UserDetailsViewController: GFViewController {
 				self.createUI(for: user)
 
 			case .failure(let error):
-				print("Error:", error)
-				self.dismiss(animated: true)
+				self.dismiss(animated: true) {
+					self.delegate?.didFailToLoadData(with: error)
+				}
 			}
 		}
 	}

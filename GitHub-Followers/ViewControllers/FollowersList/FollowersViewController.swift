@@ -236,4 +236,8 @@ extension FollowersViewController: UserDetailsViewControllerDelegate {
 		
 		collectionView.scrollToTop()
 	}
+	
+	func didFailToLoadData(with error: NetworkError) {
+		showError(error.localizedDescription)
+	}
 }
