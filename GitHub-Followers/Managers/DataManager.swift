@@ -70,6 +70,10 @@ class DataManager {
 	
 	// MARK: - API Favorites
 	
+	private func save(_ favorites: [GithubUser]) {
+		persistentManager.set(value: favorites, to: .favorites)
+	}
+	
 	var allFavorites: [GithubUser] {
 		persistentManager.get(type: [GithubUser].self, from: .favorites) ?? []
 	}
@@ -81,19 +85,22 @@ class DataManager {
 	func addUserToFavorites(_ user: GithubUser) {
 		var favorites = allFavorites
 		
-		if favorites.contains(user) {
-			return
-		}
+		guard !favorites.contains(user) else { return }
 		
 		favorites.append(user)
-		persistentManager.set(value: favorites, to: .favorites)
+		save(favorites)
 	}
 	
 	func removeUserFromFavorites(_ user: GithubUser) {
 		var favorites = allFavorites
 		
 		favorites.removeAll { $0 == user }
-		persistentManager.set(value: favorites, to: .favorites)
+		save(favorites)
+	}
+	
+	func sortFavorites(by sortingPredicate: (GithubUser, GithubUser) -> Bool) {
+		let sortedFavorites = allFavorites.sorted(by: sortingPredicate)
+		save(sortedFavorites)
 	}
 	
 	func moveFavorite(from sourceIndex: Int, to destinationIndex: Int) {
@@ -102,6 +109,6 @@ class DataManager {
 		let movedUser = favorites.remove(at: sourceIndex)
 		favorites.insert(movedUser, at: destinationIndex)
 		
-		persistentManager.set(value: favorites, to: .favorites)
+		save(favorites)
 	}
 }

@@ -45,6 +45,8 @@ extension UIImage {
 		case person3 = "person.3"
 		case star = "star"
 		case starFill = "star.fill"
+		case chevronUp = "chevron.up"
+		case chevronDown = "chevron.down"
 		
 		var imageName: String {
 			rawValue

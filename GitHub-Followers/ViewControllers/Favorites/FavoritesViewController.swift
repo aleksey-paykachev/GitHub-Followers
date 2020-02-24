@@ -23,6 +23,7 @@ class FavoritesViewController: UITableViewController {
 
 		setupTabBar()
 		setupNavigationBar()
+		setupToolbar()
 		setupTableView()
 	}
 	
@@ -53,9 +54,36 @@ class FavoritesViewController: UITableViewController {
 		navigationItem.rightBarButtonItem = editButtonItem
 	}
 	
+	private func setupToolbar() {
+		toolbarItems = [
+			UIBarButtonItem(customView: GFLabel(text: "Sort by name: ")),
+			UIBarButtonItem(image: UIImage(sfSymbol: .chevronDown), style: .plain, target: self, action: #selector(sortAscending)),
+			UIBarButtonItem(image: UIImage(sfSymbol: .chevronUp), style: .plain, target: self, action: #selector(sortDescending))
+		]
+	}
+	
 	private func setupTableView() {
 		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseId)
 		tableView.separatorStyle = .none
+	}
+	
+	
+	// MARK: - Methods
+	
+	override func setEditing(_ editing: Bool, animated: Bool) {
+		super.setEditing(editing, animated: animated)
+		
+		navigationController?.setToolbarHidden(!editing, animated: true)
+	}
+	
+	@objc private func sortAscending() {
+		DataManager.shared.sortFavorites(by: <)
+		dataSource.reloadData(animated: true)
+	}
+	
+	@objc private func sortDescending() {
+		DataManager.shared.sortFavorites(by: >)
+		dataSource.reloadData(animated: true)
 	}
 	
 	

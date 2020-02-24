@@ -18,14 +18,16 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	
 	// MARK: - API
 	
-	func reloadData() {
+	func reloadData(animated: Bool = false) {
 		let favorites = DataManager.shared.allFavorites
+		
+		guard favorites != snapshot().itemIdentifiers else { return }
 
 		var newSnapshot = NSDiffableDataSourceSnapshot<Section, GithubUser>()
 		newSnapshot.appendSections([.favorites])
 		newSnapshot.appendItems(favorites)
 
-		apply(newSnapshot, animatingDifferences: false)
+		apply(newSnapshot, animatingDifferences: animated)
 	}
 	
 	private func delete(_ user: GithubUser) {
