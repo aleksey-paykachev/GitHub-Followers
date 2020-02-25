@@ -9,13 +9,6 @@
 import UIKit
 
 class FollowersViewController: GFViewController {
-	// MARK: - Sections
-	
-	enum Section {
-		case followers
-	}
-	
-	
 	// MARK: - Properties
 	
 	private var user: GithubUser
@@ -24,14 +17,12 @@ class FollowersViewController: GFViewController {
 
 	private let navigationItemProfileButton = UIButton(type: .system)
 	private let collectionView = GFCollectionView(layout: FollowersLayout(itemsPerRow: 3))
-	private lazy var dataSource = createDataSource()
+	private lazy var dataSource = FollowersDataSource(collectionView: collectionView)
 	
 	private var isFiltering: Bool {
 		filterFollowersByNameTerm.isNotEmpty
 	}
 		
-	typealias FollowersDataSource = UICollectionViewDiffableDataSource<Section, GithubFollower>
-	
 	
 	// MARK: - Init
 	
@@ -55,18 +46,6 @@ class FollowersViewController: GFViewController {
 		super.viewDidAppear(true)
 		
 		updateUI()
-	}
-	
-	
-	// MARK: - Create
-	
-	private func createDataSource() -> FollowersDataSource {
-		FollowersDataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, follower -> UICollectionViewCell? in
-
-			let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
-			cell.follower = follower
-			return cell
-		})
 	}
 	
 	
@@ -129,7 +108,7 @@ class FollowersViewController: GFViewController {
 				let newFollowers = followersNetworkResult.data
 				self.followers.append(contentsOf: newFollowers)
 
-				self.updateCollectionViewData(with: self.followers)
+				self.dataSource.update(with: self.followers)
 				
 				self.collectionView.nextPageUrl = followersNetworkResult.headers.nextUrl
 			}
@@ -153,13 +132,6 @@ class FollowersViewController: GFViewController {
 
 		loadFollowers()
 		loadNavigationItemProfileImage()
-	}
-	
-	private func updateCollectionViewData(with followers: [GithubFollower]) {
-		var snapshot = NSDiffableDataSourceSnapshot<Section, GithubFollower>()
-		snapshot.appendSections([.followers])
-		snapshot.appendItems(followers)
-		dataSource.apply(snapshot, animatingDifferences: true)
 	}
 	
 	@objc private func showUserDetailsViewControllerForCurrentUser() {
@@ -208,10 +180,10 @@ extension FollowersViewController: UISearchResultsUpdating {
 		filterFollowersByNameTerm = filterTerm
 		
 		if filterTerm.isEmpty {
-			updateCollectionViewData(with: followers)
+			dataSource.update(with: followers)
 		} else {
 			let filteredFollowers = followers.filter { $0.usernameContains(filterTerm) }
-			updateCollectionViewData(with: filteredFollowers)
+			dataSource.update(with: filteredFollowers)
 		}
 	}
 }
