@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 protocol UserDetailsViewControllerDelegate: class {
 	func viewFollowersButtonDidPressed(for user: GithubUser)
@@ -103,7 +104,13 @@ class UserDetailsViewController: GFViewController {
 	}
 
 	private func githubProfileButtonDidPressed() {
-		print(#function)
+		guard let userProfileUrl = user?.profilePageUrl else {
+			showError("Could not show user profile page. Please try again later.")
+			return
+		}
+
+		let safariViewController = SFSafariViewController(url: userProfileUrl)
+		present(safariViewController, animated: true)
 	}
 	
 	private func viewFollowersButtonDidPressed() {
