@@ -50,7 +50,7 @@ class GFLoadingOverlayView: UIView {
 		constrainToSuperview()
 		
 		UIView.animate(withDuration: 0.3) {
-			self.alpha = 0.5
+			self.alpha = 0.8
 		}
 	}
 	

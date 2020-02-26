@@ -45,11 +45,11 @@ class UserDetailsViewController: GFViewController {
 	// MARK: - Load data
 	
 	private func loadUserData(for username: String) {
-		isLoading = true
+		showLoadingOverlay()
 
 		DataManager.shared.getUser(by: username) { [weak self] result in
 			guard let self = self else { return }
-			self.isLoading = false
+			self.hideLoadingOverlay()
 
 			switch result {
 			case .success(let user):
