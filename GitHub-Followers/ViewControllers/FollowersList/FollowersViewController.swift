@@ -15,7 +15,7 @@ class FollowersViewController: GFViewController {
 	private var followers: [GithubFollower] = []
 	private var filterFollowersByNameTerm = ""
 
-	private let navigationItemProfileButton = UIButton(type: .system)
+	private let navigationItemProfileButton = GFCircleButton(radius: 18, image: UIImage(asset: .avatarPlaceholder))
 	private let collectionView = GFCollectionView(layout: FollowersLayout(itemsPerRow: 3))
 	private lazy var dataSource = FollowersDataSource(collectionView: collectionView)
 	
@@ -54,16 +54,7 @@ class FollowersViewController: GFViewController {
 	private func setupNavigationItem() {
 		navigationItem.largeTitleDisplayMode = .never
 		
-		let profileImageHeight: CGFloat = 38
-		
-		navigationItemProfileButton.setImage(UIImage(asset: .avatarPlaceholder), for: .normal)
 		navigationItemProfileButton.addTarget(self, action: #selector(showUserDetailsViewControllerForCurrentUser), for: .touchUpInside)
-		
-		navigationItemProfileButton.layer.setBorder(color: .gfPrimary, width: 2)
-		navigationItemProfileButton.layer.setCornerRadius(profileImageHeight / 2)
-		
-		navigationItemProfileButton.heightAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
-		navigationItemProfileButton.widthAnchor.constraint(equalToConstant: profileImageHeight).isActive = true
 
 		navigationItem.rightBarButtonItem = UIBarButtonItem(customView: navigationItemProfileButton)
 	}

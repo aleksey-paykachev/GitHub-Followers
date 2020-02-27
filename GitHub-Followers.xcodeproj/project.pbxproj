@@ -10,6 +10,7 @@
 		5B074EBD23F1D20000582379 /* UserDetailsMainInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */; };
 		5B074EBF23F1D21A00582379 /* UserDetailsInfoBlocksView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */; };
 		5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EC023F1D26A00582379 /* SpacerView.swift */; };
+		5B0CE06B24079E1200928648 /* GFCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CE06A24079E1200928648 /* GFCircleButton.swift */; };
 		5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */; };
 		5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */; };
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
@@ -64,6 +65,7 @@
 		5B074EBC23F1D20000582379 /* UserDetailsMainInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsMainInfoView.swift; sourceTree = "<group>"; };
 		5B074EBE23F1D21A00582379 /* UserDetailsInfoBlocksView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsInfoBlocksView.swift; sourceTree = "<group>"; };
 		5B074EC023F1D26A00582379 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
+		5B0CE06A24079E1200928648 /* GFCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFCircleButton.swift; sourceTree = "<group>"; };
 		5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				5B55CB1323EB5C4800B6DF31 /* GFImageView.swift */,
 				5B9B3FC723EA47930011DF36 /* GFTextField.swift */,
 				5B55CB1123EB59CF00B6DF31 /* GFButton.swift */,
+				5B0CE06A24079E1200928648 /* GFCircleButton.swift */,
 				5BA9D32823F0B1D30090EE71 /* GFLabel.swift */,
 				5B435C9E23EFB31700C885DE /* GFLoadingOverlayView.swift */,
 			);
@@ -392,6 +395,7 @@
 				5B20965623FF904D00CBC6A1 /* NetworkParsedResult.swift in Sources */,
 				5B29FCCE23F85F8A006E6B1C /* GFViewController.swift in Sources */,
 				5B6777C423F72250002C7877 /* FavoritesDataSource.swift in Sources */,
+				5B0CE06B24079E1200928648 /* GFCircleButton.swift in Sources */,
 				5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */,
 				5B76B13C23EE07CE00252661 /* DataManager.swift in Sources */,
 				5B55CB1623EB5E6100B6DF31 /* VStackView.swift in Sources */,

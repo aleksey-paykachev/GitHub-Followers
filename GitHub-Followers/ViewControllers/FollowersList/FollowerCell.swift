@@ -13,8 +13,8 @@ class FollowerCell: UICollectionViewCell {
 	
 	var follower: GithubFollower? { didSet { updateUI() } }
 	
-	private let photoImageView = UIImageView(image: nil)
-	private let usernameLabel = GFLabel()
+	let photoImageView = GFImageView(asset: .avatarPlaceholder)
+	let usernameLabel = GFLabel()
 	
 	
 	// MARK: - Init
@@ -64,7 +64,7 @@ class FollowerCell: UICollectionViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
-		photoImageView.image = nil
+		photoImageView.image = UIImage(asset: .avatarPlaceholder)
 		usernameLabel.text = ""
 	}
 }
