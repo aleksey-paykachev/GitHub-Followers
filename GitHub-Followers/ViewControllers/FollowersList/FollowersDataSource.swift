@@ -17,7 +17,14 @@ class FollowersDataSource: UICollectionViewDiffableDataSource<FollowersDataSourc
 	
 	
 	// MARK: - Properties
+
+	private var followers: [GithubFollower] = []
+	private var filterFollowersByNameTerm = ""
 	
+	var isFiltering: Bool {
+		filterFollowersByNameTerm.isNotEmpty
+	}
+
 	typealias CellProvider = (UICollectionView, IndexPath, GithubFollower) -> UICollectionViewCell?
 
 	private let cellProvider: CellProvider = { collectionView, indexPath, follower in
@@ -36,7 +43,33 @@ class FollowersDataSource: UICollectionViewDiffableDataSource<FollowersDataSourc
 	
 	// MARK: - API
 	
-	func update(with followers: [GithubFollower]) {
+	func add(_ newFollowers: [GithubFollower]) {
+		followers.append(contentsOf: newFollowers)
+		reload(with: followers)
+	}
+	
+	func removeAll() {
+		followers.removeAll()
+		reload(with: [])
+	}
+	
+	func filter(with filterTerm: String) {
+		guard filterTerm != filterFollowersByNameTerm else { return }
+
+		filterFollowersByNameTerm = filterTerm
+		
+		if filterTerm.isEmpty {
+			reload(with: followers)
+		} else {
+			let filteredFollowers = followers.filter { $0.usernameContains(filterTerm) }
+			reload(with: filteredFollowers)
+		}
+	}
+	
+	
+	// MARK: - Private methods
+	
+	private func reload(with followers: [GithubFollower]) {
 		var snapshot = NSDiffableDataSourceSnapshot<Section, GithubFollower>()
 		snapshot.appendSections([.followers])
 		snapshot.appendItems(followers)

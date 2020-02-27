@@ -12,16 +12,10 @@ class FollowersViewController: GFViewController {
 	// MARK: - Properties
 	
 	private var user: GithubUser
-	private var followers: [GithubFollower] = []
-	private var filterFollowersByNameTerm = ""
 
 	private let navigationItemProfileButton = GFCircleButton(radius: 18, image: UIImage(asset: .avatarPlaceholder))
 	private let collectionView = GFCollectionView(layout: FollowersLayout(itemsPerRow: 3))
 	private lazy var dataSource = FollowersDataSource(collectionView: collectionView)
-	
-	private var isFiltering: Bool {
-		filterFollowersByNameTerm.isNotEmpty
-	}
 		
 	
 	// MARK: - Init
@@ -97,9 +91,7 @@ class FollowersViewController: GFViewController {
 
 			case .success(let followersNetworkResult):
 				let newFollowers = followersNetworkResult.data
-				self.followers.append(contentsOf: newFollowers)
-
-				self.dataSource.update(with: self.followers)
+				self.dataSource.add(newFollowers)
 				
 				self.collectionView.nextPageUrl = followersNetworkResult.headers.nextUrl
 			}
@@ -137,7 +129,7 @@ class FollowersViewController: GFViewController {
 	
 	// There is no option in GitHub API to provide search term for followers request, so disable loading while filtering is active.
 	private func loadMoreDataIfScrolledToBottom() {
-		guard collectionView.nextPageUrl != nil, !collectionView.isLoading, !isFiltering else { return }
+		guard collectionView.nextPageUrl != nil, !collectionView.isLoading, !dataSource.isFiltering else { return }
 		
 		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
 		
@@ -166,16 +158,8 @@ extension FollowersViewController: UISearchResultsUpdating {
 	
 	func updateSearchResults(for searchController: UISearchController) {
 		guard let filterTerm = searchController.searchBar.text?.trimmed else { return }
-		guard filterTerm != filterFollowersByNameTerm else { return }
 
-		filterFollowersByNameTerm = filterTerm
-		
-		if filterTerm.isEmpty {
-			dataSource.update(with: followers)
-		} else {
-			let filteredFollowers = followers.filter { $0.usernameContains(filterTerm) }
-			dataSource.update(with: filteredFollowers)
-		}
+		dataSource.filter(with: filterTerm)
 	}
 }
 
@@ -201,7 +185,7 @@ extension FollowersViewController: UserDetailsViewControllerDelegate {
 		guard user != self.user else { return }
 
 		// reset
-		followers.removeAll()
+		dataSource.removeAll()
 		collectionView.nextPageUrl = nil
 		navigationItem.searchController?.searchBar.text = nil
 		
