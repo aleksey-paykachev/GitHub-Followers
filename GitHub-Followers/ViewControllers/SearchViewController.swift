@@ -76,7 +76,7 @@ class SearchViewController: GFViewController {
 	}
 	
 	
-	// MARK: - Methods
+	// MARK: - Private methods
 	
 	@objc private func findFollowers() {
 		guard let searchTerm = searchTermTextField.text?.trimmed, searchTerm.isNotEmpty else {
@@ -142,9 +142,10 @@ class SearchViewController: GFViewController {
 		guard let keyboardUserInfo = KeyboardNotificationUserInfo(userInfo: notification.userInfo) else { return }
 		
 		let keyboardContentOverlapHeight = mainStack.frame.maxY - keyboardUserInfo.frame.minY
+		let paddingFromContentToKeyboard: CGFloat = 12
 		
 		if keyboardContentOverlapHeight > 0 {
-			setContentYOffset(-keyboardContentOverlapHeight, with: keyboardUserInfo.animationDuration)
+			setContentYOffset(-keyboardContentOverlapHeight - paddingFromContentToKeyboard, with: keyboardUserInfo.animationDuration)
 		}
 	}
 	
