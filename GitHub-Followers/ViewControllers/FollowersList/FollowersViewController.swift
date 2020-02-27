@@ -108,7 +108,7 @@ class FollowersViewController: GFViewController {
 	}
 	
 	
-	// MARK: - Methods
+	// MARK: - Private methods
 	
 	private func updateUI() {
 		title = user.username
@@ -129,7 +129,7 @@ class FollowersViewController: GFViewController {
 	
 	// There is no option in GitHub API to provide search term for followers request, so disable loading while filtering is active.
 	private func loadMoreDataIfScrolledToBottom() {
-		guard collectionView.nextPageUrl != nil, !collectionView.isLoading, !dataSource.isFiltering else { return }
+		guard collectionView.isReadyToLoadMoreData, !dataSource.isFiltering else { return }
 		
 		let heightToBottom = collectionView.contentSize.height - collectionView.frame.height - collectionView.contentOffset.y + collectionView.adjustedContentInset.bottom
 		

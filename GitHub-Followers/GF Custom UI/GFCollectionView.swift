@@ -29,6 +29,14 @@ class GFCollectionView: UICollectionView {
 		}
 	}
 	
+	var hasNextPage: Bool {
+		nextPageUrl != nil
+	}
+	
+	var isReadyToLoadMoreData: Bool {
+		hasNextPage && !isLoading
+	}
+	
 	
 	// MARK: - Init
 	
