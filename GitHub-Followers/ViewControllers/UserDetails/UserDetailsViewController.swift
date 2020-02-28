@@ -65,7 +65,8 @@ class UserDetailsViewController: GFViewController {
 	}
 	
 	
-	// MARK: - Create UI
+	// MARK: - Private methods
+	// Create UI
 	
 	private func createUI(for user: GithubUser) {
 		let closeButton = UIButton(type: .close)
@@ -88,8 +89,8 @@ class UserDetailsViewController: GFViewController {
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .gfTextSecondary, alignment: .center)
 
-		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 24)
-		mainStack.setCustomSpacing(0, after: actionButtonsStack)
+		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 22)
+		mainStack.setCustomSpacing(4, after: actionButtonsStack)
 		mainStack.setCustomSpacing(14, after: userSocialActivityDetailsView)
 
 		view.insertSubview(mainStack, at: 0)
@@ -97,7 +98,7 @@ class UserDetailsViewController: GFViewController {
 	}
 	
 	
-	// MARK: - Actions
+	// Actions
 
 	@objc private func closeButtonDidPressed() {
 		dismiss(animated: true)

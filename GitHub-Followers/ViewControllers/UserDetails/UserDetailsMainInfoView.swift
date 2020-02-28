@@ -20,6 +20,9 @@ class UserDetailsMainInfoView: UIView {
 	private let favoriteButton = UIButton(type: .custom)
 	private var isFavorite = false { didSet { setFavoriteButtonState(to: isFavorite) } }
 	
+	private let favoriteButtonSize = CGSize(width: 40, height: 40)
+	private let favoriteButtonOffset = CGPoint(x: -3, y: -5)
+
 	weak var delegate: UserDetailsMainInfoViewDelegate?
 
 	
@@ -44,20 +47,31 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Setup
 	
 	private func setupSubviews() {
+		// profile image
 		profileImageView.layer.setCornerRadius(12)
 		profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-		profileImageView.heightAnchor.constraint(equalTo: profileImageView.widthAnchor).isActive = true
+		profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		
-		let usernameLabel = GFLabel(text: user.username,
-									font: .systemFont(ofSize: 28, weight: .medium))
+		// labels
+		let usernameLabel = GFLabel(text: user.username, font: .systemFont(ofSize: 28, weight: .medium))
 		let fullNameLabel = GFLabel(text: user.fullName, image: UIImage(sfSymbol: .person))
 		let locationLabel = GFLabel(text: user.location, image: UIImage(sfSymbol: .mappinAndEllipse))
 		
-		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel],spacing: 4)
+		// stacks
+		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel], spacing: 4)
 		
 		let mainStack = HStackView([profileImageView, userInfoStack], spacing: 24, alignment: .top)
 		addSubview(mainStack)
-		mainStack.constrainToSuperview()
+		
+		let bottomPadding = favoriteButtonSize.height / 2 + favoriteButtonOffset.y
+
+		mainStack.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			mainStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+			mainStack.trailingAnchor.constraint(equalTo: trailingAnchor),
+			mainStack.topAnchor.constraint(equalTo: topAnchor),
+			mainStack.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -bottomPadding)
+		])
 	}
 	
 	private func setupFavoriteButton() {
@@ -66,10 +80,10 @@ class UserDetailsMainInfoView: UIView {
 		addSubview(favoriteButton)
 		favoriteButton.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
-			favoriteButton.centerXAnchor.constraint(equalTo: profileImageView.trailingAnchor),
-			favoriteButton.centerYAnchor.constraint(equalTo: profileImageView.topAnchor),
-			favoriteButton.widthAnchor.constraint(equalToConstant: 30),
-			favoriteButton.heightAnchor.constraint(equalToConstant: 30)
+			favoriteButton.centerXAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: favoriteButtonOffset.x),
+			favoriteButton.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: favoriteButtonOffset.y),
+			favoriteButton.widthAnchor.constraint(equalToConstant: favoriteButtonSize.width),
+			favoriteButton.heightAnchor.constraint(equalToConstant: favoriteButtonSize.height)
 		])
 	}
 	
