@@ -16,11 +16,10 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Properties
 	
 	private let user: GithubUser
+	private var isFavorite = false // { didSet { setFavoriteButtonState(to: isFavorite) } }
+
 	private let profileImageView = GFImageView(asset: .avatarPlaceholder)
-	private let favoriteButton = UIButton(type: .custom)
-	private var isFavorite = false { didSet { setFavoriteButtonState(to: isFavorite) } }
-	
-	private let favoriteButtonSize = CGSize(width: 40, height: 40)
+	private lazy var favoriteButton = GFFavoriteButton(sideSize: 30, isSelected: isFavorite)
 	private let favoriteButtonOffset = CGPoint(x: -3, y: -5)
 
 	weak var delegate: UserDetailsMainInfoViewDelegate?
@@ -49,6 +48,7 @@ class UserDetailsMainInfoView: UIView {
 	private func setupSubviews() {
 		// profile image
 		profileImageView.layer.setCornerRadius(12)
+		profileImageView.layer.setBorder(color: .gfImageBorder)
 		profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
 		profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		
@@ -63,7 +63,8 @@ class UserDetailsMainInfoView: UIView {
 		let mainStack = HStackView([profileImageView, userInfoStack], spacing: 24, alignment: .top)
 		addSubview(mainStack)
 		
-		let bottomPadding = favoriteButtonSize.height / 2 + favoriteButtonOffset.y
+		// addition padding needs to be set to "fit" button touch area inside parent view
+		let bottomPadding = favoriteButton.bounds.height / 2 + favoriteButtonOffset.y
 
 		mainStack.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
@@ -82,8 +83,8 @@ class UserDetailsMainInfoView: UIView {
 		NSLayoutConstraint.activate([
 			favoriteButton.centerXAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: favoriteButtonOffset.x),
 			favoriteButton.centerYAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: favoriteButtonOffset.y),
-			favoriteButton.widthAnchor.constraint(equalToConstant: favoriteButtonSize.width),
-			favoriteButton.heightAnchor.constraint(equalToConstant: favoriteButtonSize.height)
+			favoriteButton.widthAnchor.constraint(equalToConstant: favoriteButton.bounds.width),
+			favoriteButton.heightAnchor.constraint(equalToConstant: favoriteButton.bounds.height)
 		])
 	}
 	
@@ -109,14 +110,10 @@ class UserDetailsMainInfoView: UIView {
 	}
 	
 	
-	// MARK: - Actions
-	
-	private func setFavoriteButtonState(to isFavorite: Bool) {
-		let buttonImage = UIImage(sfSymbol: isFavorite ? .starFill : .star)
-		favoriteButton.setBackgroundImage(buttonImage, for: .normal)
-	}
+	// MARK: - Private methods
 	
 	@objc private func favoriteButtonDidPressed() {
+		print("_toggle")
 		isFavorite.toggle()
 		delegate?.didChangeFavoriteStatus(for: user, to: isFavorite)
 	}
