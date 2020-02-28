@@ -15,8 +15,9 @@ extension UIColor {
 	static let gfBackground = UIColor.systemBackground
 
 	// Text
+	static let gfText = UIColor.label
 	static let gfTextInverted = UIColor.white
-	static let gfTextSecondary = UIColor.systemGray2
+	static let gfTextSecondary = UIColor.secondaryLabel
 
 	// Borders
 	static let gfImageBorder = UIColor.systemGray3
@@ -27,6 +28,7 @@ extension UIColor {
 	static let gfFavoriteCellSelected = UIColor.secondarySystemBackground
 
 	// Other
+	static let gfFavoriteButton = UIColor.systemYellow
 	static let gfShadow = UIColor.black
 	static let gfError = UIColor.systemRed
 	

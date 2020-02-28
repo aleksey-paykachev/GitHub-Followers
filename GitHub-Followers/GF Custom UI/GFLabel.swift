@@ -14,7 +14,7 @@ class GFLabel: UILabel {
 	init(text: String? = nil,
 		 image: UIImage? = nil,
 		 font: UIFont? = nil,
-		 color: UIColor? = nil,
+		 color: UIColor? = .gfText,
 		 alignment: NSTextAlignment = .left,
 		 allowMultipleLines: Bool = false) {
 

@@ -11,8 +11,8 @@ import UIKit
 class GFFavoriteButton: UIButton {
 	// MARK: - Properties
 
-	private let primaryColor: UIColor = .systemYellow
-	private let secondaryColor: UIColor = .systemBackground
+	private let primaryColor: UIColor = .gfFavoriteButton
+	private let secondaryColor: UIColor = .gfBackground
 	private let borderWidth: CGFloat = 4
 	private let animationDuration: TimeInterval = 0.4
 
