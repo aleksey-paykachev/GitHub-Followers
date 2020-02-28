@@ -14,7 +14,7 @@ class GFFavoriteButton: UIButton {
 	private let primaryColor: UIColor = .gfFavoriteButton
 	private let secondaryColor: UIColor = .gfBackground
 	private let borderWidth: CGFloat = 4
-	private let animationDuration: TimeInterval = 0.4
+	private let animationDuration: TimeInterval
 
 	private let shapeLayer = CAShapeLayer()
 	private let backgroundFillLayer = CAShapeLayer()
@@ -33,14 +33,21 @@ class GFFavoriteButton: UIButton {
 		return CGPath(ellipseIn: scaledSquare, transform: nil)
 	}()
 	
+	override var isSelected: Bool {
+		didSet {
+			if isSelected != oldValue { animateSelection() }
+		}
+	}
+	
 	
 	// MARK: - Init
 	
-	init(sideSize: CGFloat, isSelected: Bool) {
+	init(sideSize: CGFloat, animationDuration: TimeInterval) {
+		self.animationDuration = animationDuration
+
 		let frame = CGRect(origin: .zero, size: CGSize(width: sideSize, height: sideSize))
 		super.init(frame: frame)
 		
-		self.isSelected = isSelected
 		setupView()
 		setupSublayers()
 	}
@@ -54,8 +61,6 @@ class GFFavoriteButton: UIButton {
 	
 	private func setupView() {
 		backgroundColor = .clear
-		
-		addTarget(self, action: #selector(didTouchUpInside), for: .touchUpInside)
 	}
 	
 	private func setupSublayers() {
@@ -82,12 +87,6 @@ class GFFavoriteButton: UIButton {
 	
 	
 	// MARK: - Private methods
-	
-	@objc private func didTouchUpInside() {
-		print("Selected:", isSelected)
-		isSelected.toggle()
-		animateSelection()
-	}
 	
 	private func animateSelection() {
 		let animation = CABasicAnimation(keyPath: #keyPath(CAShapeLayer.path))

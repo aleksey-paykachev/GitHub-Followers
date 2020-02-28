@@ -16,10 +16,9 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Properties
 	
 	private let user: GithubUser
-	private var isFavorite = false // { didSet { setFavoriteButtonState(to: isFavorite) } }
 
 	private let profileImageView = GFImageView(asset: .avatarPlaceholder)
-	private lazy var favoriteButton = GFFavoriteButton(sideSize: 30, isSelected: isFavorite)
+	private let favoriteButton = GFFavoriteButton(sideSize: 30, animationDuration: 0.4)
 	private let favoriteButtonOffset = CGPoint(x: -3, y: -5)
 
 	weak var delegate: UserDetailsMainInfoViewDelegate?
@@ -93,7 +92,7 @@ class UserDetailsMainInfoView: UIView {
 	
 	private func loadFavoriteState() {
 		#warning("Move data manager logic to View Controller.")
-		isFavorite = DataManager.shared.checkIfFavorite(user: user)
+		favoriteButton.isSelected = DataManager.shared.checkIfFavorite(user: user)
 	}
 	
 	private func loadProfileImage() {
@@ -113,8 +112,7 @@ class UserDetailsMainInfoView: UIView {
 	// MARK: - Private methods
 	
 	@objc private func favoriteButtonDidPressed() {
-		print("_toggle")
-		isFavorite.toggle()
-		delegate?.didChangeFavoriteStatus(for: user, to: isFavorite)
+		favoriteButton.isSelected.toggle()
+		delegate?.didChangeFavoriteStatus(for: user, to: favoriteButton.isSelected)
 	}
 }
