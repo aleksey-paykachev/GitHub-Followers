@@ -19,12 +19,8 @@ class GFFavoriteButton: UIButton {
 	private lazy var starSymbolPath = GFBezierPaths.starSymbolPath.scale(to: bounds).cgPath
 	private lazy var backgroundFillLayer = CAShapeLayer(path: starSymbolPath)
 	
-	lazy private var backgroundEmptyPath: CGPath = {
-		let centerZeroSizeRect = CGRect(origin: bounds.center, size: .zero)
-		return CGPath(ellipseIn: centerZeroSizeRect, transform: nil)
-	}()
-	
-	lazy private var backgroundFilledPath = CGPath(ellipseIn: bounds.excircleSquare, transform: nil)
+	lazy private var backgroundEmptyPath = CGPath.circle(center: bounds.center, radius: .zero)
+	lazy private var backgroundFilledPath = CGPath.circle(in: bounds.excircleSquare)
 	
 	override var isSelected: Bool {
 		didSet {
