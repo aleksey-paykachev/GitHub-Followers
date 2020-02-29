@@ -13,6 +13,7 @@
 		5B0CE06B24079E1200928648 /* GFCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CE06A24079E1200928648 /* GFCircleButton.swift */; };
 		5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */; };
 		5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */; };
+		5B11F75F240A6987002F27B4 /* CAShapeLayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11F75E240A6987002F27B4 /* CAShapeLayer + Extensions.swift */; };
 		5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */; };
 		5B20965223FF7DE000CBC6A1 /* GFErrorMessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */; };
 		5B20965423FF8FC100CBC6A1 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B20965323FF8FC100CBC6A1 /* NetworkError.swift */; };
@@ -49,6 +50,8 @@
 		5BEB157123FE210B00B1D8BE /* FollowersLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB157023FE210B00B1D8BE /* FollowersLayout.swift */; };
 		5BEB164C23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */; };
 		5BEBC71D24093D6100158A6F /* GFFavoriteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBC71C24093D6100158A6F /* GFFavoriteButton.swift */; };
+		5BEBC71F24094F4500158A6F /* CGRect + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBC71E24094F4500158A6F /* CGRect + Extensions.swift */; };
+		5BEBC72124094F7E00158A6F /* CGSize + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BEBC72024094F7E00158A6F /* CGSize + Extensions.swift */; };
 		5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C623EC847C00FA2455 /* Parser.swift */; };
 		5BECD1C923EC856100FA2455 /* FollowersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1C823EC856100FA2455 /* FollowersViewController.swift */; };
 		5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */; };
@@ -69,6 +72,7 @@
 		5B0CE06A24079E1200928648 /* GFCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFCircleButton.swift; sourceTree = "<group>"; };
 		5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
+		5B11F75E240A6987002F27B4 /* CAShapeLayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B1575A423F054C400BDFA9A /* UserDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewController.swift; sourceTree = "<group>"; };
 		5B20965123FF7DE000CBC6A1 /* GFErrorMessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFErrorMessageView.swift; sourceTree = "<group>"; };
 		5B20965323FF8FC100CBC6A1 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 		5BEB157023FE210B00B1D8BE /* FollowersLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersLayout.swift; sourceTree = "<group>"; };
 		5BEB164B23EAC46C00071DF1 /* KeyboardNotificationUserInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardNotificationUserInfo.swift; sourceTree = "<group>"; };
 		5BEBC71C24093D6100158A6F /* GFFavoriteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFFavoriteButton.swift; sourceTree = "<group>"; };
+		5BEBC71E24094F4500158A6F /* CGRect + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGRect + Extensions.swift"; sourceTree = "<group>"; };
+		5BEBC72024094F7E00158A6F /* CGSize + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize + Extensions.swift"; sourceTree = "<group>"; };
 		5BECD1C623EC847C00FA2455 /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		5BECD1C823EC856100FA2455 /* FollowersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowersViewController.swift; sourceTree = "<group>"; };
 		5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
@@ -182,6 +188,9 @@
 				5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */,
 				5B074EC023F1D26A00582379 /* SpacerView.swift */,
 				5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */,
+				5B11F75E240A6987002F27B4 /* CAShapeLayer + Extensions.swift */,
+				5BEBC71E24094F4500158A6F /* CGRect + Extensions.swift */,
+				5BEBC72024094F7E00158A6F /* CGSize + Extensions.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -373,6 +382,7 @@
 				5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */,
 				5BEB157123FE210B00B1D8BE /* FollowersLayout.swift in Sources */,
 				5BF9B06423E87CAC004B44B7 /* MainTabBarController.swift in Sources */,
+				5B11F75F240A6987002F27B4 /* CAShapeLayer + Extensions.swift in Sources */,
 				5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */,
 				5BDA107D23F0C533008738B8 /* GithubProfile.swift in Sources */,
 				5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */,
@@ -387,6 +397,7 @@
 				5B1575A523F054C400BDFA9A /* UserDetailsViewController.swift in Sources */,
 				5BA9D32923F0B1D30090EE71 /* GFLabel.swift in Sources */,
 				5BF756D723FBBF3E00CD1CEC /* NSAttributedString + Extensions.swift in Sources */,
+				5BEBC72124094F7E00158A6F /* CGSize + Extensions.swift in Sources */,
 				5B24666C23FDB981002BE590 /* HTTPURLResponse + Extensions.swift in Sources */,
 				5BECD1CB23EC90A400FA2455 /* FollowerCell.swift in Sources */,
 				5B22985223F0B67A00E37DC1 /* CustomStackView.swift in Sources */,
@@ -405,6 +416,7 @@
 				5BEBC71D24093D6100158A6F /* GFFavoriteButton.swift in Sources */,
 				5B55CB1B23EB635800B6DF31 /* String + Extensions.swift in Sources */,
 				5B2424A523EC520600224099 /* GithubFollower.swift in Sources */,
+				5BEBC71F24094F4500158A6F /* CGRect + Extensions.swift in Sources */,
 				5BCC46862400AB6C00A7F50B /* GFCollectionView.swift in Sources */,
 				5B76B14023EE1FB200252661 /* UICollectionView + Extensions.swift in Sources */,
 				5B22985423F0B69E00E37DC1 /* HStackView.swift in Sources */,

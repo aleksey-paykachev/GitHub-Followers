@@ -13,25 +13,17 @@ class GFFavoriteButton: UIButton {
 
 	private let primaryColor: UIColor = .gfFavoriteButton
 	private let secondaryColor: UIColor = .gfBackground
-	private let borderWidth: CGFloat = 4
+	private let borderWidth: CGFloat = 3
 	private let animationDuration: TimeInterval
 
-	private let shapeLayer = CAShapeLayer()
-	private let backgroundFillLayer = CAShapeLayer()
+	private lazy var backgroundFillLayer = CAShapeLayer(path: starSymbolPath)
 	
 	lazy private var backgroundEmptyPath: CGPath = {
-		let centerZeroSizeRect = (CGRect(origin: CGPoint(x: bounds.width / 2, y: bounds.height / 2), size: .zero))
+		let centerZeroSizeRect = CGRect(origin: bounds.center, size: .zero)
 		return CGPath(ellipseIn: centerZeroSizeRect, transform: nil)
 	}()
 	
-	lazy private var backgroundFilledPath: CGPath = {
-		let side = bounds.width
-		let scaledSide = (side * side * 2).squareRoot() // outer diameter (hypotenuse)
-		let offset = (scaledSide - side) / 2
-		let scaledSquare = CGRect(x: -offset, y: -offset, width: scaledSide, height: scaledSide)
-		
-		return CGPath(ellipseIn: scaledSquare, transform: nil)
-	}()
+	lazy private var backgroundFilledPath = CGPath(ellipseIn: bounds.excircleSquare, transform: nil)
 	
 	override var isSelected: Bool {
 		didSet {
@@ -45,10 +37,9 @@ class GFFavoriteButton: UIButton {
 	init(sideSize: CGFloat, animationDuration: TimeInterval) {
 		self.animationDuration = animationDuration
 
-		let frame = CGRect(origin: .zero, size: CGSize(width: sideSize, height: sideSize))
+		let frame = CGRect(origin: .zero, size: CGSize.square(sideSize))
 		super.init(frame: frame)
 		
-		setupView()
 		setupSublayers()
 	}
 
@@ -59,27 +50,17 @@ class GFFavoriteButton: UIButton {
 
 	// MARK: - Setup
 	
-	private func setupView() {
-		backgroundColor = .clear
-	}
-	
 	private func setupSublayers() {
 		// shape layer
-		shapeLayer.path = starSymbolPath.cgPath
+		let shapeLayer = CAShapeLayer(path: starSymbolPath)
 		shapeLayer.fillColor = secondaryColor.cgColor
 		shapeLayer.strokeColor = primaryColor.cgColor
 		shapeLayer.lineWidth = borderWidth
 		
-		let scaleFactor = bounds.width / starSymbolPath.bounds.width
-		shapeLayer.transform = CATransform3DMakeScale(scaleFactor, scaleFactor, 1)
-
 		// selection layer
 		backgroundFillLayer.path = isSelected ? backgroundFilledPath : backgroundEmptyPath
 		backgroundFillLayer.fillColor = primaryColor.cgColor
-		let maskLayer = CAShapeLayer()
-		maskLayer.path = starSymbolPath.cgPath
-		maskLayer.transform = CATransform3DMakeScale(scaleFactor, scaleFactor, 1)
-		backgroundFillLayer.mask = maskLayer
+		backgroundFillLayer.mask = CAShapeLayer(path: starSymbolPath)
 
 		layer.addSublayer(shapeLayer)
 		layer.addSublayer(backgroundFillLayer)
@@ -103,7 +84,7 @@ class GFFavoriteButton: UIButton {
 	
 	// MARK: - Bezier path
 	
-	let starSymbolPath: UIBezierPath = {
+	lazy var starSymbolPath: CGPath = {
         let path = UIBezierPath()
 
 		path.move(to: CGPoint(x: 1.72, y: 32.48))
@@ -129,6 +110,10 @@ class GFFavoriteButton: UIButton {
         path.addCurve(to: CGPoint(x: 1.72, y: 32.48), controlPoint1: CGPoint(x: 0.21, y: 24.42), controlPoint2: CGPoint(x: -1.51, y: 29.71))
         path.close()
 		
-		return path
+		// scale to bounds
+		let scaleFactor = bounds.width / path.bounds.width
+		path.apply(CGAffineTransform(scaleX: scaleFactor, y: scaleFactor))
+		
+		return path.cgPath
 	}()
 }
