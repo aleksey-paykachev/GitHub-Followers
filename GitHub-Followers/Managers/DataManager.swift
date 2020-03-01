@@ -17,7 +17,8 @@ class DataManager {
 	private let networkManager = NetworkManager()
 	
 	private let baseUrl = URL(string: "https://api.github.com")
-	private lazy var usersUrl = baseUrl?.appendingPathComponent("users")
+	private lazy var usersUrl = baseUrl?.appendingPath("users")
+	private let usersPerRequest = 100
 
 	
 	// MARK: - Init
@@ -31,7 +32,7 @@ class DataManager {
 				 completionQueue: DispatchQueue = .main,
 				 completion: @escaping (Result<GithubUser, NetworkError>) -> Void) {
 		
-		let url = usersUrl?.appending(username)
+		let url = usersUrl?.appendingPath(username)
 		
 		networkManager.getParsedData(from: url) { result in
 			completionQueue.async {
@@ -45,9 +46,11 @@ class DataManager {
 					  completionQueue: DispatchQueue = .main,
 					  completion: @escaping (Result<NetworkParsedResult<[GithubFollower]>, NetworkError>) -> Void) {
 		
-		let requestUrl = url ?? usersUrl?.appending(username, "followers")
-
-		networkManager.getNetworkParsedResult(from: requestUrl) { result in
+		// if no url were provided, construct request url from username in following format:
+		// baseUsersUrl/%username%/followers?per_page=n
+		let url = url ?? usersUrl?.appendingPath(username, "followers").appendingQuery("per_page", value: usersPerRequest)
+			
+		networkManager.getNetworkParsedResult(from: url) { result in
 			completionQueue.async {
 				completion(result)
 			}
