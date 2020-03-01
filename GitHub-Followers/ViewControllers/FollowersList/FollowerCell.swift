@@ -34,11 +34,13 @@ class FollowerCell: UICollectionViewCell {
 
 	private func setupSubviews() {
 		// image view
-		photoImageView.contentMode = .scaleAspectFill
 		photoImageView.layer.setCornerRadius(12)
 		photoImageView.layer.setBorder(color: .gfImageBorder)
 		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
-				
+
+		// username
+		usernameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
+
 		// stack
 		let stack = VStackView([photoImageView, usernameLabel], alignment: .center)
 		contentView.addSubview(stack)

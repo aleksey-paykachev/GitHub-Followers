@@ -31,7 +31,7 @@ enum NetworkError: LocalizedError {
 		case .wrongResponse:
 			error = "Wrong response from server."
 		case .notFound:
-			error = "Requested data not found on server."
+			error = "Requested data not found."
 		case .wrongStatusCode(let statusCode):
 			error = "Wrong network response status code: \(statusCode)"
 		case .emptyData:
