@@ -13,7 +13,8 @@ class FavoriteCell: UITableViewCell {
 	
 	private let containerView = UIView()
 	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
-	private let usernameLabel = GFLabel(font: .systemFont(ofSize: 24))
+	private let usernameLabel = GFLabel(font: .systemFont(ofSize: 22))
+	private let followersCountLabel = GFLabel(font: .systemFont(ofSize: 16), color: .gfTextSecondary)
 
 	
 	// MARK: - Init
@@ -46,8 +47,14 @@ class FavoriteCell: UITableViewCell {
 		contentView.addSubview(containerView)
 		containerView.constrainToSuperview(padding: 9)
 
-		// stack
-		let stack = HStackView([photoImageView, usernameLabel], spacing: 16, alignment: .leading)
+		// user info stacks
+		let followersImageLabel = GFLabel(text: "Followers:", image: UIImage(sfSymbol: .person2), font: followersCountLabel.font, color: followersCountLabel.textColor)
+		
+		let followersInfoStack = HStackView([followersImageLabel, followersCountLabel], spacing: 4)
+		let userInfoStack = VStackView([usernameLabel, followersInfoStack], spacing: 6, alignment: .leading)
+		
+		// main stack
+		let stack = HStackView([photoImageView, userInfoStack], spacing: 16, alignment: .leading)
 		containerView.addSubview(stack)
 		stack.constrainToSuperview(padding: 9)
 	}
@@ -57,6 +64,7 @@ class FavoriteCell: UITableViewCell {
 	
 	func set(user: GithubUser) {
 		usernameLabel.text = user.username
+		followersCountLabel.text = String(user.followersCount)
 		
 		#warning("Move network logic to View Controller.")
 		DataManager.shared.getProfileImage(for: user) { [weak self] result in
@@ -79,5 +87,6 @@ class FavoriteCell: UITableViewCell {
 		
 		photoImageView.image = UIImage(asset: .avatarPlaceholder)
 		usernameLabel.text = ""
+		followersCountLabel.text = ""
 	}
 }
