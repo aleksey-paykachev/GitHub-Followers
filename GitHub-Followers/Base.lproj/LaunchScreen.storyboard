@@ -14,7 +14,17 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="gh-logo" translatesAutoresizingMaskIntoConstraints="NO" id="djd-od-U6x">
+                                <rect key="frame" x="41.5" y="171" width="331" height="554"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="djd-od-U6x" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="144-BJ-RE7"/>
+                            <constraint firstItem="djd-od-U6x" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.8" id="b3n-OX-Cue"/>
+                            <constraint firstItem="djd-od-U6x" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="cvZ-nD-eyF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -23,4 +33,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gh-logo" width="554" height="554"/>
+    </resources>
 </document>
