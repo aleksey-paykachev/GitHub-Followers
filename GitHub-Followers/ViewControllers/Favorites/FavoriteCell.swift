@@ -11,8 +11,6 @@ import UIKit
 class FavoriteCell: UITableViewCell {
 	// MARK: - Properties
 	
-	static let reuseId = String(describing: FavoriteCell.self)
-	
 	private let containerView = UIView()
 	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
 	private let usernameLabel = GFLabel(font: .systemFont(ofSize: 24))
