@@ -65,6 +65,7 @@ class FavoritesViewController: UITableViewController {
 	private func setupTableView() {
 		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseId)
 		tableView.separatorStyle = .none
+		tableView.rowHeight = 100
 	}
 	
 	

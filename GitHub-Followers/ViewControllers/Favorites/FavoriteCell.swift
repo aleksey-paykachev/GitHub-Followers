@@ -37,18 +37,19 @@ class FavoriteCell: UITableViewCell {
 	}
 	
 	private func setupSubviews() {
-		photoImageView.widthAnchor.constraint(equalToConstant: 70).isActive = true
-		photoImageView.heightAnchor.constraint(equalToConstant: 70).isActive = true
+		// photo image
+		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor, multiplier: 1).isActive = true
 		photoImageView.layer.setCornerRadius(10)
 		
+		// container
 		containerView.layer.setShadow(radius: 3, opacity: 0.1, offsetX: 2, offsetY: 2)
 		contentView.addSubview(containerView)
 		containerView.constrainToSuperview(padding: 9)
 
-		let stack = HStackView([photoImageView, usernameLabel, SpacerView()], spacing: 16, alignment: .leading)
-		
+		// stack
+		let stack = HStackView([photoImageView, usernameLabel], spacing: 16, alignment: .leading)
 		containerView.addSubview(stack)
-		stack.constrainToSuperview(padding: 8)
+		stack.constrainToSuperview(padding: 9)
 	}
 	
 	
