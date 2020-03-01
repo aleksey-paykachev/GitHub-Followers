@@ -13,8 +13,8 @@ class FavoriteCell: UITableViewCell {
 	
 	private let containerView = UIView()
 	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
-	private let usernameLabel = GFLabel(font: .systemFont(ofSize: 22))
-	private let followersCountLabel = GFLabel(font: .systemFont(ofSize: 16), color: .gfTextSecondary)
+	private let usernameLabel = GFLabel(fontSize: 22)
+	private let followersCountLabel = GFLabel(fontSize: 16, color: .gfTextSecondary)
 
 	
 	// MARK: - Init
@@ -48,7 +48,7 @@ class FavoriteCell: UITableViewCell {
 		containerView.constrainToSuperview(padding: 9)
 
 		// user info stacks
-		let followersImageLabel = GFLabel(text: "Followers:", image: UIImage(sfSymbol: .person2), font: followersCountLabel.font, color: followersCountLabel.textColor)
+		let followersImageLabel = GFLabel(text: "Followers:", image: UIImage(sfSymbol: .person2), fontSize: followersCountLabel.font.pointSize, color: followersCountLabel.textColor)
 		
 		let followersInfoStack = HStackView([followersImageLabel, followersCountLabel], spacing: 4)
 		let userInfoStack = VStackView([usernameLabel, followersInfoStack], spacing: 6, alignment: .leading)

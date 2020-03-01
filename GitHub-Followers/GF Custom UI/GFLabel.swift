@@ -13,7 +13,8 @@ class GFLabel: UILabel {
 	
 	init(text: String? = nil,
 		 image: UIImage? = nil,
-		 font: UIFont? = nil,
+		 fontSize: CGFloat = 17,
+		 fontWeight: UIFont.Weight = .regular,
 		 color: UIColor? = .gfText,
 		 alignment: NSTextAlignment = .left,
 		 allowMultipleLines: Bool = false) {
@@ -22,7 +23,7 @@ class GFLabel: UILabel {
 		
 		// setup
 		self.text = text
-		self.font = font
+		self.font = .systemFont(ofSize: fontSize, weight: fontWeight)
 		self.textColor = color
 		self.textAlignment = alignment
 		self.numberOfLines = allowMultipleLines ? 0 : 1

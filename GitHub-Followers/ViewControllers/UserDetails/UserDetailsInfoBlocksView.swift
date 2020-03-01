@@ -41,7 +41,8 @@ class UserDetailsInfoBlocksView: UIView {
 		let infoBlockLabels = infoBlocks.map { infoBlock in
 			GFLabel(text: infoBlock.text,
 					image: infoBlock.logoImage,
-					font: .systemFont(ofSize: 18, weight: .medium),
+					fontSize: 18,
+					fontWeight: .medium,
 					color: .gfTextInverted,
 					alignment: .center,
 					allowMultipleLines: true)

@@ -42,7 +42,7 @@ class GFErrorMessageView: UIView {
 		blurEffectView.constrainToSuperview()
 		
 		// message label
-		let messageLabel = GFLabel(text: message, font: .systemFont(ofSize: 17), color: .gfTextInverted, alignment: .center, allowMultipleLines: true)
+		let messageLabel = GFLabel(text: message, fontSize: 17, color: .gfTextInverted, alignment: .center, allowMultipleLines: true)
 		
 		addSubview(messageLabel)
 		messageLabel.constrainToSuperview(padding: 18)

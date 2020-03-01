@@ -52,7 +52,7 @@ class UserDetailsMainInfoView: UIView {
 		profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
 		
 		// labels
-		let usernameLabel = GFLabel(text: user.username, font: .systemFont(ofSize: 28, weight: .medium))
+		let usernameLabel = GFLabel(text: user.username, fontSize: 28, fontWeight: .medium)
 		let fullNameLabel = GFLabel(text: user.fullName, image: UIImage(sfSymbol: .person))
 		let locationLabel = GFLabel(text: user.location, image: UIImage(sfSymbol: .mappinAndEllipse))
 		
