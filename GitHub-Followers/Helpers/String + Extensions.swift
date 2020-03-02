@@ -22,4 +22,8 @@ extension String {
 		let match = self[matchedRange]
 		return String(match)
 	}
+	
+	func contains(_ term: String) -> Bool {
+		localizedCaseInsensitiveContains(term)
+	}
 }

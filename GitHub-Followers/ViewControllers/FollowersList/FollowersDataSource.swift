@@ -61,7 +61,7 @@ class FollowersDataSource: UICollectionViewDiffableDataSource<FollowersDataSourc
 		if filterTerm.isEmpty {
 			reload(with: followers)
 		} else {
-			let filteredFollowers = followers.filter { $0.usernameContains(filterTerm) }
+			let filteredFollowers = followers.filter { $0.username.contains(filterTerm) }
 			reload(with: filteredFollowers)
 		}
 	}

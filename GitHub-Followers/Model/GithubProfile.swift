@@ -12,10 +12,3 @@ protocol GithubProfile {
 	var username: String { get }
 	var profileImageUrl: URL? { get }
 }
-
-
-extension GithubProfile {
-	func usernameContains(_ term: String) -> Bool {
-		username.localizedCaseInsensitiveContains(term)
-	}
-}
