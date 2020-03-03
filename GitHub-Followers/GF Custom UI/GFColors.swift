@@ -16,8 +16,9 @@ extension UIColor {
 
 	// Text
 	static let gfText = UIColor.label
-	static let gfTextInverted = UIColor.white
+	static let gfTextAccented = UIColor.white
 	static let gfTextSecondary = UIColor.secondaryLabel
+	static let gfTextLabelBackground = UIColor.tertiarySystemBackground
 
 	// Borders
 	static let gfImageBorder = UIColor.systemGray3
@@ -36,5 +37,5 @@ extension UIColor {
 	static let gfShadow = UIColor.black
 	static let gfError = UIColor.systemRed
 	
-	static let gfDetailsInfoBlockBackground = UIColor.systemGray
+	static let gfDetailsInfoBlockBackground = UIColor.secondarySystemBackground
 }

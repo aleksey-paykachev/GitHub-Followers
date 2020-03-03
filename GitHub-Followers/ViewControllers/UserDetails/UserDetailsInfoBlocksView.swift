@@ -43,7 +43,7 @@ class UserDetailsInfoBlocksView: UIView {
 					image: infoBlock.logoImage,
 					fontSize: 18,
 					fontWeight: .medium,
-					color: .gfTextInverted,
+					color: .gfTextSecondary,
 					alignment: .center,
 					allowMultipleLines: true)
 		}

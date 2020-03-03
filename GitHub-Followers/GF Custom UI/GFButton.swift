@@ -12,7 +12,7 @@ class GFButton: UIButton {
 	// MARK: - Init
 	
 	convenience init(title: String = "",
-					 color: UIColor? = .gfTextInverted,
+					 color: UIColor? = .gfTextAccented,
 					 backgroundColor: UIColor = .gfPrimary) {
 
 		self.init(type: .system)
@@ -29,7 +29,7 @@ class GFButton: UIButton {
 	// MARK: - Setup
 	
 	private func setupView() {
-		titleLabel?.font = .systemFont(ofSize: 20, weight: .medium)
+		titleLabel?.font = .systemFont(ofSize: 19, weight: .medium)
 		layer.setCornerRadius(8)
 	}
 }

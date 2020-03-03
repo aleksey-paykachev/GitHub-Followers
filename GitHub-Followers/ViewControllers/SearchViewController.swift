@@ -13,7 +13,7 @@ class SearchViewController: GFViewController {
 	
 	private var mainStack: UIStackView!
 	private var mainStackCenterYConstraint: NSLayoutConstraint!
-	private let searchTermTextField = GFTextField(placeholder: "Enter github username")
+	private let searchTermTextField = GFTextField(placeholder: "Enter GitHub username")
 
 	
 	// MARK: - Init
