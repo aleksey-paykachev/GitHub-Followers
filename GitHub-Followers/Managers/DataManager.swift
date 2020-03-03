@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class DataManager {
 	// MARK: - Properties
@@ -18,7 +19,7 @@ class DataManager {
 	
 	private let baseUrl = URL(string: "https://api.github.com")
 	private lazy var usersUrl = baseUrl?.appendingPath("users")
-	private let usersPerRequest = 100
+	private let usersPerRequest = 50
 
 	
 	// MARK: - Init
@@ -29,7 +30,7 @@ class DataManager {
 	// MARK: - API Users
 	
 	func getUser(by username: String,
-				 completionQueue: DispatchQueue = .main,
+				 on completionQueue: DispatchQueue = .main,
 				 completion: @escaping (Result<GithubUser, NetworkError>) -> Void) {
 		
 		let url = usersUrl?.appendingPath(username)
@@ -43,7 +44,7 @@ class DataManager {
 	
 	func getFollowers(for username: String,
 					  url: URL? = nil,
-					  completionQueue: DispatchQueue = .main,
+					  on completionQueue: DispatchQueue = .main,
 					  completion: @escaping (Result<NetworkParsedResult<[GithubFollower]>, NetworkError>) -> Void) {
 		
 		// if no url were provided, construct request url from username in following format:
@@ -58,7 +59,7 @@ class DataManager {
 	}
 	
 	func getProfileImage(for githubProfile: GithubProfile,
-						 completionQueue: DispatchQueue = .main,
+						 on completionQueue: DispatchQueue = .main,
 						 completion: @escaping (Result<UIImage, NetworkError>) -> Void) {
 		
 		let url = githubProfile.profileImageUrl
@@ -68,6 +69,21 @@ class DataManager {
 				completion(result)
 			}
 		}
+	}
+	
+	func profileImagePublisher(for githubProfile: GithubProfile,
+							   on completionQueue: DispatchQueue = .main) -> AnyPublisher<UIImage?, Never> {
+
+		Future<UIImage?, Never> { promise in
+			self.getProfileImage(for: githubProfile, on: completionQueue) { result in
+				switch result {
+				case .success(let image):
+					promise(.success(image))
+				case .failure:
+					promise(.success(UIImage(asset: .avatarPlaceholder)))
+				}
+			}
+		}.eraseToAnyPublisher()
 	}
 	
 	

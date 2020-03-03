@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Combine
 
 class FavoriteCell: UITableViewCell {
 	// MARK: - Properties
@@ -15,6 +16,8 @@ class FavoriteCell: UITableViewCell {
 	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
 	private let usernameLabel = GFLabel(fontSize: 22)
 	private let followersCountLabel = GFLabel(fontSize: 16, color: .gfTextSecondary)
+	
+	private var imageDownloaderSubscriber: AnyCancellable?
 
 	
 	// MARK: - Init
@@ -66,14 +69,9 @@ class FavoriteCell: UITableViewCell {
 		usernameLabel.text = user.username
 		followersCountLabel.text = String(user.followersCount)
 		
-		#warning("Move network logic to View Controller.")
-		DataManager.shared.getProfileImage(for: user) { [weak self] result in
-			guard let self = self else { return }
-			
-			if case .success(let image) = result {
-				self.photoImageView.image = image
-			}
-		}
+		imageDownloaderSubscriber = DataManager.shared
+										.profileImagePublisher(for: user)
+										.assign(to: \.image, on: photoImageView)
 	}
 	
 	override func setSelected(_ selected: Bool, animated: Bool) {
@@ -86,6 +84,8 @@ class FavoriteCell: UITableViewCell {
 		super.prepareForReuse()
 		
 		photoImageView.image = UIImage(asset: .avatarPlaceholder)
+		imageDownloaderSubscriber?.cancel()
+		
 		usernameLabel.text = ""
 		followersCountLabel.text = ""
 	}
