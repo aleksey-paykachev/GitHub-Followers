@@ -50,7 +50,7 @@ class GFTextField: UITextField {
 	// MARK: - Setup
 	
 	private func setupView() {
-		backgroundColor = .gfTextLabelBackground
+		backgroundColor = .gfTextFieldBackground
 		layer.setBorder(color: .gfTextFieldBorder, width: 2)
 		layer.setCornerRadius(8)
 	}

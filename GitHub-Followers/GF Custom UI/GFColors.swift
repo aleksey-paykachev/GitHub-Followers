@@ -18,13 +18,15 @@ extension UIColor {
 	static let gfText = UIColor.label
 	static let gfTextAccented = UIColor.white
 	static let gfTextSecondary = UIColor.secondaryLabel
-	static let gfTextLabelBackground = UIColor.tertiarySystemBackground
 
-	// Borders
-	static let gfImageBorder = UIColor.systemGray3
+	// Text field
 	static let gfTextFieldBorder = UIColor.tertiarySystemFill
+	static let gfTextFieldBackground = UIColor.tertiarySystemBackground
+
+	// Image
+	static let gfImageBorder = UIColor.systemGray3
 	
-	// Cells
+	// Cell
 	static let gfFavoriteCell = UIColor.tertiarySystemBackground
 	static let gfFavoriteCellSelected = UIColor.secondarySystemBackground
 
