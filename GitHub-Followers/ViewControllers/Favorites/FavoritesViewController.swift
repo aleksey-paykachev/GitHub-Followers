@@ -87,6 +87,34 @@ class FavoritesViewController: UITableViewController {
 		dataSource.reloadData(animated: true)
 	}
 	
+	private func setState(isEmpty: Bool) {
+		navigationItem.rightBarButtonItem?.isEnabled = !isEmpty
+		
+		let emptyStateView = UIView()
+		
+		let emptyStateLabel = GFLabel(text: "No favorite users. Set user as favorite on user info page by pressing ⭐️ icon.", fontSize: 22, color: .gfTextSecondary, alignment: .center, allowMultipleLines: true)
+		let emptyStateImageView = GFImageView(asset: .emptyState)
+		
+		emptyStateView.addSubview(emptyStateLabel)
+		emptyStateView.addSubview(emptyStateImageView)
+		emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
+		emptyStateImageView.translatesAutoresizingMaskIntoConstraints = false
+		
+		NSLayoutConstraint.activate([
+			emptyStateLabel.centerXAnchor.constraint(equalTo: emptyStateView.centerXAnchor),
+			emptyStateLabel.bottomAnchor.constraint(equalTo: emptyStateView.centerYAnchor, constant: -80),
+			emptyStateLabel.widthAnchor.constraint(equalTo: emptyStateView.widthAnchor, multiplier: 0.8),
+			
+			emptyStateImageView.topAnchor.constraint(equalTo: emptyStateLabel.bottomAnchor),
+			emptyStateImageView.bottomAnchor.constraint(equalTo: emptyStateView.bottomAnchor),
+			emptyStateImageView.centerXAnchor.constraint(equalTo: emptyStateView.trailingAnchor, constant: -50)
+		])
+		
+		tableView.backgroundView = UIView()
+		tableView.backgroundView?.addSubview(emptyStateView)
+		emptyStateView.constrainToSuperview()
+	}
+	
 	
 	// MARK: - View lifecycle
 	
@@ -95,6 +123,8 @@ class FavoritesViewController: UITableViewController {
 		
 		navigationController?.navigationBar.prefersLargeTitles = true
 		dataSource.reloadData()
+		
+		setState(isEmpty: dataSource.snapshot().numberOfItems == 0)
 	}
 }
 
