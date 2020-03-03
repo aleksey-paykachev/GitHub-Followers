@@ -7,14 +7,17 @@
 //
 
 import UIKit
+import Combine
 
 class FollowerCell: UICollectionViewCell {
 	// MARK: - Properties
 	
 	var follower: GithubFollower? { didSet { updateUI() } }
 	
-	let photoImageView = GFImageView(asset: .avatarPlaceholder)
-	let usernameLabel = GFLabel()
+	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
+	private let usernameLabel = GFLabel()
+	
+	private var imageDownloaderSubscriber: AnyCancellable?
 	
 	
 	// MARK: - Init
@@ -55,18 +58,17 @@ class FollowerCell: UICollectionViewCell {
 
 		usernameLabel.text = follower.username
 
-		#warning("Move network logic to View Controller.")
-		DataManager.shared.getProfileImage(for: follower) { result in
-			if case Result.success(let image) = result {
-				self.photoImageView.image = image
-			}
-		}
+		imageDownloaderSubscriber = DataManager.shared
+										.profileImagePublisher(for: follower)
+										.assign(to: \.image, on: photoImageView)
 	}
 	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
 		photoImageView.image = UIImage(asset: .avatarPlaceholder)
+		imageDownloaderSubscriber?.cancel()
+
 		usernameLabel.text = ""
 	}
 }
