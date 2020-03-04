@@ -63,6 +63,7 @@ class FavoritesViewController: UITableViewController {
 	}
 	
 	private func setupTableView() {
+		dataSource.delegate = self
 		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseId)
 		tableView.separatorStyle = .none
 		tableView.rowHeight = 100
@@ -77,9 +78,17 @@ class FavoritesViewController: UITableViewController {
 		navigationController?.setToolbarHidden(!editing, animated: true)
 	}
 	
-	private func setState(isEmpty: Bool) {
+	private func checkForEmptyState() {
+		let isEmpty = dataSource.isEmpty
+
+		// disable edit button and hide toolbar
 		navigationItem.rightBarButtonItem?.isEnabled = !isEmpty
-		
+
+		if isEditing, isEmpty {
+			setEditing(false, animated: true)
+		}
+
+		// show empty state message and image
 		if isEmpty {
 			let emptyStateView = GFEmptyStateView(text: "No favorite users. Set user as favorite on user info page by pressing ⭐️ icon.")
 			tableView.backgroundView = UIView()
@@ -95,11 +104,12 @@ class FavoritesViewController: UITableViewController {
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		
+
 		navigationController?.navigationBar.prefersLargeTitles = true
+
 		dataSource.reloadData()
-		
-		setState(isEmpty: dataSource.snapshot().numberOfItems == 0)
+		setEditing(false, animated: false)
+		checkForEmptyState()
 	}
 }
 
@@ -112,5 +122,14 @@ extension FavoritesViewController {
 		
 		let followersVC = FollowersViewController(for: user)
 		navigationController?.pushViewController(followersVC, animated: true)
+	}
+}
+
+
+// MARK: - FavoritesDataSourceDelegate
+
+extension FavoritesViewController: FavoritesDataSourceDelegate {
+	func didDeleteUser() {
+		checkForEmptyState()
 	}
 }

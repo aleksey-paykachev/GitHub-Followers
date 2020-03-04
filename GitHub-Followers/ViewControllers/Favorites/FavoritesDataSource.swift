@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol FavoritesDataSourceDelegate: class {
+	func didDeleteUser()
+}
+
+
 class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Section, GithubUser> {
 	// MARK: - Sections
 	
@@ -17,6 +22,8 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	
 	
 	// MARK: - Properties
+	
+	weak var delegate: FavoritesDataSourceDelegate?
 	
 	var isEmpty: Bool {
 		snapshot().numberOfItems == 0
@@ -74,6 +81,7 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 
 		if case .delete = editingStyle, let user = itemIdentifier(for: indexPath) {
 			delete(user)
+			delegate?.didDeleteUser()
 		}
 	}
 	
