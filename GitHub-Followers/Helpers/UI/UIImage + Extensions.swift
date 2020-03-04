@@ -38,11 +38,11 @@ extension UIImage {
 	enum SFSymbol: String {
 		case docText = "doc.text"
 		case folder = "folder"
+		case heart = "heart"
 		case magnifyingglass = "magnifyingglass"
 		case mappinAndEllipse = "mappin.and.ellipse"
 		case person = "person"
 		case person2 = "person.2"
-		case person3 = "person.3"
 		case star = "star"
 		case starFill = "star.fill"
 		case chevronUp = "chevron.up"

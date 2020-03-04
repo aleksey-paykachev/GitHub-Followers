@@ -87,7 +87,7 @@ class UserDetailsViewController: GFViewController {
 			action: .primary(title: "GitHub Profile", completion: githubProfileButtonDidPressed))
 		
 		let userSocialActivityDetailsView = UserDetailsInfoBlocksView(
-			infoBlocks: [.following(count: user.followingCount), .followers(count: user.followersCount)],
+			infoBlocks: [.followers(count: user.followersCount), .following(count: user.followingCount)],
 			action: .secondary(title: "View Followers", completion: viewFollowersButtonDidPressed))
 
 		// registered

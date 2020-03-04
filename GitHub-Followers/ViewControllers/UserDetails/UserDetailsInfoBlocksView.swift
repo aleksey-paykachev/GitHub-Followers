@@ -82,10 +82,10 @@ class UserDetailsInfoBlocksView: UIView {
 				return UIImage(sfSymbol: .folder)
 			case .gists:
 				return UIImage(sfSymbol: .docText)
-			case .following:
-				return UIImage(sfSymbol: .person2)
 			case .followers:
-				return UIImage(sfSymbol: .person3)
+				return UIImage(sfSymbol: .person2)
+			case .following:
+				return UIImage(sfSymbol: .heart)
 			}
 		}
 		
@@ -95,10 +95,10 @@ class UserDetailsInfoBlocksView: UIView {
 				return "Public Repos\n\(count)"
 			case .gists(let count):
 				return "Public Gists\n\(count)"
-			case .following(let count):
-				return "Following\n\(count)"
 			case .followers(let count):
 				return "Followers\n\(count)"
+			case .following(let count):
+				return "Following\n\(count)"
 			}
 		}
 	}
