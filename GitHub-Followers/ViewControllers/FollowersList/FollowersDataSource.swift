@@ -29,7 +29,7 @@ class FollowersDataSource: UICollectionViewDiffableDataSource<FollowersDataSourc
 
 	private let cellProvider: CellProvider = { collectionView, indexPath, follower in
 		let cell: FollowerCell = collectionView.dequeueReusableCell(for: indexPath)
-		cell.follower = follower
+		cell.set(follower: follower)
 		return cell
 	}
 	

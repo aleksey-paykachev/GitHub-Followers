@@ -12,8 +12,6 @@ import Combine
 class FollowerCell: UICollectionViewCell {
 	// MARK: - Properties
 	
-	var follower: GithubFollower? { didSet { updateUI() } }
-	
 	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
 	private let usernameLabel = GFLabel()
 	
@@ -51,11 +49,9 @@ class FollowerCell: UICollectionViewCell {
 	}
 	
 	
-	// MARK: - Update UI
+	// MARK: - API
 	
-	private func updateUI() {
-		guard let follower = follower else { return }
-
+	func set(follower: GithubFollower) {
 		usernameLabel.text = follower.username
 
 		imageDownloaderSubscriber = DataManager.shared
@@ -63,13 +59,16 @@ class FollowerCell: UICollectionViewCell {
 										.assign(to: \.image, on: photoImageView)
 	}
 	
+	
+	// MARK: - Internal methods
+	
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
-		photoImageView.image = UIImage(asset: .avatarPlaceholder)
 		imageDownloaderSubscriber?.cancel()
 
 		usernameLabel.text = ""
+		photoImageView.image = UIImage(asset: .avatarPlaceholder)
 	}
 }
 

@@ -63,7 +63,7 @@ class FavoriteCell: UITableViewCell {
 	}
 	
 	
-	// MARK: - Methods
+	// MARK: - API
 	
 	func set(user: GithubUser) {
 		usernameLabel.text = user.username
@@ -74,6 +74,9 @@ class FavoriteCell: UITableViewCell {
 										.assign(to: \.image, on: photoImageView)
 	}
 	
+	
+	// MARK: - Internal methods
+	
 	override func setSelected(_ selected: Bool, animated: Bool) {
 		super.setSelected(selected, animated: animated)
 		
@@ -83,10 +86,10 @@ class FavoriteCell: UITableViewCell {
 	override func prepareForReuse() {
 		super.prepareForReuse()
 		
-		photoImageView.image = UIImage(asset: .avatarPlaceholder)
 		imageDownloaderSubscriber?.cancel()
-		
+
 		usernameLabel.text = ""
 		followersCountLabel.text = ""
+		photoImageView.image = UIImage(asset: .avatarPlaceholder)
 	}
 }
