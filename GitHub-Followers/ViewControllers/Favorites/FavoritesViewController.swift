@@ -57,8 +57,8 @@ class FavoritesViewController: UITableViewController {
 	private func setupToolbar() {
 		toolbarItems = [
 			UIBarButtonItem(customView: GFLabel(text: "Sort by name: ")),
-			UIBarButtonItem(image: UIImage(sfSymbol: .chevronDown), style: .plain, target: self, action: #selector(sortAscending)),
-			UIBarButtonItem(image: UIImage(sfSymbol: .chevronUp), style: .plain, target: self, action: #selector(sortDescending))
+			UIBarButtonItem(image: UIImage(sfSymbol: .chevronDown), style: .plain, target: dataSource, action: #selector(FavoritesDataSource.sortAscending)),
+			UIBarButtonItem(image: UIImage(sfSymbol: .chevronUp), style: .plain, target: dataSource, action: #selector(FavoritesDataSource.sortDescending))
 		]
 	}
 	
@@ -75,16 +75,6 @@ class FavoritesViewController: UITableViewController {
 		super.setEditing(editing, animated: animated)
 		
 		navigationController?.setToolbarHidden(!editing, animated: true)
-	}
-	
-	@objc private func sortAscending() {
-		DataManager.shared.sortFavorites(by: <)
-		dataSource.reloadData(animated: true)
-	}
-	
-	@objc private func sortDescending() {
-		DataManager.shared.sortFavorites(by: >)
-		dataSource.reloadData(animated: true)
 	}
 	
 	private func setState(isEmpty: Bool) {

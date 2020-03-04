@@ -16,7 +16,24 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	}
 	
 	
+	// MARK: - Properties
+	
+	var isEmpty: Bool {
+		snapshot().numberOfItems == 0
+	}
+	
+	
 	// MARK: - API
+	
+	@objc func sortAscending() {
+		DataManager.shared.sortFavorites(by: <)
+		reloadData(animated: true)
+	}
+	
+	@objc func sortDescending() {
+		DataManager.shared.sortFavorites(by: >)
+		reloadData(animated: true)
+	}
 	
 	func reloadData(animated: Bool = false) {
 		let favorites = DataManager.shared.allFavorites
@@ -29,6 +46,9 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 
 		apply(newSnapshot, animatingDifferences: animated)
 	}
+	
+	
+	// MARK: - Private methods
 	
 	private func delete(_ user: GithubUser) {
 		DataManager.shared.removeUserFromFavorites(user)
