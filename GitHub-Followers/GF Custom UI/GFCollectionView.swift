@@ -78,15 +78,16 @@ class GFCollectionView: UICollectionView {
 	
 	private func showLoadingIndicatorAtCenter() {
 		addSubview(loadingIndicatorView)
+		loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
 
-		let centerX = frame.width / 2 - loadingIndicatorView.bounds.width / 2
-		let centerY = frame.height / 2 - loadingIndicatorView.bounds.height / 2 - adjustedContentInset.bottom
-		loadingIndicatorView.frame.origin = CGPoint(x: centerX, y: centerY)
+		loadingIndicatorView.centerXAnchor.constraint(equalTo: frameLayoutGuide.centerXAnchor).isActive = true
+		loadingIndicatorView.centerYAnchor.constraint(equalTo: frameLayoutGuide.centerYAnchor).isActive = true
 	}
 	
 	private func showLoadingIndicatorAtBottom() {
 		addSubview(loadingIndicatorView)
-		
+		loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = true
+
 		let centerX = bounds.width / 2 - loadingIndicatorView.bounds.width / 2
 		let bottomY = contentSize.height
 		loadingIndicatorView.frame.origin = CGPoint(x: centerX, y: bottomY)
