@@ -36,8 +36,8 @@ class FollowersViewController: GFViewController {
 	
 	// MARK: - View lifecycle
 
-	override func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(true)
+	override func viewDidLoad() {
+		super.viewDidLoad()
 		
 		updateUI()
 	}
@@ -90,9 +90,9 @@ class FollowersViewController: GFViewController {
 				self.showError(error.localizedDescription)
 
 			case .success(let followersNetworkResult):
-				let newFollowers = followersNetworkResult.data
-				self.dataSource.add(newFollowers)
-				
+				self.dataSource.add(followers: followersNetworkResult.data)
+				self.checkForEmptyState()
+
 				self.collectionView.nextPageUrl = followersNetworkResult.headers.nextUrl
 			}
 		}
@@ -111,7 +111,7 @@ class FollowersViewController: GFViewController {
 	// MARK: - Private methods
 	
 	private func updateUI() {
-		title = user.username
+		title = "\(user.username)'s followers"
 
 		loadFollowers()
 		loadNavigationItemProfileImage()
@@ -135,6 +135,13 @@ class FollowersViewController: GFViewController {
 		
 		if heightToBottom <= 50 {
 			loadFollowers()
+		}
+	}
+	
+	private func checkForEmptyState() {
+		if dataSource.isEmpty {
+			let emptyStateView = GFEmptyStateView(text: "Current user doesn't have any followers.")
+			collectionView.setAsBackgroundView(emptyStateView)
 		}
 	}
 }

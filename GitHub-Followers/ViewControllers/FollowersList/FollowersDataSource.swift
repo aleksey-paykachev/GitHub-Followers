@@ -24,6 +24,10 @@ class FollowersDataSource: UICollectionViewDiffableDataSource<FollowersDataSourc
 	var isFiltering: Bool {
 		filterFollowersByNameTerm.isNotEmpty
 	}
+	
+	var isEmpty: Bool {
+		snapshot().numberOfItems == 0
+	}
 
 	typealias CellProvider = (UICollectionView, IndexPath, GithubFollower) -> UICollectionViewCell?
 
@@ -43,7 +47,7 @@ class FollowersDataSource: UICollectionViewDiffableDataSource<FollowersDataSourc
 	
 	// MARK: - API
 	
-	func add(_ newFollowers: [GithubFollower]) {
+	func add(followers newFollowers: [GithubFollower]) {
 		followers.append(contentsOf: newFollowers)
 		reload(with: followers)
 	}

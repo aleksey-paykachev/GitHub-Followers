@@ -21,4 +21,15 @@ extension UICollectionView {
 		
 		return cell
 	}
+	
+	func setAsBackgroundView(_ view: UIView?) {
+		guard let view = view else {
+			backgroundView = nil
+			return
+		}
+		
+		backgroundView = UIView()
+		backgroundView?.addSubview(view)
+		view.constrainToSuperview()
+	}
 }
