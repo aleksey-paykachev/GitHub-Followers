@@ -88,15 +88,10 @@ class FavoritesViewController: UITableViewController {
 			setEditing(false, animated: true)
 		}
 
-		// show empty state message and image
-		if isEmpty {
-			let emptyStateView = GFEmptyStateView(text: "No favorite users. Set user as favorite on user info page by pressing ⭐️ icon.")
-			tableView.backgroundView = UIView()
-			tableView.backgroundView?.addSubview(emptyStateView)
-			emptyStateView.constrainToSuperview()
-		} else {
-			tableView.backgroundView = nil
-		}
+		// show empty state view
+		let emptyStateText = "No favorite users. Set user as favorite on user info page by pressing ⭐️ icon."
+		let emptyStateView = isEmpty ? GFEmptyStateView(text: emptyStateText) : nil
+		tableView.setAsBackgroundView(emptyStateView)
 	}
 	
 	
