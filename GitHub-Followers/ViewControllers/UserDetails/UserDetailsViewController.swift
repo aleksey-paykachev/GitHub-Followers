@@ -69,15 +69,19 @@ class UserDetailsViewController: GFViewController {
 	// Create UI
 	
 	private func createUI(for user: GithubUser) {
+		// close button
 		let closeButton = UIButton(type: .close)
 		closeButton.addTarget(self, action: #selector(closeButtonDidPressed), for: .touchUpInside)
 		let actionButtonsStack = HStackView([SpacerView(), closeButton])
 
+		// main info
 		let mainInfoView = UserDetailsMainInfoView(user: user)
 		mainInfoView.delegate = self
 		
+		// description
 		let descriptionLabel = GFLabel(text: user.description, allowMultipleLines: true)
 
+		// details views
 		let userWorkActivityDetailsView = UserDetailsInfoBlocksView(
 			infoBlocks: [.repos(count: user.repositoriesCount), .gists(count: user.gistsCount)],
 			action: .primary(title: "GitHub Profile", completion: githubProfileButtonDidPressed))
@@ -86,15 +90,24 @@ class UserDetailsViewController: GFViewController {
 			infoBlocks: [.following(count: user.followingCount), .followers(count: user.followersCount)],
 			action: .secondary(title: "View Followers", completion: viewFollowersButtonDidPressed))
 
+		// registered
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .gfTextSecondary, alignment: .center)
 
+		// main stack
 		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 22)
 		mainStack.setCustomSpacing(4, after: actionButtonsStack)
 		mainStack.setCustomSpacing(14, after: userSocialActivityDetailsView)
+		
+		// scroll view (main container)
+		let scrollView = UIScrollView()
+		view.insertSubview(scrollView, at: 0) // add behind loading overlay view
+		scrollView.constrainToSuperview()
 
-		view.insertSubview(mainStack, at: 0)
-		mainStack.constrainToSuperview(padding: 20, respectSafeArea: true)
+		scrollView.addSubview(mainStack)
+		let contentPadding: CGFloat = 20
+		mainStack.constrainToSuperview(padding: contentPadding)
+		mainStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -contentPadding * 2).isActive = true
 	}
 	
 	
