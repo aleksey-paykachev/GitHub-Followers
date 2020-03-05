@@ -9,12 +9,20 @@
 import UIKit
 
 class GFImageView: UIImageView {
+	// MARK: - Properties
+	
+	private let loadingIndicatorView = UIActivityIndicatorView(style: .medium)
+	override var image: UIImage? { didSet { updateUI() } }
+
+	
 	// MARK: - Init
 	
-	override init(image: UIImage?) {
+	override init(image: UIImage? = nil) {
 		super.init(image: image)
 		
 		setupView()
+		setupLoadingIndicator()
+		updateUI()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -26,5 +34,29 @@ class GFImageView: UIImageView {
 	
 	private func setupView() {
 		contentMode = .scaleAspectFit
+	}
+	
+	private func setupLoadingIndicator() {
+		loadingIndicatorView.color = .gfPrimary
+		loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+	}
+	
+	
+	// MARK: - Private methods
+	
+	private func updateUI() {
+		// show loading indicator if there is no image was set
+		
+		if image == nil {
+			guard !loadingIndicatorView.isAnimating else { return }
+
+			loadingIndicatorView.startAnimating()
+			addSubview(loadingIndicatorView)
+			loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+			loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+		} else {
+			loadingIndicatorView.stopAnimating()
+			loadingIndicatorView.removeFromSuperview()
+		}
 	}
 }
