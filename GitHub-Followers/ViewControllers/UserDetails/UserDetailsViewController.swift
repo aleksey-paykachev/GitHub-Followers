@@ -77,7 +77,8 @@ class UserDetailsViewController: GFViewController {
 		let actionButtonsStack = HStackView([SpacerView(), closeButton])
 
 		// main info
-		let mainInfoView = UserDetailsMainInfoView(user: user)
+		let isUserFavorite = DataManager.shared.checkIfFavorite(user: user)
+		let mainInfoView = UserDetailsMainInfoView(user: user, isFavorite: isUserFavorite)
 		mainInfoView.delegate = self
 		DataManager.shared.profileImagePublisher(for: user)
 							.assign(to: \.profileImageView.image, on: mainInfoView)
@@ -100,7 +101,7 @@ class UserDetailsViewController: GFViewController {
 		let sinceLabel = GFLabel(text: registeredText, color: .gfTextSecondary, alignment: .center)
 
 		// main stack
-		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel, SpacerView()], spacing: 22)
+		let mainStack = VStackView([actionButtonsStack, mainInfoView, descriptionLabel, userWorkActivityDetailsView, userSocialActivityDetailsView, sinceLabel], spacing: 22)
 		mainStack.setCustomSpacing(4, after: actionButtonsStack)
 		mainStack.setCustomSpacing(14, after: userSocialActivityDetailsView)
 		

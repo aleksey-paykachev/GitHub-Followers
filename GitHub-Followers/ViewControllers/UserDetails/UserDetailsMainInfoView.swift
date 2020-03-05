@@ -26,14 +26,12 @@ class UserDetailsMainInfoView: UIView {
 	
 	// MARK: - Init
 	
-	init(user: GithubUser) {
+	init(user: GithubUser, isFavorite: Bool) {
 		self.user = user
 		super.init(frame: .zero)
 		
 		setupSubviews()
-		setupFavoriteButton()
-
-		loadFavoriteState()
+		setupFavoriteButton(initialState: isFavorite)
 	}
 	
 	required init?(coder: NSCoder) {
@@ -74,7 +72,9 @@ class UserDetailsMainInfoView: UIView {
 		])
 	}
 	
-	private func setupFavoriteButton() {
+	private func setupFavoriteButton(initialState: Bool) {
+		favoriteButton.isSelected = initialState
+
 		favoriteButton.addTarget(self, action: #selector(favoriteButtonDidPressed), for: .touchUpInside)
 
 		addSubview(favoriteButton)
@@ -85,14 +85,6 @@ class UserDetailsMainInfoView: UIView {
 			favoriteButton.widthAnchor.constraint(equalToConstant: favoriteButton.bounds.width),
 			favoriteButton.heightAnchor.constraint(equalToConstant: favoriteButton.bounds.height)
 		])
-	}
-	
-	
-	// MARK: - Load data
-	
-	private func loadFavoriteState() {
-		#warning("Move data manager logic to View Controller.")
-		favoriteButton.isSelected = DataManager.shared.checkIfFavorite(user: user)
 	}
 	
 	
