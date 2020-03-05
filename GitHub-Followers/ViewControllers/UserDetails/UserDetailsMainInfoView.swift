@@ -17,7 +17,7 @@ class UserDetailsMainInfoView: UIView {
 	
 	private let user: GithubUser
 
-	private let profileImageView = GFImageView(image: .assetAvatarPlaceholder)
+	let profileImageView = GFImageView()
 	private let favoriteButton = GFFavoriteButton(sideSize: 30, animationDuration: 0.4)
 	private let favoriteButtonOffset = CGPoint(x: -3, y: -5)
 
@@ -34,7 +34,6 @@ class UserDetailsMainInfoView: UIView {
 		setupFavoriteButton()
 
 		loadFavoriteState()
-		loadProfileImage()
 	}
 	
 	required init?(coder: NSCoder) {
@@ -94,19 +93,6 @@ class UserDetailsMainInfoView: UIView {
 	private func loadFavoriteState() {
 		#warning("Move data manager logic to View Controller.")
 		favoriteButton.isSelected = DataManager.shared.checkIfFavorite(user: user)
-	}
-	
-	private func loadProfileImage() {
-		// almost 100% of the time profile image will be loaded from cache
-
-		#warning("Move network logic to View Controller.")
-		DataManager.shared.getProfileImage(for: user) { [weak self] result in
-			guard let self = self else { return }
-
-			if case .success(let image) = result {
-				self.profileImageView.image = image
-			}
-		}
 	}
 	
 	

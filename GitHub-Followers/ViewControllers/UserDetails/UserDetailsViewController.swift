@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Combine
 
 protocol UserDetailsViewControllerDelegate: class {
 	func viewFollowersButtonDidPressed(for user: GithubUser)
@@ -18,6 +19,7 @@ class UserDetailsViewController: GFViewController {
 	// MARK: - Properties
 	
 	private var user: GithubUser?
+	private var subscribers: Set<AnyCancellable> = []
 	weak var delegate: UserDetailsViewControllerDelegate?
 	
 	
@@ -77,6 +79,9 @@ class UserDetailsViewController: GFViewController {
 		// main info
 		let mainInfoView = UserDetailsMainInfoView(user: user)
 		mainInfoView.delegate = self
+		DataManager.shared.profileImagePublisher(for: user)
+							.assign(to: \.profileImageView.image, on: mainInfoView)
+							.store(in: &subscribers)
 		
 		// description
 		let descriptionLabel = GFLabel(text: user.description, allowMultipleLines: true)
