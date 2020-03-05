@@ -112,11 +112,23 @@ class FavoritesViewController: UITableViewController {
 // MARK: - UITableViewDelegate
 
 extension FavoritesViewController {
+
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		guard let user = dataSource.itemIdentifier(for: indexPath) else { return }
 		
 		let followersVC = FollowersViewController(for: user)
 		navigationController?.pushViewController(followersVC, animated: true)
+	}
+	
+	override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+		
+		let removeFromFavoritesAction = UIContextualAction(style: .destructive, title: "Remove") { _, _, completion in
+			self.dataSource.tableView(tableView, commit: .delete, forRowAt: indexPath)
+			completion(true)
+		}
+		removeFromFavoritesAction.image = UIImage(sfSymbol: .starSlash)
+
+		return UISwipeActionsConfiguration(actions: [removeFromFavoritesAction])
 	}
 }
 

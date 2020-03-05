@@ -45,6 +45,7 @@ extension UIImage {
 		case person2 = "person.2"
 		case star = "star"
 		case starFill = "star.fill"
+		case starSlash = "star.slash"
 		case chevronUp = "chevron.up"
 		case chevronDown = "chevron.down"
 		

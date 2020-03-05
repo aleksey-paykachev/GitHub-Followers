@@ -31,7 +31,7 @@ extension UIColor {
 	static let gfFavoriteCellSelected = UIColor.secondarySystemBackground
 
 	// Favorite button
-	static let gfFavoriteButtonBorder = UIColor.systemOrange
+	static let gfFavoriteButtonBorder = UIColor.systemOrange.withAlphaComponent(0.8)
 	static let gfFavoriteButtonFill = UIColor.systemOrange.withAlphaComponent(0.55)
 	static let gfFavoriteButtonBackground = UIColor.white
 	
