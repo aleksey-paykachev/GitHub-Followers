@@ -36,6 +36,7 @@ extension UIImage {
 	// MARK: - SF Symbols
 	
 	enum SFSymbol: String {
+		case cCircle = "c.circle"
 		case docText = "doc.text"
 		case folder = "folder"
 		case heart = "heart"

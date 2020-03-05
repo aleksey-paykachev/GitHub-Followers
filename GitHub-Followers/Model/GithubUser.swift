@@ -14,6 +14,7 @@ struct GithubUser: GithubProfile {
 	let profileImageUrl: URL?
 	let profilePageUrl: URL?
 	let location: String?
+	let companyName: String?
 	let description: String?
 	let repositoriesCount: Int
 	let gistsCount: Int
@@ -33,6 +34,7 @@ extension GithubUser: Codable {
 		case profileImageUrl = "avatar_url"
 		case profilePageUrl = "html_url"
 		case location = "location"
+		case companyName = "company"
 		case description = "bio"
 		case repositoriesCount = "public_repos"
 		case gistsCount = "public_gists"
