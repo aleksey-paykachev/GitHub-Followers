@@ -36,7 +36,7 @@ class SearchViewController: GFViewController {
 	
 	private func setupTabBar() {
 		tabBarItem.title = "Search"
-		tabBarItem.image = UIImage(sfSymbol: .magnifyingglass)
+		tabBarItem.image = .sfSymbolMagnifyingglass
 	}
 	
 	private func setupView() {

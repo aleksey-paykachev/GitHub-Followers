@@ -53,9 +53,9 @@ class UserDetailsMainInfoView: UIView {
 		
 		// labels
 		let usernameLabel = GFLabel(text: user.username, fontSize: 28, fontWeight: .medium)
-		let fullNameLabel = GFLabel(text: user.fullName, image: UIImage(sfSymbol: .person))
-		let locationLabel = GFLabel(text: user.location, image: UIImage(sfSymbol: .mappinAndEllipse))
-		let companyNameLabel = GFLabel(text: user.companyName, image: UIImage(sfSymbol: .cCircle))
+		let fullNameLabel = GFLabel(text: user.fullName, image: .sfSymbolPerson)
+		let locationLabel = GFLabel(text: user.location, image: .sfSymbolMappinAndEllipse)
+		let companyNameLabel = GFLabel(text: user.companyName, image: .sfSymbolCCircle)
 
 		// stacks
 		let userInfoStack = VStackView([usernameLabel, fullNameLabel, locationLabel, companyNameLabel], spacing: 5)

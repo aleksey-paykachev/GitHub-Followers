@@ -79,13 +79,13 @@ class UserDetailsInfoBlocksView: UIView {
 		var logoImage: UIImage? {
 			switch self {
 			case .repos:
-				return UIImage(sfSymbol: .folder)
+				return .sfSymbolFolder
 			case .gists:
-				return UIImage(sfSymbol: .docText)
+				return .sfSymbolDocText
 			case .followers:
-				return UIImage(sfSymbol: .person2)
+				return .sfSymbolPerson2
 			case .following:
-				return UIImage(sfSymbol: .heart)
+				return .sfSymbolHeart
 			}
 		}
 		

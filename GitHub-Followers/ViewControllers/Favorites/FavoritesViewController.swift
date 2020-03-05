@@ -47,7 +47,7 @@ class FavoritesViewController: UITableViewController {
 	// MARK: - Setup
 	
 	private func setupTabBar() {
-		tabBarItem.image = UIImage(sfSymbol: .starFill)
+		tabBarItem.image = .sfSymbolStarFill
 	}
 	
 	private func setupNavigationBar() {
@@ -57,8 +57,8 @@ class FavoritesViewController: UITableViewController {
 	private func setupToolbar() {
 		toolbarItems = [
 			UIBarButtonItem(customView: GFLabel(text: "Sort by name: ")),
-			UIBarButtonItem(image: UIImage(sfSymbol: .chevronDown), style: .plain, target: dataSource, action: #selector(FavoritesDataSource.sortAscending)),
-			UIBarButtonItem(image: UIImage(sfSymbol: .chevronUp), style: .plain, target: dataSource, action: #selector(FavoritesDataSource.sortDescending))
+			UIBarButtonItem(image: .sfSymbolChevronDown, style: .plain, target: dataSource, action: #selector(FavoritesDataSource.sortAscending)),
+			UIBarButtonItem(image: .sfSymbolChevronUp, style: .plain, target: dataSource, action: #selector(FavoritesDataSource.sortDescending))
 		]
 	}
 	
@@ -126,7 +126,7 @@ extension FavoritesViewController {
 			self.dataSource.tableView(tableView, commit: .delete, forRowAt: indexPath)
 			completion(true)
 		}
-		removeFromFavoritesAction.image = UIImage(sfSymbol: .starSlash)
+		removeFromFavoritesAction.image = .sfSymbolStarSlash
 
 		return UISwipeActionsConfiguration(actions: [removeFromFavoritesAction])
 	}

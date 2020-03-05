@@ -15,10 +15,6 @@ extension UIImage {
 		self.init(named: asset.imageName)
 	}
 	
-	convenience init?(sfSymbol: SFSymbol) {
-		self.init(systemName: sfSymbol.imageName)
-	}
-	
 
 	// MARK: - Image Assets
 
@@ -26,29 +22,6 @@ extension UIImage {
 		case avatarPlaceholder = "avatar-placeholder"
 		case emptyState = "empty-state-logo"
 		case logo = "gh-logo"
-		
-		var imageName: String {
-			rawValue
-		}
-	}
-	
-	
-	// MARK: - SF Symbols
-	
-	enum SFSymbol: String {
-		case cCircle = "c.circle"
-		case docText = "doc.text"
-		case folder = "folder"
-		case heart = "heart"
-		case magnifyingglass = "magnifyingglass"
-		case mappinAndEllipse = "mappin.and.ellipse"
-		case person = "person"
-		case person2 = "person.2"
-		case star = "star"
-		case starFill = "star.fill"
-		case starSlash = "star.slash"
-		case chevronUp = "chevron.up"
-		case chevronDown = "chevron.down"
 		
 		var imageName: String {
 			rawValue
