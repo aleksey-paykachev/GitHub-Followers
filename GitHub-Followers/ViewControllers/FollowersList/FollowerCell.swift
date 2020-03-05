@@ -12,7 +12,7 @@ import Combine
 class FollowerCell: UICollectionViewCell {
 	// MARK: - Properties
 	
-	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
+	private let photoImageView = GFImageView(image: .assetAvatarPlaceholder)
 	private let usernameLabel = GFLabel()
 	
 	private var imageDownloaderSubscriber: AnyCancellable?
@@ -68,7 +68,7 @@ class FollowerCell: UICollectionViewCell {
 		imageDownloaderSubscriber?.cancel()
 
 		usernameLabel.text = ""
-		photoImageView.image = UIImage(asset: .avatarPlaceholder)
+		photoImageView.image = .assetAvatarPlaceholder
 	}
 }
 

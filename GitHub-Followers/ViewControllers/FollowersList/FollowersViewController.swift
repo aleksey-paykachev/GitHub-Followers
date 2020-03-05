@@ -13,7 +13,7 @@ class FollowersViewController: GFViewController {
 	
 	private var user: GithubUser
 
-	private let navigationItemProfileButton = GFCircleButton(radius: 18, image: UIImage(asset: .avatarPlaceholder))
+	private let navigationItemProfileButton = GFCircleButton(radius: 18, image: .assetAvatarPlaceholder)
 	private let collectionView = GFCollectionView(layout: FollowersLayout(itemsPerRow: 3))
 	private lazy var dataSource = FollowersDataSource(collectionView: collectionView)
 		

@@ -45,7 +45,7 @@ class SearchViewController: GFViewController {
 	
 	private func setupSubviews() {
 		// logo
-		let logoImageView = GFImageView(asset: .logo)
+		let logoImageView = GFImageView(image: .assetLogo)
 		logoImageView.heightAnchor.constraint(equalTo: logoImageView.widthAnchor, multiplier: 0.8).isActive = true
 		
 		// text field

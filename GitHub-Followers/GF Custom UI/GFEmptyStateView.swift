@@ -17,7 +17,7 @@ class GFEmptyStateView: UIView {
 	
 	// MARK: - Init
 	
-	init(text: String, image: UIImage? = UIImage(asset: .emptyState)) {
+	init(text: String, image: UIImage? = .assetEmptyState) {
 		self.text = text
 		self.image = image
 		
@@ -46,7 +46,7 @@ class GFEmptyStateView: UIView {
 		])
 		
 		// image
-		let emptyStateImageView = GFImageView(asset: .emptyState)
+		let emptyStateImageView = GFImageView(image: image)
 		
 		addSubview(emptyStateImageView)
 		emptyStateImageView.translatesAutoresizingMaskIntoConstraints = false

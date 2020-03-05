@@ -13,7 +13,6 @@
 		5B074EC123F1D26A00582379 /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B074EC023F1D26A00582379 /* SpacerView.swift */; };
 		5B0CE06B24079E1200928648 /* GFCircleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0CE06A24079E1200928648 /* GFCircleButton.swift */; };
 		5B0D8F7523F36C980066214B /* CALayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */; };
-		5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */; };
 		5B11F75F240A6987002F27B4 /* CAShapeLayer + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11F75E240A6987002F27B4 /* CAShapeLayer + Extensions.swift */; };
 		5B11F761240A6B05002F27B4 /* GFBezierPaths.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11F760240A6B05002F27B4 /* GFBezierPaths.swift */; };
 		5B11F763240A6C66002F27B4 /* UIBezierPath + Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B11F762240A6C66002F27B4 /* UIBezierPath + Extensions.swift */; };
@@ -79,7 +78,6 @@
 		5B074EC023F1D26A00582379 /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		5B0CE06A24079E1200928648 /* GFCircleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFCircleButton.swift; sourceTree = "<group>"; };
 		5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CALayer + Extensions.swift"; sourceTree = "<group>"; };
-		5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extensions.swift"; sourceTree = "<group>"; };
 		5B11F75E240A6987002F27B4 /* CAShapeLayer + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CAShapeLayer + Extensions.swift"; sourceTree = "<group>"; };
 		5B11F760240A6B05002F27B4 /* GFBezierPaths.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFBezierPaths.swift; sourceTree = "<group>"; };
 		5B11F762240A6C66002F27B4 /* UIBezierPath + Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBezierPath + Extensions.swift"; sourceTree = "<group>"; };
@@ -202,7 +200,6 @@
 				5BB1FE43240FA65D0086F52E /* UITableView + Extensions.swift */,
 				5BA46F38240B75ED002201E5 /* UITableViewCell + Extensions.swift */,
 				5BDA107823F0BB68008738B8 /* UIView + Extensions.swift */,
-				5B0D8F7623F370EC0066214B /* UIImage + Extensions.swift */,
 				5B11F762240A6C66002F27B4 /* UIBezierPath + Extensions.swift */,
 				5B0D8F7423F36C980066214B /* CALayer + Extensions.swift */,
 				5B11F75E240A6987002F27B4 /* CAShapeLayer + Extensions.swift */,
@@ -405,7 +402,6 @@
 				5BEB157123FE210B00B1D8BE /* FollowersLayout.swift in Sources */,
 				5BF9B06423E87CAC004B44B7 /* MainTabBarController.swift in Sources */,
 				5B11F75F240A6987002F27B4 /* CAShapeLayer + Extensions.swift in Sources */,
-				5B0D8F7723F370EC0066214B /* UIImage + Extensions.swift in Sources */,
 				5BDA107D23F0C533008738B8 /* GithubProfile.swift in Sources */,
 				5BECD1C723EC847C00FA2455 /* Parser.swift in Sources */,
 				5B55CB1D23EB7D2800B6DF31 /* URL + Extensions.swift in Sources */,

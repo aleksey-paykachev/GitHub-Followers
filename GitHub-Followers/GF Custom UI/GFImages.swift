@@ -13,9 +13,9 @@ import UIKit
 
 extension UIImage {
 	// Assets
-//	static let gfAssetAvatarPlaceholder = UIImage(named: "avatar-placeholder")
-//	static let gfAssetEmptyState = UIImage(named: "empty-state-logo")
-//	static let gfAssetLogo = UIImage(named: "gh-logo")
+	static let assetAvatarPlaceholder = UIImage(named: "avatar-placeholder")
+	static let assetEmptyState = UIImage(named: "empty-state-logo")
+	static let assetLogo = UIImage(named: "gh-logo")
 	
 	// SF Symbols
 	static let sfSymbolCCircle = UIImage(systemName: "c.circle")

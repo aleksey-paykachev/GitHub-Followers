@@ -17,7 +17,7 @@ class UserDetailsMainInfoView: UIView {
 	
 	private let user: GithubUser
 
-	private let profileImageView = GFImageView(asset: .avatarPlaceholder)
+	private let profileImageView = GFImageView(image: .assetAvatarPlaceholder)
 	private let favoriteButton = GFFavoriteButton(sideSize: 30, animationDuration: 0.4)
 	private let favoriteButtonOffset = CGPoint(x: -3, y: -5)
 

@@ -11,8 +11,8 @@ import UIKit
 class GFImageView: UIImageView {
 	// MARK: - Init
 	
-	init(asset: UIImage.GFImageAsset) {
-		super.init(image: UIImage(asset: asset))
+	override init(image: UIImage?) {
+		super.init(image: image)
 		
 		setupView()
 	}

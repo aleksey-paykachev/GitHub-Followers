@@ -13,7 +13,7 @@ class FavoriteCell: UITableViewCell {
 	// MARK: - Properties
 	
 	private let containerView = UIView()
-	private let photoImageView = GFImageView(asset: .avatarPlaceholder)
+	private let photoImageView = GFImageView(image: .assetAvatarPlaceholder)
 	private let usernameLabel = GFLabel(fontSize: 22)
 	private let followersCountLabel = GFLabel(fontSize: 16, color: .gfTextSecondary)
 	
@@ -90,6 +90,6 @@ class FavoriteCell: UITableViewCell {
 
 		usernameLabel.text = ""
 		followersCountLabel.text = ""
-		photoImageView.image = UIImage(asset: .avatarPlaceholder)
+		photoImageView.image = .assetAvatarPlaceholder
 	}
 }

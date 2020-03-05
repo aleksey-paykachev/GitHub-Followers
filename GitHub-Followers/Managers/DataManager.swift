@@ -80,7 +80,7 @@ class DataManager {
 				case .success(let image):
 					promise(.success(image))
 				case .failure:
-					promise(.success(UIImage(asset: .avatarPlaceholder)))
+					promise(.success(.assetAvatarPlaceholder))
 				}
 			}
 		}.eraseToAnyPublisher()
