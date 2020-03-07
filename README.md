@@ -114,7 +114,9 @@
 
 Программа поддерживает тёмную тему.
 
-<Jpg
+| ![](Images/iPhone_X/dark_find_followers.png) | ![](Images/iPhone_X/dark_followers_list.png) | ![](Images/iPhone_X/dark_user_info.png) |
+| -------------------------------------------- | -------------------------------------------- |----------------------------------------- |
+| ![](Images/iPhone_X/dark_no_followers.png)   | ![](Images/iPhone_X/dark_favorites_list.png) |  |
 
 Программа адаптируется под различные размеры экранов.
 
