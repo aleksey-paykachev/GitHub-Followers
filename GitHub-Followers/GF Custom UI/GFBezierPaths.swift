@@ -8,9 +8,9 @@
 
 import UIKit
 
-struct GFBezierPaths {
+extension UIBezierPath {
 	
-	static let starSymbolPath: UIBezierPath = {
+	static let starSymbol: UIBezierPath = {
 		let path = UIBezierPath()
 		
 		path.move(to: CGPoint(x: 1.72, y: 32.48))

@@ -18,7 +18,7 @@ class UserDetailsMainInfoView: UIView {
 	private let user: GithubUser
 
 	let profileImageView = GFImageView()
-	private let favoriteButton = GFFavoriteButton(sideSize: 30, animationDuration: 0.4)
+	private let favoriteButton = GFCustomPathButton(path: .starSymbol, sideSize: 30, borderWidth: 2, animationDuration: 0.4, borderColor: .gfFavoriteButtonBorder, fillColor: .gfFavoriteButtonFill, backgroundFillColor: .gfFavoriteButtonBackground)
 	private let favoriteButtonOffset = CGPoint(x: -3, y: -5)
 
 	weak var delegate: UserDetailsMainInfoViewDelegate?

@@ -1,5 +1,5 @@
 //
-//  GFFavoriteButton.swift
+//  GFCustomPathButton.swift
 //  GitHub-Followers
 //
 //  Created by Aleksey on 28.02.2020.
@@ -8,21 +8,22 @@
 
 import UIKit
 
-class GFFavoriteButton: UIButton {
+class GFCustomPathButton: UIButton {
 	// MARK: - Properties
 
-	private let borderWidth: CGFloat = 2
+	private let path: UIBezierPath
+	private let borderWidth: CGFloat
 	private let animationDuration: TimeInterval
 
-	private let borderColor: UIColor = .gfFavoriteButtonBorder
-	private let fillColor: UIColor = .gfFavoriteButtonFill
-	private let backgroundFillColor: UIColor = .gfFavoriteButtonBackground
+	private let borderColor: UIColor
+	private let fillColor: UIColor
+	private let backgroundFillColor: UIColor
 
-	private lazy var starSymbolPath = GFBezierPaths.starSymbolPath.scale(to: bounds).cgPath
-	private lazy var backgroundFillLayer = CAShapeLayer(path: starSymbolPath)
+	private lazy var buttonPath = path.scaled(to: bounds).cgPath
+	private lazy var backgroundFillLayer = CAShapeLayer(path: buttonPath)
 	
-	lazy private var backgroundEmptyPath = CGPath.circle(center: bounds.center, radius: .zero)
-	lazy private var backgroundFilledPath = CGPath.circle(in: bounds.excircleSquare)
+	private lazy var backgroundEmptyPath = CGPath.circle(center: bounds.center, radius: .zero)
+	private lazy var backgroundFilledPath = CGPath.circle(in: bounds.excircleSquare)
 	
 	override var isSelected: Bool {
 		didSet {
@@ -33,8 +34,20 @@ class GFFavoriteButton: UIButton {
 	
 	// MARK: - Init
 	
-	init(sideSize: CGFloat, animationDuration: TimeInterval) {
+	init(path: UIBezierPath,
+		 sideSize: CGFloat,
+		 borderWidth: CGFloat,
+		 animationDuration: TimeInterval,
+		 borderColor: UIColor,
+		 fillColor: UIColor,
+		 backgroundFillColor: UIColor) {
+
+		self.path = path
+		self.borderWidth = borderWidth
 		self.animationDuration = animationDuration
+		self.borderColor = borderColor
+		self.fillColor = fillColor
+		self.backgroundFillColor = backgroundFillColor
 
 		let frame = CGRect(origin: .zero, size: CGSize.square(sideSize))
 		super.init(frame: frame)
@@ -51,11 +64,11 @@ class GFFavoriteButton: UIButton {
 	
 	private func setupSublayers() {
 		// background layer
-		let backgroundLayer = CAShapeLayer(path: starSymbolPath)
+		let backgroundLayer = CAShapeLayer(path: buttonPath)
 		backgroundLayer.fillColor = backgroundFillColor.cgColor
 		
 		// border layer
-		let borderLayer = CAShapeLayer(path: starSymbolPath)
+		let borderLayer = CAShapeLayer(path: buttonPath)
 		borderLayer.fillColor = UIColor.clear.cgColor
 		borderLayer.strokeColor = borderColor.cgColor
 		borderLayer.lineWidth = borderWidth
@@ -63,7 +76,7 @@ class GFFavoriteButton: UIButton {
 		// selection layer
 		backgroundFillLayer.path = isSelected ? backgroundFilledPath : backgroundEmptyPath
 		backgroundFillLayer.fillColor = fillColor.cgColor
-		backgroundFillLayer.mask = CAShapeLayer(path: starSymbolPath)
+		backgroundFillLayer.mask = CAShapeLayer(path: buttonPath)
 
 		// add sublayers
 		layer.addSublayer(backgroundLayer)
