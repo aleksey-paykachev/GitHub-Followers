@@ -41,7 +41,7 @@ class UserDetailsInfoBlocksView: UIView {
 		let infoBlockLabels = infoBlocks.map { infoBlock in
 			GFLabel(text: infoBlock.text,
 					image: infoBlock.logoImage,
-					fontSize: 18,
+					fontSize: 17.5,
 					fontWeight: .medium,
 					color: .gfTextSecondary,
 					alignment: .center,
@@ -57,7 +57,7 @@ class UserDetailsInfoBlocksView: UIView {
 		let detailsViewStack = VStackView([infoBlockStack, actionButton], spacing: 18)
 
 		addSubview(detailsViewStack)
-		detailsViewStack.constrainToSuperview(padding: 18)
+		detailsViewStack.constrainToSuperview(padding: 14)
 	}
 	
 	

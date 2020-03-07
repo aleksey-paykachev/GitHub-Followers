@@ -109,9 +109,12 @@ class UserDetailsViewController: GFViewController {
 		let scrollView = UIScrollView()
 		view.insertSubview(scrollView, at: 0) // add behind loading overlay view
 		scrollView.constrainToSuperview()
+		scrollView.verticalScrollIndicatorInsets.top = 10
+
+		let contentPaddingToParentWidthRatio: CGFloat = 0.04
+		let contentPadding = view.bounds.width * contentPaddingToParentWidthRatio
 
 		scrollView.addSubview(mainStack)
-		let contentPadding: CGFloat = 20
 		mainStack.constrainToSuperview(padding: contentPadding)
 		mainStack.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -contentPadding * 2).isActive = true
 	}
