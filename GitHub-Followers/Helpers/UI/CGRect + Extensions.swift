@@ -20,6 +20,6 @@ extension CGRect {
 
 		let offsetX = (outerDiameter - width) / 2
 		let offsetY = (outerDiameter - height) / 2
-		return CGRect(origin: CGPoint(x: -offsetX, y: -offsetY), size: CGSize.square(outerDiameter))
+		return CGRect(origin: CGPoint(x: -offsetX, y: -offsetY), size: .square(outerDiameter))
 	}
 }

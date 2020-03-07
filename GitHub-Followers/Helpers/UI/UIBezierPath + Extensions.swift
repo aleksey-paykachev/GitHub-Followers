@@ -10,10 +10,13 @@ import UIKit
 
 extension UIBezierPath {
 
-	func scale(to rect: CGRect) -> UIBezierPath {
-		let scaleFactor = rect.width / bounds.width
-		apply(CGAffineTransform(scaleX: scaleFactor, y: scaleFactor))
+	func scaled(to rect: CGRect) -> UIBezierPath {
+		let scaledPath = copy() as! UIBezierPath
 		
-		return self
+		// scale to fit
+		let scaleFactor = min(rect.width / bounds.width, rect.height / bounds.height)
+		scaledPath.apply(CGAffineTransform(scaleX: scaleFactor, y: scaleFactor))
+		
+		return scaledPath
 	}
 }
