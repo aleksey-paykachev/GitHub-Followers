@@ -24,6 +24,7 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	// MARK: - Properties
 	
 	weak var delegate: FavoritesDataSourceDelegate?
+	private var isLoaded = false
 	
 	var isEmpty: Bool {
 		snapshot().numberOfItems == 0
@@ -34,15 +35,15 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	
 	@objc func sortAscending() {
 		DataManager.shared.sortFavorites(by: <)
-		reloadData(animated: true)
+		reloadData()
 	}
 	
 	@objc func sortDescending() {
 		DataManager.shared.sortFavorites(by: >)
-		reloadData(animated: true)
+		reloadData()
 	}
 	
-	func reloadData(animated: Bool = false) {
+	func reloadData() {
 		let favorites = DataManager.shared.allFavorites
 		
 		guard favorites != snapshot().itemIdentifiers else { return }
@@ -50,6 +51,9 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 		var newSnapshot = NSDiffableDataSourceSnapshot<Section, GithubUser>()
 		newSnapshot.appendSections([.favorites])
 		newSnapshot.appendItems(favorites)
+
+		let animated = isLoaded // do not animate initial loading
+		isLoaded = true
 
 		apply(newSnapshot, animatingDifferences: animated)
 	}
