@@ -34,7 +34,7 @@ class GFEmptyStateView: UIView {
 	
 	private func setupSubviews() {
 		// label
-		let emptyStateLabel = GFLabel(text: text, fontSize: 23, color: .gfTextSecondary, alignment: .center, allowMultipleLines: true)
+		let emptyStateLabel = GFLabel(text: text, fontSize: 22.5, color: .gfTextSecondary, alignment: .center, allowMultipleLines: true)
 		
 		addSubview(emptyStateLabel)
 		emptyStateLabel.translatesAutoresizingMaskIntoConstraints = false
