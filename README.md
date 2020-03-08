@@ -110,7 +110,7 @@
 
 При возникновении ошибки на любом экране приложения, возникает кастомное уведомление сверху.
 
-<Gif
+![](Images/iPhone_X/network_error.gif)
 
 
 &nbsp;
@@ -118,10 +118,12 @@
 
 Программа поддерживает тёмную тему.
 
-| ![](Images/iPhone_X/dark_loading_screen.png) | ![](Images/iPhone_X/dark_find_followers.png) | ![](Images/iPhone_X/dark_followers.png) |
-| -------------------------------------------- | -------------------------------------------- |----------------------------------------- |
-| ![](Images/iPhone_X/dark_user_info.png)      | ![](Images/iPhone_X/dark_no_followers.png)   | ![](Images/iPhone_X/dark_favorites.png) |
+| ![](Images/iPhone_X/dark_launch_screen.png) | ![](Images/iPhone_X/dark_find_followers.png) | ![](Images/iPhone_X/dark_followers.png) |
+| ------------------------------------------- | -------------------------------------------- |---------------------------------------- |
+| ![](Images/iPhone_X/dark_user_info.png)     | ![](Images/iPhone_X/dark_favorites.png)      | ![](Images/iPhone_X/dark_no_followers.png) |
 
 Программа адаптируется под различные размеры экранов.
 
-<Jpg
+| ![](Images/iPhone_SE/launch_screen.png) | ![](Images/iPhone_SE/find_followers.png) | ![](Images/iPhone_SE/followers.png)    |
+| --------------------------------------- | ---------------------------------------- |--------------------------------------- |
+| ![](Images/iPhone_SE/user_info.png)     | ![](Images/iPhone_SE/favorites.png)      | ![](Images/iPhone_SE/no_followers.png) |
