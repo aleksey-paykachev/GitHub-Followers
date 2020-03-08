@@ -270,7 +270,7 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		5BECD1CC23EC90CF00FA2455 /* FollowersList */ = {
+		5BECD1CC23EC90CF00FA2455 /* Followers */ = {
 			isa = PBXGroup;
 			children = (
 				5BECD1C823EC856100FA2455 /* FollowersViewController.swift */,
@@ -278,7 +278,7 @@
 				5BEB157023FE210B00B1D8BE /* FollowersLayout.swift */,
 				5BECD1CA23EC90A400FA2455 /* FollowerCell.swift */,
 			);
-			path = FollowersList;
+			path = Followers;
 			sourceTree = "<group>";
 		};
 		5BF9B04323E87714004B44B7 = {
@@ -319,7 +319,7 @@
 			children = (
 				5BF9B06323E87CAC004B44B7 /* MainTabBarController.swift */,
 				5BF9B05323E87714004B44B7 /* SearchViewController.swift */,
-				5BECD1CC23EC90CF00FA2455 /* FollowersList */,
+				5BECD1CC23EC90CF00FA2455 /* Followers */,
 				5B074EC223F1D2AE00582379 /* UserDetails */,
 				5B6777C523F72259002C7877 /* Favorites */,
 			);
