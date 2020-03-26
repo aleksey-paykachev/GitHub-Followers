@@ -27,7 +27,7 @@ class GFTextField: UITextField {
 	
 	// MARK: - API
 	
-	func showWrongInputError() {
+	func showWrongInputAnimation() {
 		// shake textfield
 		transform = transform.translatedBy(x: 8, y: 0)
 		

@@ -65,14 +65,14 @@ class SearchViewController: GFViewController {
 		mainStack.translatesAutoresizingMaskIntoConstraints = false
 		mainStack.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.8).isActive = true
 		mainStack.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-		mainStackCenterYConstraint = mainStack.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0)
+		mainStackCenterYConstraint = mainStack.centerYAnchor.constraint(equalTo: view.centerYAnchor)
 		mainStackCenterYConstraint.isActive = true
 	}
 	
 	private func setupGestures() {
 		// hide keyboard on tap
-		let tapGestureRecognizer = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
-		view.addGestureRecognizer(tapGestureRecognizer)
+		let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
+		view.addGestureRecognizer(tapGesture)
 	}
 	
 	
@@ -80,7 +80,7 @@ class SearchViewController: GFViewController {
 	
 	@objc private func findFollowers() {
 		guard let searchTerm = searchTermTextField.text?.trimmed, searchTerm.isNotEmpty else {
-			searchTermTextField.showWrongInputError()
+			searchTermTextField.showWrongInputAnimation()
 			return
 		}
 
@@ -119,7 +119,7 @@ class SearchViewController: GFViewController {
 		// hide navigation bar
 		navigationController?.setNavigationBarHidden(true, animated: animated)
 		
-		// add notification observers
+		// add keyboard notification observers
 		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
 		NotificationCenter.default.addObserver(self, selector: #selector(handleKeyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 	}
@@ -130,7 +130,7 @@ class SearchViewController: GFViewController {
 		// show navigation bar
 		navigationController?.setNavigationBarHidden(false, animated: animated)
 		
-		// remove notification observers
+		// remove keyboard notification observers
 		NotificationCenter.default.removeObserver(self)
 	}
 	
