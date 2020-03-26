@@ -36,4 +36,12 @@ extension UIView {
 			])
 		}
 	}
+	
+	func constrainWidthToHeight(aspectRatio: CGFloat = 1) {
+		widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio).isActive = true
+	}
+	
+	func constrainHeightToWidth(aspectRatio: CGFloat = 1) {
+		heightAnchor.constraint(equalTo: widthAnchor, multiplier: aspectRatio).isActive = true
+	}
 }

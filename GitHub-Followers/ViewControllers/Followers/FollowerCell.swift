@@ -37,7 +37,7 @@ class FollowerCell: UICollectionViewCell {
 		// image view
 		photoImageView.layer.setCornerRadius(12)
 		photoImageView.layer.setBorder(color: .gfImageBorder)
-		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor).isActive = true
+		photoImageView.constrainWidthToHeight()
 
 		// username
 		usernameLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)

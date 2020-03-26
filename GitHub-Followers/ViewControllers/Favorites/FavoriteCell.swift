@@ -42,7 +42,7 @@ class FavoriteCell: UITableViewCell {
 	
 	private func setupSubviews() {
 		// photo image
-		photoImageView.widthAnchor.constraint(equalTo: photoImageView.heightAnchor, multiplier: 1).isActive = true
+		photoImageView.constrainWidthToHeight()
 		photoImageView.layer.setCornerRadius(10)
 		
 		// container
