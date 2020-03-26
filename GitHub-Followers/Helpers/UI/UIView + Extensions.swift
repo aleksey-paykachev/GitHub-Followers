@@ -9,6 +9,8 @@
 import UIKit
 
 extension UIView {
+
+	// MARK: - Relative constraint
 	
 	func constrainToSuperview(padding: CGFloat = 0, respectSafeArea: Bool = false) {
 		guard let superview = superview else { return }
@@ -37,11 +39,30 @@ extension UIView {
 		}
 	}
 	
+	
+	// MARK: - Aspect ratio
+	
 	func constrainWidthToHeight(aspectRatio: CGFloat = 1) {
 		widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio).isActive = true
 	}
 	
 	func constrainHeightToWidth(aspectRatio: CGFloat = 1) {
 		heightAnchor.constraint(equalTo: widthAnchor, multiplier: aspectRatio).isActive = true
+	}
+	
+	
+	// MARK: - Size
+	
+	func constrainWidth(_ width: CGFloat) {
+		widthAnchor.constraint(equalToConstant: width).isActive = true
+	}
+	
+	func constrainHeight(_ height: CGFloat) {
+		heightAnchor.constraint(equalToConstant: height).isActive = true
+	}
+	
+	func constrainSize(width: CGFloat, height: CGFloat) {
+		constrainWidth(width)
+		constrainHeight(height)
 	}
 }

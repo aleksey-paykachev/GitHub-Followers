@@ -51,7 +51,7 @@ class UserDetailsInfoBlocksView: UIView {
 		let infoBlockStack = HStackView(infoBlockLabels, alignment: .leading, distribution: .fillEqually)
 
 		let actionButton = GFButton(title: action.title, backgroundColor: action.buttonColor)
-		actionButton.heightAnchor.constraint(equalToConstant: 42).isActive = true
+		actionButton.constrainHeight(42)
 		actionButton.addTarget(self, action: #selector(buttonDidPressed), for: .touchUpInside)
 		
 		let detailsViewStack = VStackView([infoBlockStack, actionButton], spacing: 18)

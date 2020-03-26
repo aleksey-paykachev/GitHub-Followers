@@ -49,12 +49,12 @@ class SearchViewController: GFViewController {
 		logoImageView.constrainHeightToWidth(aspectRatio: 0.8)
 		
 		// text field
-		searchTermTextField.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		searchTermTextField.constrainHeight(44)
 		searchTermTextField.addTarget(self, action: #selector(findFollowers), for: .primaryActionTriggered)
 		
 		// button
 		let searchButton = GFButton(title: "Find followers")
-		searchButton.heightAnchor.constraint(equalToConstant: 44).isActive = true
+		searchButton.constrainHeight(44)
 		searchButton.addTarget(self, action: #selector(findFollowers), for: .touchUpInside)
 		
 		// stack

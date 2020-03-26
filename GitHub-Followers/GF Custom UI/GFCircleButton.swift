@@ -20,7 +20,6 @@ class GFCircleButton: UIButton {
 		layer.setBorder(color: .gfPrimary, width: 2)
 		layer.setCornerRadius(radius)
 		
-		heightAnchor.constraint(equalToConstant: radius * 2).isActive = true
-		widthAnchor.constraint(equalToConstant: radius * 2).isActive = true
+		constrainSize(width: radius * 2, height: radius * 2)
 	}
 }

@@ -45,8 +45,7 @@ class UserDetailsMainInfoView: UIView {
 		// profile image
 		profileImageView.layer.setCornerRadius(12)
 		profileImageView.layer.setBorder(color: .gfImageBorder)
-		profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-		profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+		profileImageView.constrainSize(width: 100, height: 100)
 		
 		// labels
 		let usernameLabel = GFLabel(text: user.username, fontSize: 28, fontWeight: .medium)
