@@ -15,29 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
 
-		setupApplicationAppearance()
+		ApplicationAppearanceManager.setupAppearance()
 		return true
 	}
 
 	
-	// MARK: UISceneSession lifecycle
+	// MARK: - UISceneSession lifecycle
 
 	func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 
 		return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-	}
-	
-	
-	// MARK: - Application appearance
-	
-	private func setupApplicationAppearance() {
-		// tab bar
-		UITabBar.appearance().tintColor = .gfPrimary
-		
-		// navigation bar
-		UINavigationBar.appearance().tintColor = .gfPrimary
-		
-		// button
-		UIButton.appearance().tintColor = .gfPrimary
 	}
 }
