@@ -89,12 +89,20 @@ class UserDetailsViewController: GFViewController {
 
 		// details views
 		let userWorkActivityDetailsView = UserDetailsInfoBlocksView(
-			infoBlocks: [.repos(count: user.repositoriesCount), .gists(count: user.gistsCount)],
-			action: .primary(title: "GitHub Profile", completion: githubProfileButtonDidPressed))
+			infoBlocks: [.repos(count: user.repositoriesCount),
+						 .gists(count: user.gistsCount)],
+			buttonData: .init(title: "GitHub Profile", type: .primary, action: { [weak self] in
+				self?.githubProfileButtonDidPressed()
+			})
+		)
 		
 		let userSocialActivityDetailsView = UserDetailsInfoBlocksView(
-			infoBlocks: [.followers(count: user.followersCount), .following(count: user.followingCount)],
-			action: .secondary(title: "View Followers", completion: viewFollowersButtonDidPressed))
+			infoBlocks: [.followers(count: user.followersCount),
+						 .following(count: user.followingCount)],
+			buttonData: .init(title: "View Followers", type: .secondary, action: { [weak self] in
+				self?.viewFollowersButtonDidPressed()
+			})
+		)
 
 		// registered
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"

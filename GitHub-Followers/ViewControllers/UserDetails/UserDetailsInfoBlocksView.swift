@@ -12,13 +12,14 @@ class UserDetailsInfoBlocksView: UIView {
 	// MARK: - Properties
 	
 	let infoBlocks: [InfoBlock]
-	let action: Action
+	let buttonData: ButtonData
+	
 	
 	// MARK: - Init
 	
-	init(infoBlocks: [InfoBlock], action: Action) {
+	init(infoBlocks: [InfoBlock], buttonData: ButtonData) {
 		self.infoBlocks = infoBlocks
-		self.action = action
+		self.buttonData = buttonData
 		super.init(frame: .zero)
 		
 		setupView()
@@ -50,7 +51,7 @@ class UserDetailsInfoBlocksView: UIView {
 		
 		let infoBlockStack = HStackView(infoBlockLabels, alignment: .leading, distribution: .fillEqually)
 
-		let actionButton = GFButton(title: action.title, backgroundColor: action.buttonColor)
+		let actionButton = GFButton(title: buttonData.title, backgroundColor: buttonData.color)
 		actionButton.constrainHeight(42)
 		actionButton.addTarget(self, action: #selector(buttonDidPressed), for: .touchUpInside)
 		
@@ -64,11 +65,11 @@ class UserDetailsInfoBlocksView: UIView {
 	// MARK: - Methods
 	
 	@objc private func buttonDidPressed() {
-		action.completion()
+		buttonData.action()
 	}
 	
 
-	// MARK: - Enum types
+	// MARK: - Nested types
 	
 	enum InfoBlock {
 		case repos(count: Int)
@@ -103,29 +104,21 @@ class UserDetailsInfoBlocksView: UIView {
 		}
 	}
 	
-	enum Action {
-		case primary(title: String, completion: () -> ())
-		case secondary(title: String, completion: () -> ())
+	struct ButtonData {
+		let title: String
+		let type: ButtonType
+		let action: () -> ()
 		
-		var title: String {
-			switch self {
-			case .primary(let title, _): return title
-			case .secondary(let title, _): return title
-			}
-		}
-		
-		var buttonColor: UIColor {
-			switch self {
+		var color: UIColor {
+			switch type {
 			case .primary: return .gfPrimary
 			case .secondary: return .gfSecondary
 			}
 		}
 		
-		var completion: () -> () {
-			switch self {
-			case .primary(_, let completion): return completion
-			case .secondary(_, let completion): return completion
-			}
+		enum ButtonType {
+			case primary
+			case secondary
 		}
 	}
 }

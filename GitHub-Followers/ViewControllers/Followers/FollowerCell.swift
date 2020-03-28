@@ -67,7 +67,7 @@ class FollowerCell: UICollectionViewCell {
 		
 		imageDownloaderSubscriber?.cancel()
 
-		photoImageView.image = nil
 		usernameLabel.text = ""
+		photoImageView.image = nil
 	}
 }
