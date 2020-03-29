@@ -62,7 +62,7 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 	// MARK: - Private methods
 	
 	private func delete(_ user: GithubUser) {
-		DataManager.shared.removeUserFromFavorites(user)
+		DataManager.shared.removeFromFavorites(user)
 
 		var newSnapshot = snapshot()
 		newSnapshot.deleteItems([user])

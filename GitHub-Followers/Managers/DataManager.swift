@@ -101,7 +101,7 @@ class DataManager {
 		allFavorites.contains(user)
 	}
 	
-	func addUserToFavorites(_ user: GithubUser) {
+	func addToFavorites(_ user: GithubUser) {
 		var favorites = allFavorites
 		
 		guard !favorites.contains(user) else { return }
@@ -110,7 +110,7 @@ class DataManager {
 		save(favorites)
 	}
 	
-	func removeUserFromFavorites(_ user: GithubUser) {
+	func removeFromFavorites(_ user: GithubUser) {
 		var favorites = allFavorites
 		
 		favorites.removeAll { $0 == user }

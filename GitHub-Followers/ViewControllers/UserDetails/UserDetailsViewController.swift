@@ -104,7 +104,7 @@ class UserDetailsViewController: GFViewController {
 			})
 		)
 
-		// registered
+		// registered since
 		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .gfTextSecondary, alignment: .center)
 
@@ -115,7 +115,7 @@ class UserDetailsViewController: GFViewController {
 		
 		// scroll view (main container)
 		let scrollView = UIScrollView()
-		view.insertSubview(scrollView, at: 0) // add behind loading overlay view
+		view.insertSubview(scrollView, at: 0) // insert behind loading overlay view
 		scrollView.constrainToSuperview()
 		scrollView.verticalScrollIndicatorInsets.top = 10
 
@@ -158,10 +158,7 @@ class UserDetailsViewController: GFViewController {
 extension UserDetailsViewController: UserDetailsMainInfoViewDelegate {
 
 	func didChangeFavoriteStatus(for user: GithubUser, to isFavorite: Bool) {
-		if isFavorite {
-			DataManager.shared.addUserToFavorites(user)
-		} else {
-			DataManager.shared.removeUserFromFavorites(user)
-		}
+		let dataManager = DataManager.shared
+		isFavorite ? dataManager.addToFavorites(user) : dataManager.removeFromFavorites(user)
 	}
 }
