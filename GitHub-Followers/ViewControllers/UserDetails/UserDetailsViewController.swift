@@ -19,7 +19,7 @@ class UserDetailsViewController: GFViewController {
 	// MARK: - Properties
 	
 	private var user: GithubUser?
-	private var subscribers: Set<AnyCancellable> = []
+	private var dataManagerSubscribers: Set<AnyCancellable> = []
 	weak var delegate: UserDetailsViewControllerDelegate?
 	
 	
@@ -82,7 +82,7 @@ class UserDetailsViewController: GFViewController {
 		mainInfoView.delegate = self
 		DataManager.shared.profileImagePublisher(for: user)
 							.assign(to: \.profileImageView.image, on: mainInfoView)
-							.store(in: &subscribers)
+							.store(in: &dataManagerSubscribers)
 		
 		// description
 		let descriptionLabel = GFLabel(text: user.description, allowMultipleLines: true)

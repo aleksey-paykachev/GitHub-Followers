@@ -75,6 +75,7 @@ class FavoritesViewController: UITableViewController {
 	override func setEditing(_ editing: Bool, animated: Bool) {
 		super.setEditing(editing, animated: animated)
 		
+		// show toolbar only in editing mode
 		navigationController?.setToolbarHidden(!editing, animated: true)
 	}
 	
@@ -136,7 +137,7 @@ extension FavoritesViewController {
 // MARK: - FavoritesDataSourceDelegate
 
 extension FavoritesViewController: FavoritesDataSourceDelegate {
-	func didDeleteUser() {
+	func didDelete(_ user: GithubUser) {
 		checkForEmptyState()
 	}
 }

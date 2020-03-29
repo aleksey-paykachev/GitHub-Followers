@@ -41,14 +41,14 @@ class FavoriteCell: UITableViewCell {
 	}
 	
 	private func setupSubviews() {
-		// photo image
-		photoImageView.constrainWidthToHeight()
-		photoImageView.layer.setCornerRadius(10)
-		
 		// container
 		containerView.layer.setShadow(radius: 3, opacity: 0.1, offsetX: 2, offsetY: 2)
 		contentView.addSubview(containerView)
 		containerView.constrainToSuperview(padding: 9)
+
+		// photo image
+		photoImageView.constrainWidthToHeight()
+		photoImageView.layer.setCornerRadius(10)
 
 		// user info stacks
 		let followersImageLabel = GFLabel(text: "Followers:", image: .sfSymbolPerson2, fontSize: followersCountLabel.font.pointSize, color: followersCountLabel.textColor)

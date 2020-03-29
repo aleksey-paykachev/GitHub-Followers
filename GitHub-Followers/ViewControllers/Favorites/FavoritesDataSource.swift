@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FavoritesDataSourceDelegate: class {
-	func didDeleteUser()
+	func didDelete(_ user: GithubUser)
 }
 
 
@@ -85,7 +85,7 @@ class FavoritesDataSource: UITableViewDiffableDataSource<FavoritesDataSource.Sec
 
 		if case .delete = editingStyle, let user = itemIdentifier(for: indexPath) {
 			delete(user)
-			delegate?.didDeleteUser()
+			delegate?.didDelete(user)
 		}
 	}
 	
