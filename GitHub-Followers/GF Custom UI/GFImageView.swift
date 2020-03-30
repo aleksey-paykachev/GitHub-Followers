@@ -38,7 +38,6 @@ class GFImageView: UIImageView {
 	
 	private func setupLoadingIndicator() {
 		loadingIndicatorView.color = .gfPrimary
-		loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
 	}
 	
 	
@@ -52,8 +51,8 @@ class GFImageView: UIImageView {
 
 			loadingIndicatorView.startAnimating()
 			addSubview(loadingIndicatorView)
-			loadingIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-			loadingIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+			loadingIndicatorView.constrainCenter(to: self)
+			
 		} else {
 			loadingIndicatorView.stopAnimating()
 			loadingIndicatorView.removeFromSuperview()

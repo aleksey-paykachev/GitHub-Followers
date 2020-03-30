@@ -37,9 +37,7 @@ class GFLoadingOverlayView: UIView {
 		activityIndicatorView.startAnimating()
 		
 		addSubview(activityIndicatorView)
-		activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-		activityIndicatorView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-		activityIndicatorView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+		activityIndicatorView.constrainCenter(to: self)
 	}
 	
 	

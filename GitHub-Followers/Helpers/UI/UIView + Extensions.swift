@@ -39,6 +39,12 @@ extension UIView {
 		}
 	}
 	
+	func constrainCenter(to secondView: UIView) {
+		translatesAutoresizingMaskIntoConstraints = false
+		centerXAnchor.constraint(equalTo: secondView.centerXAnchor).isActive = true
+		centerYAnchor.constraint(equalTo: secondView.centerYAnchor).isActive = true
+	}
+	
 	
 	// MARK: - Aspect ratio
 	
