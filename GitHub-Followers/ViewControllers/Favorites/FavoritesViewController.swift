@@ -37,8 +37,8 @@ class FavoritesViewController: UITableViewController {
 	private func createDataSource() -> FavoritesDataSource {
 		FavoritesDataSource(tableView: tableView, cellProvider: { tableView, indexPath, user -> UITableViewCell? in
 			
-			let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteCell.reuseId, for: indexPath) as? FavoriteCell
-			cell?.set(user: user)
+			let cell: FavoriteCell = tableView.dequeueReusableCell(for: indexPath)
+			cell.set(user: user)
 			return cell
 		})
 	}
@@ -64,7 +64,7 @@ class FavoritesViewController: UITableViewController {
 	
 	private func setupTableView() {
 		dataSource.delegate = self
-		tableView.register(FavoriteCell.self, forCellReuseIdentifier: FavoriteCell.reuseId)
+		tableView.register(FavoriteCell.self)
 		tableView.separatorStyle = .none
 		tableView.rowHeight = 100
 	}
