@@ -9,7 +9,7 @@
 import Foundation
 
 extension Date {
-	var relativeToNowText: String {
+	var relativeToNowFormattedText: String {
 		RelativeDateTimeFormatter().localizedString(for: self, relativeTo: Date())
 	}
 }

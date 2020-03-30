@@ -10,7 +10,7 @@ import UIKit
 
 extension UIView {
 
-	// MARK: - Relative constrain
+	// MARK: - Relative constraints
 	
 	func constrain(to secondView: UIView, padding: CGFloat = 0) {
 		translatesAutoresizingMaskIntoConstraints = false
@@ -36,7 +36,7 @@ extension UIView {
 	}
 	
 	
-	// MARK: - Aspect ratio
+	// MARK: - Aspect ratio constraints
 	
 	func constrainWidthToHeight(aspectRatio: CGFloat = 1) {
 		widthAnchor.constraint(equalTo: heightAnchor, multiplier: aspectRatio).isActive = true
@@ -47,7 +47,7 @@ extension UIView {
 	}
 	
 	
-	// MARK: - Size
+	// MARK: - Size constraints
 	
 	func constrainWidth(_ width: CGFloat) {
 		widthAnchor.constraint(equalToConstant: width).isActive = true

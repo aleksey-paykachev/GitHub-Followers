@@ -105,7 +105,7 @@ class UserDetailsViewController: GFViewController {
 		)
 
 		// registered since
-		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowText)"
+		let registeredText = "Registered \(user.accountRegistrationDate.relativeToNowFormattedText)"
 		let sinceLabel = GFLabel(text: registeredText, color: .gfTextSecondary, alignment: .center)
 
 		// main stack

@@ -29,7 +29,7 @@ class GFLabel: UILabel {
 		self.numberOfLines = allowMultipleLines ? 0 : 1
 		
 		if let image = image, let text = text {
-			self.attributedText = NSAttributedString(image: image, text: text)
+			attributedText = NSAttributedString(image: image, text: text)
 		}
 	}
 	

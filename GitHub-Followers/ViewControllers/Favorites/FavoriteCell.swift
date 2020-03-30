@@ -48,7 +48,7 @@ class FavoriteCell: UITableViewCell {
 		containerView.translatesAutoresizingMaskIntoConstraints = false
 		let padding: CGFloat = 9
 		
-		// set priority for vertical anchors to fix autolayout issues on containerView size changes
+		// set priority for vertical anchors to fix autolayout issues on contentView size changes
 		let containerViewTopAnchor = containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding)
 		containerViewTopAnchor.priority = .init(rawValue: 999)
 
