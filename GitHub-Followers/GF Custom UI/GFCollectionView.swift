@@ -37,6 +37,10 @@ class GFCollectionView: UICollectionView {
 		hasNextPage && !isLoading
 	}
 	
+	var isFirstSectionEmpty: Bool {
+		numberOfItems(inSection: 0) == 0
+	}
+
 	
 	// MARK: - Init
 	
@@ -67,17 +71,13 @@ class GFCollectionView: UICollectionView {
 	
 	
 	// MARK: - Loading indicator
-	
+		
 	private func showLoadingIndicator() {
-		if numberOfItems(inSection: 0) == 0 {
-			showLoadingIndicatorAtCenter()
-		} else {
-			showLoadingIndicatorAtBottom()
-		}
+		addSubview(loadingIndicatorView)
+		isFirstSectionEmpty ? showLoadingIndicatorAtCenter() : showLoadingIndicatorAtBottom()
 	}
 	
 	private func showLoadingIndicatorAtCenter() {
-		addSubview(loadingIndicatorView)
 		loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = false
 
 		loadingIndicatorView.centerXAnchor.constraint(equalTo: frameLayoutGuide.centerXAnchor).isActive = true
@@ -85,7 +85,6 @@ class GFCollectionView: UICollectionView {
 	}
 	
 	private func showLoadingIndicatorAtBottom() {
-		addSubview(loadingIndicatorView)
 		loadingIndicatorView.translatesAutoresizingMaskIntoConstraints = true
 
 		let centerX = bounds.width / 2 - loadingIndicatorView.bounds.width / 2
