@@ -10,33 +10,23 @@ import UIKit
 
 extension UIView {
 
-	// MARK: - Relative constraint
+	// MARK: - Relative constrain
 	
-	func constrainToSuperview(padding: CGFloat = 0, respectSafeArea: Bool = false) {
-		guard let superview = superview else { return }
-		
-		constrain(to: superview, padding: padding, respectSafeArea: respectSafeArea)
-	}
-	
-	func constrain(to secondView: UIView, padding: CGFloat = 0, respectSafeArea: Bool = false) {
+	func constrain(to secondView: UIView, padding: CGFloat = 0) {
 		translatesAutoresizingMaskIntoConstraints = false
 
-		if respectSafeArea {
-			NSLayoutConstraint.activate([
-				leadingAnchor.constraint(equalTo: secondView.safeAreaLayoutGuide.leadingAnchor, constant: padding),
-				topAnchor.constraint(equalTo: secondView.safeAreaLayoutGuide.topAnchor, constant: padding),
-				trailingAnchor.constraint(equalTo: secondView.safeAreaLayoutGuide.trailingAnchor, constant: -padding),
-				bottomAnchor.constraint(equalTo: secondView.safeAreaLayoutGuide.bottomAnchor, constant: -padding)
-			])
-
-		} else {
-			NSLayoutConstraint.activate([
-				leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: padding),
-				topAnchor.constraint(equalTo: secondView.topAnchor, constant: padding),
-				trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -padding),
-				bottomAnchor.constraint(equalTo: secondView.bottomAnchor, constant: -padding)
-			])
-		}
+		NSLayoutConstraint.activate([
+			leadingAnchor.constraint(equalTo: secondView.leadingAnchor, constant: padding),
+			topAnchor.constraint(equalTo: secondView.topAnchor, constant: padding),
+			trailingAnchor.constraint(equalTo: secondView.trailingAnchor, constant: -padding),
+			bottomAnchor.constraint(equalTo: secondView.bottomAnchor, constant: -padding)
+		])
+	}
+	
+	func constrainToSuperview(padding: CGFloat = 0) {
+		guard let superview = superview else { return }
+		
+		constrain(to: superview, padding: padding)
 	}
 	
 	func constrainCenter(to secondView: UIView) {
