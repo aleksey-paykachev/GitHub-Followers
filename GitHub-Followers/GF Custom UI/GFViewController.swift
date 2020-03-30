@@ -31,6 +31,7 @@ class GFViewController: UIViewController {
 			errorMessageViewTopConstraint
 		])
 		
+		// show-wait-hide animation:
 		// prepare
 		errorMessageView.alpha = 0
 		view.layoutIfNeeded()

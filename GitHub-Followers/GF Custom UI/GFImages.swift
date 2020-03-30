@@ -9,7 +9,7 @@
 import UIKit
 
 // All static images will be loaded at the runtime and persistently stored in memory.
-// This is known behaviour not an issue in this small application.
+// This is a known behaviour and not an issue in this small application.
 
 extension UIImage {
 	// Assets

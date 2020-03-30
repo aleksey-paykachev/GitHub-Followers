@@ -42,6 +42,7 @@ class NetworkManager {
 			switch result {
 			case .failure(let error):
 				completion(.failure(error))
+				
 			case .success(let response):
 				do {
 					let parsedData: T = try Parser.parse(response.data)
