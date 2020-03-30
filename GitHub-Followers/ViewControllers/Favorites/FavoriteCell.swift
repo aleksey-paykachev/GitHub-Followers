@@ -26,6 +26,7 @@ class FavoriteCell: UITableViewCell {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 		
 		setupView()
+		setupContainerView()
 		setupSubviews()
 	}
 	
@@ -40,12 +41,29 @@ class FavoriteCell: UITableViewCell {
 		selectionStyle = .none
 	}
 	
-	private func setupSubviews() {
-		// container
+	private func setupContainerView() {
 		containerView.layer.setShadow(radius: 3, opacity: 0.1, offsetX: 2, offsetY: 2)
-		contentView.addSubview(containerView)
-		containerView.constrainToSuperview(padding: 9)
 
+		contentView.addSubview(containerView)
+		containerView.translatesAutoresizingMaskIntoConstraints = false
+		let padding: CGFloat = 9
+		
+		// set priority for vertical anchors to fix autolayout issues on containerView size changes
+		let containerViewTopAnchor = containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: padding)
+		containerViewTopAnchor.priority = .init(rawValue: 999)
+
+		let containerViewBottomAnchor = containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -padding)
+		containerViewBottomAnchor.priority = .init(rawValue: 999)
+
+		NSLayoutConstraint.activate([
+			containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: padding),
+			containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -padding),
+			containerViewTopAnchor,
+			containerViewBottomAnchor
+		])
+	}
+	
+	private func setupSubviews() {
 		// photo image
 		photoImageView.constrainWidthToHeight()
 		photoImageView.layer.setCornerRadius(10)
