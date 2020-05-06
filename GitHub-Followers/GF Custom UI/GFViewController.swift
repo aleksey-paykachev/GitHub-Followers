@@ -16,17 +16,23 @@ class GFViewController: UIViewController {
 	
 	// MARK: - API
 
-	func showError(_ message: String, hideAfter interval: TimeInterval = 4) {
+	func showError(_ message: String, hideAfter intervalBeforeHide: TimeInterval = 4) {
+		// properties
+		let topConstraintHidden: CGFloat = -100
+		let topConstraintShown: CGFloat = 10
+		let widthConstraint: CGFloat = 300
+		let animationDuration: TimeInterval = 0.3
+		
 		let errorMessageView = GFErrorMessageView(message: message)
 		view.addSubview(errorMessageView)
 
 		// constraints
 		errorMessageView.translatesAutoresizingMaskIntoConstraints = false
 
-		let errorMessageViewTopConstraint = errorMessageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: -100)
+		let errorMessageViewTopConstraint = errorMessageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: topConstraintHidden)
 
 		NSLayoutConstraint.activate([
-			errorMessageView.widthAnchor.constraint(equalToConstant: 300),
+			errorMessageView.widthAnchor.constraint(equalToConstant: widthConstraint),
 			errorMessageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
 			errorMessageViewTopConstraint
 		])
@@ -37,15 +43,15 @@ class GFViewController: UIViewController {
 		view.layoutIfNeeded()
 		
 		// show
-		UIView.animate(withDuration: 0.3, delay: 0, options: .curveEaseOut, animations: {
-			errorMessageViewTopConstraint.constant = 10
+		UIView.animate(withDuration: animationDuration, delay: 0, options: .curveEaseOut, animations: {
+			errorMessageViewTopConstraint.constant = topConstraintShown
 			errorMessageView.alpha = 1
 			self.view.layoutIfNeeded()
 		}, completion: { _ in
 			
 			// hide
-			UIView.animate(withDuration: 0.3, delay: interval, options: .curveEaseIn, animations: {
-				errorMessageViewTopConstraint.constant = -100
+			UIView.animate(withDuration: animationDuration, delay: intervalBeforeHide, options: .curveEaseIn, animations: {
+				errorMessageViewTopConstraint.constant = topConstraintHidden
 				errorMessageView.alpha = 0
 				self.view.layoutIfNeeded()
 			}, completion: { _ in
